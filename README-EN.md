@@ -2,12 +2,13 @@
 
 TRAMA is a portfolio project that combines a public news portal with a private editorial management system (CMS).
 
-It is developed with **Laravel 13**, **Vue 3**, **Inertia.js 2**, and **MySQL 8**. It includes news publishing and review, editorial scheduling, comments and moderation, user management, advertising, search, and content versioning.
+It is developed with **Laravel 13**, **Vue 3**, **Inertia.js 2**, and **MySQL 8**. It includes user authentication and management, a news review and publishing workflow, scheduled publications, comments and moderation, advertising, search, and content versioning.
 
 ## Main technologies
 
 - PHP 8.4.1+
 - Laravel 13
+- Laravel Fortify
 - Vue 3
 - Inertia.js 2
 - MySQL 8

@@ -2,7 +2,7 @@
 
 TRAMA es un proyecto de portfolio que combina un portal periodístico público con un sistema privado de gestión editorial (CMS).
 
-Está desarrollado con **Laravel 13**, **Vue 3** e **Inertia.js 2** e implementa un flujo editorial completo: creación de noticias, revisión, devolución con observaciones, programación, publicación, versionado, comentarios, moderación y administración del sistema.
+Está desarrollado con **Laravel 13**, **Vue 3** e **Inertia.js 2** e incluye autenticación, juunto con un flujo editorial completo: creación de noticias, revisión, devolución con observaciones, programación, publicación, versionado, comentarios, moderación y administración del sistema.
 
 También incorpora **Server-Side Rendering (SSR)** para la portada, procesamiento mediante colas, publicaciones programadas con Laravel Scheduler y moderación local de comentarios mediante Node.js y modelos ONNX.
 
