@@ -2,9 +2,40 @@
 
 TRAMA es un proyecto de portfolio que combina un portal periodístico público con un sistema privado de gestión editorial (CMS).
 
-Está desarrollado con Laravel 13, Vue 3 e Inertia.js 2 e implementa un flujo editorial completo: creación de noticias, revisión, devolución con observaciones, programación, publicación, versionado, comentarios, moderación y administración del sistema.
+Está desarrollado con **Laravel 13**, **Vue 3** e **Inertia.js 2** e implementa un flujo editorial completo: creación de noticias, revisión, devolución con observaciones, programación, publicación, versionado, comentarios, moderación y administración del sistema.
 
-También incorpora Server-Side Rendering (SSR) selectivo para la portada, procesamiento mediante colas, publicaciones programadas con Laravel Scheduler y moderación local de comentarios mediante Node.js y modelos ONNX.
+También incorpora **Server-Side Rendering (SSR)** para la portada, procesamiento mediante colas, publicaciones programadas con Laravel Scheduler y moderación local de comentarios mediante Node.js y modelos ONNX.
+
+---
+
+## Tecnologías principales
+
+### Backend
+
+- PHP.
+- Laravel 13.
+- Eloquent ORM.
+- Laravel Fortify.
+- Laravel Queue.
+- Laravel Scheduler.
+- MySQL 8.
+
+### Frontend
+
+- Vue 3.
+- Inertia.js 2.
+- Vite 7.
+- Ziggy.
+- Chart.js.
+- Vue Datepicker.
+
+### Procesamiento adicional
+
+- Node.js.
+- ONNX Runtime.
+- Hugging Face Tokenizers.
+- Sharp.
+- Franc.
 
 ---
 
@@ -53,96 +84,213 @@ También incorpora Server-Side Rendering (SSR) selectivo para la portada, proces
 
 ---
 
-## Tecnologías principales
+## Arquitectura general
 
-### Backend
+Laravel funciona como núcleo del backend y Vue 3 construye la interfaz del portal y del CMS.
 
-- PHP 8.3 o superior.
-- Laravel 13.
-- Eloquent ORM.
-- Laravel Fortify.
-- Laravel Queue.
-- Laravel Scheduler.
-- MySQL 8.
+Inertia.js conecta ambas partes, permitiendo utilizar las rutas, controladores, validaciones, sesiones y permisos de Laravel junto con componentes Vue sin desarrollar una API REST independiente para cada pantalla.
 
-### Frontend
+TRAMA utiliza una página raíz de Inertia y un puente propio para resolver las distintas pantallas:
 
-- Vue 3.
-- Inertia.js 2.
-- Vite 7.
-- Ziggy.
-- Chart.js.
-- Vue Datepicker.
+```text
+app/Support/TramaBridge.php
+resources/js/Pages/Trama.vue
+```
 
-### Procesamiento adicional
+El flujo general es:
 
-- Node.js.
-- ONNX Runtime.
-- Hugging Face Tokenizers.
-- Sharp.
-- Franc.
+```text
+Navegador
+    |
+    v
+Rutas de Laravel
+    |
+    v
+Controladores
+    |
+    v
+Servicios
+    |
+    v
+Eloquent / MySQL
+    |
+    v
+TramaBridge
+    |
+    v
+Inertia
+    |
+    v
+Vue 3
+```
+
+La portada utiliza Server-Side Rendering (SSR) mediante `resources/js/ssr.js`. El resto de las pantallas se renderiza mediante Inertia y Vue en el navegador.
 
 ---
 
-## Estructura del repositorio
+## Estructura principal del proyecto
 
-La entrega se organiza en las siguientes carpetas:
+```text
+TRAMA/
+├── app/
+│   ├── Actions/
+│   │   └── Fortify/
+│   ├── Console/
+│   │   └── Commands/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Admin/
+│   │   │   ├── Auth/
+│   │   │   └── Public/
+│   │   ├── Middleware/
+│   │   ├── Requests/
+│   │   │   ├── Admin/
+│   │   │   └── Editorial/
+│   │   ├── Resources/
+│   │   │   └── Editorial/
+│   │   └── Responses/
+│   │       └── Fortify/
+│   ├── Jobs/
+│   ├── Logging/
+│   ├── Mail/
+│   ├── Models/
+│   ├── Notifications/
+│   ├── Observers/
+│   ├── Providers/
+│   ├── Rules/
+│   ├── Services/
+│   │   ├── Categories/
+│   │   ├── Editorial/
+│   │   └── Images/
+│   └── Support/
+│
+├── bootstrap/
+├── config/
+│
+├── database/
+│   ├── factories/
+│   ├── migrations/
+│   └── seeders/
+│       ├── data/
+│       └── Support/
+│
+├── docs/
+│   ├── ampliacion-gestion-editorial.md
+│   ├── convencion-comentarios.md
+│   ├── datos-de-prueba.md
+│   ├── ejecucion-local.md
+│   ├── flujo-editorial.md
+│   ├── moderacion-automatica-comentarios.md
+│   └── resultado-datos-de-prueba.md
+│
+├── lang/
+│   └── es/
+│
+├── public/
+│   └── images/
+│       ├── articles/
+│       ├── banners/
+│       ├── brand/
+│       ├── categories/
+│       └── team/
+│
+├── resources/
+│   ├── css/
+│   │   ├── admin/
+│   │   └── app.css
+│   ├── js/
+│   │   ├── Components/
+│   │   │   ├── Admin/
+│   │   │   ├── Editor/
+│   │   │   ├── News/
+│   │   │   └── Shared/
+│   │   ├── Layouts/
+│   │   ├── Pages/
+│   │   │   ├── Admin/
+│   │   │   ├── Auth/
+│   │   │   ├── Public/
+│   │   │   ├── Error.vue
+│   │   │   └── Trama.vue
+│   │   ├── Support/
+│   │   ├── app.js
+│   │   ├── bootstrap.js
+│   │   ├── inertia-pages.js
+│   │   └── ssr.js
+│   ├── models/
+│   │   ├── comment-spam/
+│   │   ├── comment-threat-detoxify/
+│   │   ├── comment-toxicity/
+│   │   └── image-safety/
+│   └── views/
+│       ├── advertiser-demo.blade.php
+│       ├── app.blade.php
+│       ├── emails/
+│       └── errors/
+│
+├── routes/
+│   ├── console.php
+│   └── web.php
+│
+├── scripts/
+│   ├── comments/
+│   └── images/
+│
+├── storage/
+│
+├── tests/
+│   ├── Feature/
+│   └── Unit/
+│
+├── artisan
+├── composer.json
+├── package.json
+└── vite.config.js
+```
 
-- src/ — código fuente de la aplicación Laravel y Vue.
-- database/ — base de datos SQL de prueba.
-- docs/ — documentación del proyecto.
-
-En la raíz también se incluyen videos de demostración del portal público y de las distintas áreas internas del sistema.
+Las dependencias instaladas y los archivos generados en tiempo de ejecución no forman parte de esta estructura resumida.
 
 ---
 
 ## Requisitos
 
-Para ejecutar TRAMA en un entorno local se necesita:
+Para reproducir el entorno actual de TRAMA se necesita:
 
-- PHP 8.3 o superior.
+- PHP **8.4.1 o superior** para utilizar el `composer.lock` actual.
 - Composer.
-- Node.js 20.19 o superior, o Node.js 22.12 o superior.
+- Node.js **20.19.0 o superior dentro de la rama 20.x**, o **22.12.0 o superior**.
 - npm.
 - MySQL 8.
 - Las extensiones de PHP requeridas por Laravel y por el proyecto.
 
-Para probar los flujos que envían correos electrónicos también es necesario configurar una cuenta SMTP.
+`composer.json` declara PHP `^8.3`, pero el `composer.lock` actual incluye dependencias de Symfony que requieren PHP 8.4.1 o superior.
+
+Para probar los flujos que envían correos electrónicos también debe configurarse una cuenta SMTP.
 
 ---
 
-### Modelos de moderación
+## Modelos de moderación
 
-Los modelos ONNX utilizados por los procesos de moderación y análisis de imágenes no se incluyen directamente en el repositorio debido a su tamaño.
+TRAMA utiliza modelos ONNX para la moderación automática de comentarios y para el análisis de seguridad de imágenes.
 
-Se distribuyen por separado y deben ubicarse dentro de:
+Los archivos binarios de estos modelos **no se versionan dentro del código fuente debido a su tamaño**. Las carpetas esperadas por la aplicación se conservan en:
 
 ```text
-src/resources/models/
+resources/models/
+├── comment-spam/
+├── comment-threat-detoxify/
+├── comment-toxicity/
+└── image-safety/
+```
+
+Los modelos se distribuirán por separado mediante una **GitHub Release** del repositorio.
+
+Después de descargarlos, deben ubicarse dentro de las carpetas correspondientes bajo `resources/models/`.
 
 ---
 
-## Instalación
+## Configuración del entorno
 
-Entrá en la carpeta src:
-
-```bash
-cd src
-```
-
-Instalá las dependencias de PHP:
-
-```bash
-composer install
-```
-
-Instalá las dependencias de Node.js:
-
-```bash
-npm install
-```
-
-Creá el archivo .env a partir de .env.example.
+Creá el archivo `.env` a partir de `.env.example`.
 
 En Windows:
 
@@ -162,98 +310,232 @@ Generá la clave de la aplicación:
 php artisan key:generate
 ```
 
-Después configurá en .env la conexión a MySQL y, si querés probar los flujos de correo, los datos SMTP.
+### Base de datos
 
-La variable TRAMA_NODE_BINARY debe indicar la ruta del ejecutable de Node.js instalado en el equipo. TRAMA utiliza Node.js tanto en la moderación automática de comentarios como en procesos relacionados con el análisis y tratamiento de imágenes.
+El archivo `.env.example` utiliza esta configuración de referencia:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3307
+DB_DATABASE=trama
+DB_USERNAME=user
+DB_PASSWORD=password
+```
+
+Adaptá usuario, contraseña, puerto y nombre de base de datos al entorno local.
+
+### Node.js
+
+TRAMA utiliza Node.js desde procesos iniciados por Laravel para la moderación automática de comentarios y el procesamiento de imágenes.
+
+La ruta del ejecutable se configura mediante:
+
+```env
+TRAMA_NODE_BINARY="C:/Program Files/nodejs/node.exe"
+```
+
+La ruta anterior es solo el ejemplo incluido para Windows. Cada entorno debe apuntar a su propio ejecutable de Node.js.
+
+### Correo electrónico
+
+Para probar la verificación de correo, recuperación de contraseña y demás flujos que envían emails, configurá las variables SMTP del archivo `.env`.
+
+### SSR
+
+La configuración de ejemplo incluye:
+
+```env
+INERTIA_SSR_ENABLED=true
+INERTIA_SSR_URL=http://127.0.0.1:13714
+INERTIA_SSR_ENSURE_BUNDLE_EXISTS=true
+INERTIA_SSR_BUNDLE=bootstrap/ssr/ssr.js
+```
 
 ---
 
-## Base de datos
+## Instalación
 
-El repositorio incluye una base de datos de prueba completa en:
+Instalá las dependencias de PHP:
 
-...\trama\database\trama_mysql.sql
+```bash
+composer install
+```
 
-El archivo crea y utiliza la base de datos trama.
+Instalá las dependencias de Node.js:
 
-También es posible generar la base desde cero mediante las migraciones y los seeders incluidos en el proyecto.
+```bash
+npm install
+```
 
-Desde la carpeta src:
+Creá y configurá `.env` si todavía no lo hiciste:
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+En Windows, reemplazá `cp` por:
+
+```bash
+copy .env.example .env
+```
+
+Después configurá la conexión MySQL, la ruta de Node.js y, si corresponde, SMTP.
+
+---
+
+## Base de datos y datos de prueba
+
+La estructura de la base se define mediante las migraciones incluidas en:
+
+```text
+database/migrations/
+```
+
+Los datos de prueba se generan mediante los seeders de:
+
+```text
+database/seeders/
+```
+
+Para reconstruir completamente la base de desarrollo:
 
 ```bash
 php artisan optimize:clear
 php artisan migrate:fresh --seed
 ```
 
-migrate:fresh elimina todas las tablas de la base configurada, vuelve a ejecutar las migraciones y finalmente carga los datos de prueba.
+`migrate:fresh` elimina todas las tablas de la base configurada antes de ejecutar nuevamente las migraciones y los seeders.
 
-Antes de utilizarlo sobre una base existente, hacé una copia de seguridad si contiene información que quieras conservar.
+El conjunto de prueba actual genera:
+
+```text
+Usuarios registrados:          2.500
+Empleados:                         6
+Noticias:                         90
+Vistas de noticias:           64.212
+Comentarios + respuestas:      1.395
+  principales:                   918
+  respuestas:                    477
+  aprobados:                   1.200
+  rechazados:                    184
+  pendientes:                     11
+Likes:                         2.410
+Reportes:                        153
+Revisiones administrativas:      103
+Revisiones editoriales:          300
+Feedback / devoluciones:          23
+Mensajes de contacto:             19
+Impresiones de banners:       35.298
+Clicks de banners:               145
+CTR global aproximado:          0,41 %
+```
+
+El detalle completo se encuentra en [`docs/resultado-datos-de-prueba.md`](docs/resultado-datos-de-prueba.md).
 
 ---
 
-## Reloj editorial de demostración
+## Ejecución en desarrollo
 
-TRAMA incluye un reloj de referencia para que las fechas utilizadas por campañas, métricas, publicaciones programadas y otros datos de demostración no dependan directamente de la fecha real del equipo.
+TRAMA puede iniciarse de forma manual o mediante el script integrado de Composer.
 
-La fecha y la hora inicial se configuran en .env mediante:
+### Inicio integrado
 
-    TRAMA_REFERENCE_DATE=2026-07-19
-    TRAMA_REFERENCE_TIME=15:30:00
-
-La hora configurada funciona como punto de partida. Después, TRAMA puede continuar desde el último instante editorial guardado entre sesiones.
-
----
-
-## Ejecutar el proyecto
-
-Para iniciar el servidor de Laravel:
-
-```bash
-php artisan serve
-```
-
-En otra terminal, iniciá Vite:
-
-```bash
-npm run dev
-```
-
-La moderación de comentarios necesita un proceso de cola activo:
-
-```bash
-php artisan queue:work --queue=moderation,default --tries=3 --timeout=70
-```
-
-Para procesar las publicaciones programadas durante el desarrollo, mantené también activo el Scheduler:
-
-```bash
-php artisan schedule:work
-```
-
-El proyecto incluye además el comando:
+La forma más directa es:
 
 ```bash
 composer run dev
 ```
 
-Este comando compila primero la versión SSR del frontend y luego inicia de forma conjunta:
+Antes de iniciar los procesos, el script ejecuta:
 
-- El servidor de Laravel.
-- El proceso de la cola para moderation y default.
-- Vite para el frontend.
-- El servidor SSR de Inertia.
-- El Scheduler de Laravel.
+```bash
+npm run build:ssr
+```
+
+para generar el bundle utilizado por Inertia SSR.
+
+Después inicia simultáneamente:
+
+| Proceso | Comando |
+|---|---|
+| Laravel | `php artisan serve` |
+| Cola de trabajos | `php artisan queue:listen --queue=moderation,default --tries=3 --timeout=70` |
+| Vite | `npm run dev` |
+| Inertia SSR | `php artisan inertia:start-ssr` |
+| Scheduler | `php artisan schedule:work` |
+
+El script utiliza `--kill-others`: si uno de los procesos finaliza o falla, `concurrently` detiene también los demás.
+
+### Inicio manual
+
+Los procesos pueden ejecutarse por separado:
+
+```bash
+php artisan serve
+```
+
+```bash
+npm run dev
+```
+
+```bash
+npm run build:ssr
+php artisan inertia:start-ssr
+```
+
+```bash
+php artisan queue:work --queue=moderation,default --tries=3 --timeout=70
+```
+
+```bash
+php artisan schedule:work
+```
+
+Por defecto, la aplicación queda disponible en:
+
+```text
+http://127.0.0.1:8000
+```
+
+La guía completa de ejecución local está en [`docs/ejecucion-local.md`](docs/ejecucion-local.md).
 
 ---
 
 ## SSR
 
-TRAMA utiliza Server-Side Rendering únicamente en la portada.
+TRAMA utiliza Server-Side Rendering únicamente para la portada.
 
-Para generar los archivos del frontend y el bundle SSR:
+El archivo fuente del SSR es:
+
+```text
+resources/js/ssr.js
+```
+
+Para generar solamente el bundle SSR:
+
+```bash
+npm run build:ssr
+```
+
+Para generar tanto los assets del frontend como el bundle SSR:
 
 ```bash
 npm run build
+```
+
+El script `build` ejecuta:
+
+```text
+vite build
+vite build --ssr
+```
+
+El bundle SSR se genera normalmente en:
+
+```text
+bootstrap/ssr/ssr.js
 ```
 
 Para iniciar el servidor SSR:
@@ -274,40 +556,20 @@ Para detenerlo:
 php artisan inertia:stop-ssr
 ```
 
-La activación general se controla mediante INERTIA_SSR_ENABLED en el archivo .env.
-
-Las demás pantallas se renderizan mediante Inertia y Vue en el navegador.
-
 ---
 
-## Arquitectura
+## Reloj editorial de demostración
 
-Laravel funciona como núcleo del backend y Vue 3 construye la interfaz del portal y del CMS.
+TRAMA utiliza un reloj editorial de referencia para que las fechas de publicaciones programadas, campañas, métricas y otros datos de prueba mantengan coherencia independientemente de la fecha real del equipo.
 
-Inertia.js conecta ambas partes, permitiendo utilizar las rutas, controladores, validaciones, sesiones y permisos de Laravel junto con los componentes Vue sin desarrollar una API REST independiente para cada pantalla.
+La fecha y hora inicial se configuran mediante:
 
-TRAMA utiliza una página raíz de Inertia y un puente propio para resolver las distintas pantallas de la aplicación:
+```env
+TRAMA_REFERENCE_DATE=2026-07-19
+TRAMA_REFERENCE_TIME=15:30:00
+```
 
-    app/Support/TramaBridge.php
-    resources/js/Pages/Trama.vue
-
-El flujo general es:
-
-    Navegador
-        ↓
-    Rutas de Laravel
-        ↓
-    Controladores
-        ↓
-    Servicios
-        ↓
-    Eloquent / MySQL
-        ↓
-    TramaBridge
-        ↓
-    Inertia
-        ↓
-    Vue 3
+La hora configurada funciona como punto de partida. Después, `TramaClock` continúa desde el último instante editorial guardado entre sesiones.
 
 ---
 
@@ -315,10 +577,10 @@ El flujo general es:
 
 TRAMA separa las responsabilidades en cuatro roles:
 
-- Administrador: gestiona usuarios, empleados, categorías, etiquetas, publicidades, bloqueos y revisiones administrativas.
-- Editor: gestiona el flujo editorial, revisa contenido, solicita cambios, programa, publica, archiva y modera comentarios.
-- Periodista: crea noticias, trabaja con borradores, envía contenido a revisión y corrige devoluciones.
-- Lector: participa en el portal mediante comentarios, respuestas, Me gusta y reportes.
+- **Administrador:** gestiona usuarios, empleados, categorías, etiquetas, publicidades, bloqueos y revisiones administrativas.
+- **Editor:** gestiona el flujo editorial, revisa contenido, solicita cambios, programa, publica, archiva y modera comentarios.
+- **Periodista:** crea noticias, trabaja con borradores, envía contenido a revisión y corrige devoluciones.
+- **Lector:** participa en el portal mediante comentarios, respuestas, Me gusta y reportes.
 
 El administrador no participa del flujo de redacción, revisión o publicación de noticias y tampoco modera comentarios.
 
@@ -328,16 +590,32 @@ El administrador no participa del flujo de redacción, revisión o publicación 
 
 Las noticias pueden pasar por los siguientes estados:
 
-    draft
-    review
-    needs_changes
-    scheduled
-    published
-    archived
+```text
+draft
+review
+needs_changes
+scheduled
+published
+archived
+```
 
-El flujo principal permite que un periodista cree un borrador y lo envíe a revisión. El editor puede publicarlo, programarlo o devolverlo con observaciones. Si se solicitan cambios, el periodista puede corregirlo y enviarlo nuevamente a revisión.
+El flujo principal permite que un periodista cree un borrador y lo envíe a revisión.
 
-Las publicaciones programadas son procesadas automáticamente por Laravel Scheduler cuando llega la fecha y hora correspondiente según el reloj editorial de TRAMA.
+El editor puede:
+
+- publicarlo;
+- programarlo;
+- devolverlo con observaciones.
+
+Si se solicitan cambios, el periodista puede corregir el contenido y enviarlo nuevamente a revisión.
+
+Las publicaciones programadas son procesadas mediante:
+
+```bash
+php artisan articles:publish-scheduled
+```
+
+Laravel Scheduler registra este comando para ejecutarlo cada minuto y evita superposiciones mediante `withoutOverlapping()`.
 
 ---
 
@@ -355,27 +633,53 @@ El sistema incluye:
 - actualización de contraseña;
 - limitación de intentos de inicio de sesión.
 
-El registro público utiliza un flujo personalizado: la cuenta se crea como lector, se envía el correo de verificación y el usuario debe confirmar su dirección antes de poder iniciar sesión.
+El registro público utiliza un flujo personalizado: la cuenta se crea como lector, se envía el correo de verificación y el usuario debe confirmar su dirección antes de iniciar sesión.
 
-El límite de acceso es de 5 intentos por minuto por combinación de correo electrónico e IP.
+El límite de acceso es de **5 intentos por minuto** por combinación de correo electrónico e IP.
 
 ---
 
 ## Comentarios y moderación
 
-Los comentarios nuevos pasan primero por un proceso de moderación.
+Los comentarios nuevos pasan por moderación antes de publicarse.
 
-El análisis se ejecuta mediante una cola de Laravel y un conjunto de scripts de Node.js que evalúan señales relacionadas con idioma, enlaces, amenazas, toxicidad y spam.
+El procesamiento utiliza:
 
-Los posibles resultados son:
+```text
+Laravel Queue
+    |
+    v
+app/Jobs/ModerateComment.php
+    |
+    v
+scripts/comments/moderate-comment.mjs
+    |
+    v
+Node.js + modelos ONNX
+```
 
-- approved — el comentario puede publicarse;
-- pending — requiere revisión humana;
-- rejected — el comentario es rechazado.
+El pipeline evalúa señales relacionadas con:
 
-Los errores técnicos no producen una aprobación automática.
+- idioma;
+- enlaces;
+- amenazas;
+- toxicidad;
+- spam.
 
-Cada comentario utiliza además una revisión de moderación para evitar que un resultado antiguo sobrescriba el análisis de una versión más reciente del mismo comentario.
+Los estados principales son:
+
+```text
+processing
+approved
+pending
+rejected
+```
+
+Los errores técnicos no producen una aprobación automática. Cuando la infraestructura de moderación falla de forma definitiva, el comentario queda disponible para revisión humana.
+
+Cada comentario utiliza además una revisión de moderación para evitar que un resultado antiguo sobrescriba el análisis de una versión más reciente.
+
+La documentación completa está en [`docs/moderacion-automatica-comentarios.md`](docs/moderacion-automatica-comentarios.md).
 
 ---
 
@@ -400,11 +704,11 @@ Restaurar una versión histórica no reemplaza directamente una publicación act
 
 TRAMA dispone de una búsqueda pública para noticias publicadas y una búsqueda interna para el CMS.
 
-La búsqueda pública permite buscar por texto y categoría. Las coincidencias de texto también pueden encontrarse a través de las etiquetas asociadas a las noticias.
+La búsqueda pública permite buscar por texto y categoría. Las coincidencias de texto también pueden encontrarse mediante las etiquetas asociadas a las noticias.
 
-La búsqueda editorial utiliza el campo articles.search_text y un índice FULLTEXT que reúne información del título, subtítulo, bajada, cuerpo, categoría y etiquetas.
+La búsqueda editorial utiliza `articles.search_text` y un índice FULLTEXT que reúne información del título, subtítulo, bajada, cuerpo, categoría y etiquetas.
 
-Si fuera necesario reconstruir este índice puede utilizarse:
+Para reconstruir ese índice:
 
 ```bash
 php artisan articles:rebuild-search-index
@@ -412,16 +716,62 @@ php artisan articles:rebuild-search-index
 
 ---
 
-## Datos de prueba
+## Publicidades
 
-El proyecto incluye usuarios, noticias, comentarios, publicidades y actividad de prueba para poder recorrer las funciones principales del portal y del CMS.
+TRAMA incluye administración de campañas publicitarias y registro de actividad.
 
-Las cuentas de demostración utilizan direcciones reservadas para pruebas y una contraseña común. El detalle completo de los datos y cuentas de prueba se encuentra en la documentación incluida con el proyecto.
+El sistema permite trabajar con:
+
+- campañas;
+- ubicaciones de banners;
+- imágenes procesadas;
+- impresiones;
+- clics;
+- CTR;
+- filtros y reportes dentro del panel administrativo.
+
+Las imágenes de banners se almacenan en:
+
+```text
+public/images/banners/
+```
+
+La ubicación física puede configurarse mediante `TRAMA_BANNERS_PATH`.
 
 ---
 
-## Documentación
+## Procesamiento de imágenes
 
-La carpeta docs contiene documentación complementaria sobre el funcionamiento interno y los principales flujos de TRAMA.
+TRAMA utiliza scripts de Node.js para tareas de procesamiento de imágenes.
 
-También se incluyen videos del sitio en funcionamiento para mostrar el portal público y las áreas correspondientes a administrador, editor y periodista.
+Las portadas de noticias se almacenan en:
+
+```text
+public/images/articles/
+```
+
+La ruta puede configurarse mediante:
+
+```env
+TRAMA_ARTICLE_COVERS_PATH=public/images/articles
+```
+
+El análisis de seguridad utiliza el modelo ubicado en:
+
+```text
+resources/models/image-safety/
+```
+
+---
+
+## Documentación adicional
+
+La carpeta [`docs/`](docs/) contiene documentación complementaria del proyecto:
+
+- [`ampliacion-gestion-editorial.md`](docs/ampliacion-gestion-editorial.md): ampliaciones del sistema de gestión editorial.
+- [`convencion-comentarios.md`](docs/convencion-comentarios.md): convenciones utilizadas para comentarios dentro del código.
+- [`datos-de-prueba.md`](docs/datos-de-prueba.md): generación y organización de los datos de prueba.
+- [`ejecucion-local.md`](docs/ejecucion-local.md): instalación, requisitos y ejecución del entorno local.
+- [`flujo-editorial.md`](docs/flujo-editorial.md): estados y operaciones del flujo editorial.
+- [`moderacion-automatica-comentarios.md`](docs/moderacion-automatica-comentarios.md): funcionamiento del pipeline automático de moderación.
+- [`resultado-datos-de-prueba.md`](docs/resultado-datos-de-prueba.md): resumen cuantitativo generado por los seeders.

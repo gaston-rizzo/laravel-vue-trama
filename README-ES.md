@@ -100,4 +100,4 @@ La documentación técnica y el detalle de instalación, arquitectura, roles, fl
 docs/
 ```
 
-El proyecto incluye además archivos Markdown (`.md`) dentro de `docs/` con documentación complementaria y resultados de los datos de prueba.
+El código fuente incluye además archivos Markdown (.md) dentro de src/TRAMA/docs/, con documentación complementaria y resultados de los datos de prueba.

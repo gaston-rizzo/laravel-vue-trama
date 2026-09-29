@@ -100,4 +100,4 @@ The technical documentation and detailed information about installation, archite
 docs/
 ```
 
-The project also includes Markdown (`.md`) files inside `docs/` with complementary documentation and test data results.
+The source code also includes Markdown (.md) files inside src/TRAMA/docs/, with complementary documentation.

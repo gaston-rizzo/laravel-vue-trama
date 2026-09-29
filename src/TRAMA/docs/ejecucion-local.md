@@ -6,7 +6,7 @@ Esta guía explica cómo levantar TRAMA en un entorno local de desarrollo con La
 
 Para reproducir el entorno actual de TRAMA se necesita:
 
-- PHP 8.4.1 o superior. El entorno documentado fue verificado con PHP 8.5.8.
+- PHP 8.4.1 o superior. El proyecto usa PHP 8.5.8.
 - Composer.
 - Node.js 20.19.0 o superior dentro de la rama 20.x, o Node.js 22.12.0 o superior.
 - npm.
