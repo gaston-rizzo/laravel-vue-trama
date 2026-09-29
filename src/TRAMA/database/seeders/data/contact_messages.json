@@ -1,0 +1,192 @@
+[
+  {
+    "id": 1,
+    "reason": "account",
+    "name": "Mariela Ponce",
+    "email": "mariela.ponce@correo-pampa.test",
+    "message": "No puedo ingresar desde ayer y el sistema me indica que revise el estado de mi cuenta. ¿Pueden orientarme?",
+    "resolved_at": "2026-06-22 01:41:00",
+    "created_at": "2026-06-21 11:41:00",
+    "updated_at": "2026-06-22 01:41:00"
+  },
+  {
+    "id": 2,
+    "reason": "editorial",
+    "name": "Javier Albornoz",
+    "email": "javo88@hotmail.test",
+    "message": "Quería acercar una corrección sobre un dato de una nota de economía y adjunto la referencia en el mensaje.",
+    "resolved_at": "2026-06-25 08:22:00",
+    "created_at": "2026-06-22 23:22:00",
+    "updated_at": "2026-06-25 08:22:00"
+  },
+  {
+    "id": 3,
+    "reason": "advertising",
+    "name": "Inés Balcarce",
+    "email": "luzdepatio@gmail.test",
+    "message": "Estoy evaluando una campaña corta para una actividad educativa y quisiera conocer los formatos disponibles.",
+    "resolved_at": null,
+    "created_at": "2026-06-24 11:03:00",
+    "updated_at": "2026-06-24 11:03:00"
+  },
+  {
+    "id": 4,
+    "reason": "other",
+    "name": "Rubén Cejas",
+    "email": "rcejas@outlook.test",
+    "message": "¿Tienen previsto publicar un archivo mensual de las coberturas destacadas?",
+    "resolved_at": null,
+    "created_at": "2026-06-25 09:44:00",
+    "updated_at": "2026-06-25 09:44:00"
+  },
+  {
+    "id": 5,
+    "reason": "editorial",
+    "name": "Carolina Donato",
+    "email": "carodonato@gmail.test",
+    "message": "Trabajo en una organización mencionada en una nota y quisiera enviar información actualizada para una eventual corrección.",
+    "resolved_at": "2026-06-27 10:25:00",
+    "created_at": "2026-06-26 21:25:00",
+    "updated_at": "2026-06-27 10:25:00"
+  },
+  {
+    "id": 6,
+    "reason": "account",
+    "name": "Mauro Elizondo",
+    "email": "mateyruido@yahoo.test",
+    "message": "Cambié de correo hace poco y quería saber cuál es el procedimiento correcto para recuperar el acceso.",
+    "resolved_at": "2026-06-29 20:06:00",
+    "created_at": "2026-06-28 09:06:00",
+    "updated_at": "2026-06-29 20:06:00"
+  },
+  {
+    "id": 7,
+    "reason": "advertising",
+    "name": "Paula Fontana",
+    "email": "paula.f@icloud.test",
+    "message": "Nos interesa el espacio de cabecera durante una semana. Quisiera consultar disponibilidad y condiciones.",
+    "resolved_at": "2026-06-30 06:47:00",
+    "created_at": "2026-06-29 20:47:00",
+    "updated_at": "2026-06-30 06:47:00"
+  },
+  {
+    "id": 8,
+    "reason": "other",
+    "name": "Hernán Lagos",
+    "email": "hlagos@proton.test",
+    "message": "Felicitaciones por la cobertura. Quería sugerir una sección para seguir proyectos urbanos con datos abiertos.",
+    "resolved_at": null,
+    "created_at": "2026-06-30 19:28:00",
+    "updated_at": "2026-06-30 19:28:00"
+  },
+  {
+    "id": 9,
+    "reason": "account",
+    "name": "Micaela Ocampo",
+    "email": "mika_ocampo@gmail.test",
+    "message": "La verificación de mi cuenta quedó pendiente y el enlace anterior ya no funciona.",
+    "resolved_at": "2026-07-04 00:09:00",
+    "created_at": "2026-07-02 07:09:00",
+    "updated_at": "2026-07-04 00:09:00"
+  },
+  {
+    "id": 10,
+    "reason": "editorial",
+    "name": "Sergio Reinoso",
+    "email": "sergiorei@hotmail.test",
+    "message": "¿Dónde puedo informar una errata menor en el nombre de una institución citada en una nota?",
+    "resolved_at": null,
+    "created_at": "2026-07-03 18:50:00",
+    "updated_at": "2026-07-03 18:50:00"
+  },
+  {
+    "id": 11,
+    "reason": "other",
+    "name": "Nadia Taboada",
+    "email": "nadia.t@outlook.test",
+    "message": "Estoy preparando un trabajo universitario y quería consultar si puedo citar una nota indicando autor y fecha.",
+    "resolved_at": "2026-07-06 23:31:00",
+    "created_at": "2026-07-05 05:31:00",
+    "updated_at": "2026-07-06 23:31:00"
+  },
+  {
+    "id": 12,
+    "reason": "advertising",
+    "name": "Gustavo Yáñez",
+    "email": "gyanez@gmail.test",
+    "message": "Quisiera recibir información sobre los formatos de sidebar para una campaña institucional.",
+    "resolved_at": "2026-07-09 05:12:00",
+    "created_at": "2026-07-06 05:12:00",
+    "updated_at": "2026-07-09 05:12:00"
+  },
+  {
+    "id": 13,
+    "reason": "editorial",
+    "name": "Claudia Zunino",
+    "email": "claudiaz@yahoo.test",
+    "message": "Tengo datos públicos complementarios sobre una cobertura de transporte y me gustaría acercarlos a la redacción.",
+    "resolved_at": "2026-07-08 16:53:00",
+    "created_at": "2026-07-07 16:53:00",
+    "updated_at": "2026-07-08 16:53:00"
+  },
+  {
+    "id": 14,
+    "reason": "account",
+    "name": "Emanuel Britos",
+    "email": "ebritos@correo24.test",
+    "message": "Mi cuenta aparece bloqueada. Quisiera solicitar que revisen la medida porque necesito entender el motivo.",
+    "resolved_at": "2026-07-10 06:34:00",
+    "created_at": "2026-07-09 04:34:00",
+    "updated_at": "2026-07-10 06:34:00"
+  },
+  {
+    "id": 15,
+    "reason": "other",
+    "name": "Rita Cordero",
+    "email": "ritac@gmail.test",
+    "message": "¿Las notas archivadas siguen disponibles para consulta desde el buscador interno?",
+    "resolved_at": "2026-07-11 05:15:00",
+    "created_at": "2026-07-10 15:15:00",
+    "updated_at": "2026-07-11 05:15:00"
+  },
+  {
+    "id": 16,
+    "reason": "editorial",
+    "name": "León Molina",
+    "email": "leon.m@icloud.test",
+    "message": "Quería señalar que una cifra cambió después de la publicación y quizá convenga actualizar el contexto.",
+    "resolved_at": null,
+    "created_at": "2026-07-11 14:56:00",
+    "updated_at": "2026-07-11 14:56:00"
+  },
+  {
+    "id": 17,
+    "reason": "advertising",
+    "name": "Ana Pizarro",
+    "email": "ana.pizarro@gmail.test",
+    "message": "Estamos planificando una campaña de tres semanas y necesitamos saber qué piezas debemos preparar.",
+    "resolved_at": "2026-07-15 11:37:00",
+    "created_at": "2026-07-13 02:37:00",
+    "updated_at": "2026-07-15 11:37:00"
+  },
+  {
+    "id": 18,
+    "reason": "account",
+    "name": "Diego Segovia",
+    "email": "diegosego@outlook.test",
+    "message": "No recuerdo la contraseña y antes de restablecerla quisiera confirmar que mi cuenta sigue activa.",
+    "resolved_at": null,
+    "created_at": "2026-07-14 13:18:00",
+    "updated_at": "2026-07-14 13:18:00"
+  },
+  {
+    "id": 19,
+    "reason": "other",
+    "name": "Roxana Videla",
+    "email": "rovi73@hotmail.test",
+    "message": "Me interesa saber si aceptan propuestas de temas para futuras coberturas locales.",
+    "resolved_at": null,
+    "created_at": "2026-07-16 00:59:00",
+    "updated_at": "2026-07-16 00:59:00"
+  }
+]

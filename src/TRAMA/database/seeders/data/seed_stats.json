@@ -1,0 +1,119 @@
+{
+  "staff": 6,
+  "registered_users": 2500,
+  "verified_active": 2330,
+  "unverified": 120,
+  "blocked": 50,
+  "articles": 90,
+  "article_statuses": {
+    "published": 60,
+    "archived": 8,
+    "scheduled": 5,
+    "review": 7,
+    "needs_changes": 5,
+    "draft": 5
+  },
+  "article_authors": {
+    "2": 10,
+    "3": 20,
+    "5": 20,
+    "6": 20,
+    "4": 20
+  },
+  "article_views": 64212,
+  "comments_total": 1395,
+  "main_comments": 918,
+  "replies": 477,
+  "comment_statuses": {
+    "rejected": 184,
+    "approved": 1200,
+    "pending": 11
+  },
+  "moderation_sources": {
+    "editorial": 79,
+    "automatic": 1292,
+    "none": 24
+  },
+  "moderation_reasons_top": [
+    [
+      "automatic_clean",
+      1165
+    ],
+    [
+      "editorial_rejected",
+      62
+    ],
+    [
+      "toxicity_clear",
+      50
+    ],
+    [
+      "spam_clear",
+      31
+    ],
+    [
+      "link_detected",
+      29
+    ],
+    [
+      "none",
+      24
+    ],
+    [
+      "editorial_approved",
+      11
+    ],
+    [
+      "threat_high",
+      6
+    ],
+    [
+      "parent_editorial_rejected",
+      6
+    ],
+    [
+      "language_mixed",
+      3
+    ],
+    [
+      "spam_review",
+      2
+    ],
+    [
+      "language_review",
+      2
+    ],
+    [
+      "toxicity_review",
+      2
+    ],
+    [
+      "threat_medium",
+      1
+    ],
+    [
+      "unsupported_language",
+      1
+    ]
+  ],
+  "likes": 2410,
+  "reports": 153,
+  "report_statuses": {
+    "resolved": 101,
+    "dismissed": 38,
+    "open": 14
+  },
+  "user_moderation_reviews": 103,
+  "review_resolutions": {
+    "blocked": 50,
+    "no_action": 28,
+    "pending": 25
+  },
+  "article_revisions": 300,
+  "review_feedback": 23,
+  "contacts": 19,
+  "ads": 15,
+  "ad_metrics": 285,
+  "ad_impressions": 35298,
+  "ad_clicks": 145
+}

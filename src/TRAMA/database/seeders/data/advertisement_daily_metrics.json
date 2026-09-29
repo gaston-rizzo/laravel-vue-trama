@@ -1,0 +1,2567 @@
+[
+  {
+    "id": 1,
+    "advertisement_id": 1,
+    "date": "2026-07-01",
+    "impressions_count": 177,
+    "clicks_count": 0,
+    "created_at": "2026-07-01 23:00:00",
+    "updated_at": "2026-07-01 23:00:00"
+  },
+  {
+    "id": 2,
+    "advertisement_id": 4,
+    "date": "2026-07-01",
+    "impressions_count": 169,
+    "clicks_count": 0,
+    "created_at": "2026-07-01 23:00:00",
+    "updated_at": "2026-07-01 23:00:00"
+  },
+  {
+    "id": 3,
+    "advertisement_id": 7,
+    "date": "2026-07-01",
+    "impressions_count": 188,
+    "clicks_count": 1,
+    "created_at": "2026-07-01 23:00:00",
+    "updated_at": "2026-07-01 23:00:00"
+  },
+  {
+    "id": 4,
+    "advertisement_id": 10,
+    "date": "2026-07-01",
+    "impressions_count": 177,
+    "clicks_count": 1,
+    "created_at": "2026-07-01 23:00:00",
+    "updated_at": "2026-07-01 23:00:00"
+  },
+  {
+    "id": 5,
+    "advertisement_id": 13,
+    "date": "2026-07-01",
+    "impressions_count": 187,
+    "clicks_count": 0,
+    "created_at": "2026-07-01 23:00:00",
+    "updated_at": "2026-07-01 23:00:00"
+  },
+  {
+    "id": 6,
+    "advertisement_id": 2,
+    "date": "2026-07-01",
+    "impressions_count": 104,
+    "clicks_count": 0,
+    "created_at": "2026-07-01 23:00:00",
+    "updated_at": "2026-07-01 23:00:00"
+  },
+  {
+    "id": 7,
+    "advertisement_id": 5,
+    "date": "2026-07-01",
+    "impressions_count": 111,
+    "clicks_count": 0,
+    "created_at": "2026-07-01 23:00:00",
+    "updated_at": "2026-07-01 23:00:00"
+  },
+  {
+    "id": 8,
+    "advertisement_id": 8,
+    "date": "2026-07-01",
+    "impressions_count": 116,
+    "clicks_count": 0,
+    "created_at": "2026-07-01 23:00:00",
+    "updated_at": "2026-07-01 23:00:00"
+  },
+  {
+    "id": 9,
+    "advertisement_id": 11,
+    "date": "2026-07-01",
+    "impressions_count": 100,
+    "clicks_count": 0,
+    "created_at": "2026-07-01 23:00:00",
+    "updated_at": "2026-07-01 23:00:00"
+  },
+  {
+    "id": 10,
+    "advertisement_id": 14,
+    "date": "2026-07-01",
+    "impressions_count": 110,
+    "clicks_count": 0,
+    "created_at": "2026-07-01 23:00:00",
+    "updated_at": "2026-07-01 23:00:00"
+  },
+  {
+    "id": 11,
+    "advertisement_id": 3,
+    "date": "2026-07-01",
+    "impressions_count": 70,
+    "clicks_count": 0,
+    "created_at": "2026-07-01 23:00:00",
+    "updated_at": "2026-07-01 23:00:00"
+  },
+  {
+    "id": 12,
+    "advertisement_id": 6,
+    "date": "2026-07-01",
+    "impressions_count": 65,
+    "clicks_count": 0,
+    "created_at": "2026-07-01 23:00:00",
+    "updated_at": "2026-07-01 23:00:00"
+  },
+  {
+    "id": 13,
+    "advertisement_id": 9,
+    "date": "2026-07-01",
+    "impressions_count": 72,
+    "clicks_count": 2,
+    "created_at": "2026-07-01 23:00:00",
+    "updated_at": "2026-07-01 23:00:00"
+  },
+  {
+    "id": 14,
+    "advertisement_id": 12,
+    "date": "2026-07-01",
+    "impressions_count": 66,
+    "clicks_count": 1,
+    "created_at": "2026-07-01 23:00:00",
+    "updated_at": "2026-07-01 23:00:00"
+  },
+  {
+    "id": 15,
+    "advertisement_id": 15,
+    "date": "2026-07-01",
+    "impressions_count": 68,
+    "clicks_count": 0,
+    "created_at": "2026-07-01 23:00:00",
+    "updated_at": "2026-07-01 23:00:00"
+  },
+  {
+    "id": 16,
+    "advertisement_id": 1,
+    "date": "2026-07-02",
+    "impressions_count": 188,
+    "clicks_count": 0,
+    "created_at": "2026-07-02 23:00:00",
+    "updated_at": "2026-07-02 23:00:00"
+  },
+  {
+    "id": 17,
+    "advertisement_id": 4,
+    "date": "2026-07-02",
+    "impressions_count": 175,
+    "clicks_count": 2,
+    "created_at": "2026-07-02 23:00:00",
+    "updated_at": "2026-07-02 23:00:00"
+  },
+  {
+    "id": 18,
+    "advertisement_id": 7,
+    "date": "2026-07-02",
+    "impressions_count": 186,
+    "clicks_count": 3,
+    "created_at": "2026-07-02 23:00:00",
+    "updated_at": "2026-07-02 23:00:00"
+  },
+  {
+    "id": 19,
+    "advertisement_id": 10,
+    "date": "2026-07-02",
+    "impressions_count": 166,
+    "clicks_count": 1,
+    "created_at": "2026-07-02 23:00:00",
+    "updated_at": "2026-07-02 23:00:00"
+  },
+  {
+    "id": 20,
+    "advertisement_id": 13,
+    "date": "2026-07-02",
+    "impressions_count": 192,
+    "clicks_count": 0,
+    "created_at": "2026-07-02 23:00:00",
+    "updated_at": "2026-07-02 23:00:00"
+  },
+  {
+    "id": 21,
+    "advertisement_id": 2,
+    "date": "2026-07-02",
+    "impressions_count": 120,
+    "clicks_count": 1,
+    "created_at": "2026-07-02 23:00:00",
+    "updated_at": "2026-07-02 23:00:00"
+  },
+  {
+    "id": 22,
+    "advertisement_id": 5,
+    "date": "2026-07-02",
+    "impressions_count": 117,
+    "clicks_count": 1,
+    "created_at": "2026-07-02 23:00:00",
+    "updated_at": "2026-07-02 23:00:00"
+  },
+  {
+    "id": 23,
+    "advertisement_id": 8,
+    "date": "2026-07-02",
+    "impressions_count": 118,
+    "clicks_count": 1,
+    "created_at": "2026-07-02 23:00:00",
+    "updated_at": "2026-07-02 23:00:00"
+  },
+  {
+    "id": 24,
+    "advertisement_id": 11,
+    "date": "2026-07-02",
+    "impressions_count": 102,
+    "clicks_count": 0,
+    "created_at": "2026-07-02 23:00:00",
+    "updated_at": "2026-07-02 23:00:00"
+  },
+  {
+    "id": 25,
+    "advertisement_id": 14,
+    "date": "2026-07-02",
+    "impressions_count": 110,
+    "clicks_count": 0,
+    "created_at": "2026-07-02 23:00:00",
+    "updated_at": "2026-07-02 23:00:00"
+  },
+  {
+    "id": 26,
+    "advertisement_id": 3,
+    "date": "2026-07-02",
+    "impressions_count": 85,
+    "clicks_count": 0,
+    "created_at": "2026-07-02 23:00:00",
+    "updated_at": "2026-07-02 23:00:00"
+  },
+  {
+    "id": 27,
+    "advertisement_id": 6,
+    "date": "2026-07-02",
+    "impressions_count": 72,
+    "clicks_count": 0,
+    "created_at": "2026-07-02 23:00:00",
+    "updated_at": "2026-07-02 23:00:00"
+  },
+  {
+    "id": 28,
+    "advertisement_id": 9,
+    "date": "2026-07-02",
+    "impressions_count": 84,
+    "clicks_count": 0,
+    "created_at": "2026-07-02 23:00:00",
+    "updated_at": "2026-07-02 23:00:00"
+  },
+  {
+    "id": 29,
+    "advertisement_id": 12,
+    "date": "2026-07-02",
+    "impressions_count": 72,
+    "clicks_count": 0,
+    "created_at": "2026-07-02 23:00:00",
+    "updated_at": "2026-07-02 23:00:00"
+  },
+  {
+    "id": 30,
+    "advertisement_id": 15,
+    "date": "2026-07-02",
+    "impressions_count": 79,
+    "clicks_count": 0,
+    "created_at": "2026-07-02 23:00:00",
+    "updated_at": "2026-07-02 23:00:00"
+  },
+  {
+    "id": 31,
+    "advertisement_id": 1,
+    "date": "2026-07-03",
+    "impressions_count": 201,
+    "clicks_count": 1,
+    "created_at": "2026-07-03 23:00:00",
+    "updated_at": "2026-07-03 23:00:00"
+  },
+  {
+    "id": 32,
+    "advertisement_id": 4,
+    "date": "2026-07-03",
+    "impressions_count": 186,
+    "clicks_count": 2,
+    "created_at": "2026-07-03 23:00:00",
+    "updated_at": "2026-07-03 23:00:00"
+  },
+  {
+    "id": 33,
+    "advertisement_id": 7,
+    "date": "2026-07-03",
+    "impressions_count": 190,
+    "clicks_count": 1,
+    "created_at": "2026-07-03 23:00:00",
+    "updated_at": "2026-07-03 23:00:00"
+  },
+  {
+    "id": 34,
+    "advertisement_id": 10,
+    "date": "2026-07-03",
+    "impressions_count": 180,
+    "clicks_count": 1,
+    "created_at": "2026-07-03 23:00:00",
+    "updated_at": "2026-07-03 23:00:00"
+  },
+  {
+    "id": 35,
+    "advertisement_id": 13,
+    "date": "2026-07-03",
+    "impressions_count": 186,
+    "clicks_count": 2,
+    "created_at": "2026-07-03 23:00:00",
+    "updated_at": "2026-07-03 23:00:00"
+  },
+  {
+    "id": 36,
+    "advertisement_id": 2,
+    "date": "2026-07-03",
+    "impressions_count": 147,
+    "clicks_count": 0,
+    "created_at": "2026-07-03 23:00:00",
+    "updated_at": "2026-07-03 23:00:00"
+  },
+  {
+    "id": 37,
+    "advertisement_id": 5,
+    "date": "2026-07-03",
+    "impressions_count": 133,
+    "clicks_count": 0,
+    "created_at": "2026-07-03 23:00:00",
+    "updated_at": "2026-07-03 23:00:00"
+  },
+  {
+    "id": 38,
+    "advertisement_id": 8,
+    "date": "2026-07-03",
+    "impressions_count": 149,
+    "clicks_count": 0,
+    "created_at": "2026-07-03 23:00:00",
+    "updated_at": "2026-07-03 23:00:00"
+  },
+  {
+    "id": 39,
+    "advertisement_id": 11,
+    "date": "2026-07-03",
+    "impressions_count": 129,
+    "clicks_count": 1,
+    "created_at": "2026-07-03 23:00:00",
+    "updated_at": "2026-07-03 23:00:00"
+  },
+  {
+    "id": 40,
+    "advertisement_id": 14,
+    "date": "2026-07-03",
+    "impressions_count": 133,
+    "clicks_count": 0,
+    "created_at": "2026-07-03 23:00:00",
+    "updated_at": "2026-07-03 23:00:00"
+  },
+  {
+    "id": 41,
+    "advertisement_id": 3,
+    "date": "2026-07-03",
+    "impressions_count": 91,
+    "clicks_count": 1,
+    "created_at": "2026-07-03 23:00:00",
+    "updated_at": "2026-07-03 23:00:00"
+  },
+  {
+    "id": 42,
+    "advertisement_id": 6,
+    "date": "2026-07-03",
+    "impressions_count": 92,
+    "clicks_count": 1,
+    "created_at": "2026-07-03 23:00:00",
+    "updated_at": "2026-07-03 23:00:00"
+  },
+  {
+    "id": 43,
+    "advertisement_id": 9,
+    "date": "2026-07-03",
+    "impressions_count": 99,
+    "clicks_count": 1,
+    "created_at": "2026-07-03 23:00:00",
+    "updated_at": "2026-07-03 23:00:00"
+  },
+  {
+    "id": 44,
+    "advertisement_id": 12,
+    "date": "2026-07-03",
+    "impressions_count": 81,
+    "clicks_count": 0,
+    "created_at": "2026-07-03 23:00:00",
+    "updated_at": "2026-07-03 23:00:00"
+  },
+  {
+    "id": 45,
+    "advertisement_id": 15,
+    "date": "2026-07-03",
+    "impressions_count": 95,
+    "clicks_count": 0,
+    "created_at": "2026-07-03 23:00:00",
+    "updated_at": "2026-07-03 23:00:00"
+  },
+  {
+    "id": 46,
+    "advertisement_id": 1,
+    "date": "2026-07-04",
+    "impressions_count": 214,
+    "clicks_count": 0,
+    "created_at": "2026-07-04 23:00:00",
+    "updated_at": "2026-07-04 23:00:00"
+  },
+  {
+    "id": 47,
+    "advertisement_id": 4,
+    "date": "2026-07-04",
+    "impressions_count": 190,
+    "clicks_count": 1,
+    "created_at": "2026-07-04 23:00:00",
+    "updated_at": "2026-07-04 23:00:00"
+  },
+  {
+    "id": 48,
+    "advertisement_id": 7,
+    "date": "2026-07-04",
+    "impressions_count": 210,
+    "clicks_count": 1,
+    "created_at": "2026-07-04 23:00:00",
+    "updated_at": "2026-07-04 23:00:00"
+  },
+  {
+    "id": 49,
+    "advertisement_id": 10,
+    "date": "2026-07-04",
+    "impressions_count": 198,
+    "clicks_count": 1,
+    "created_at": "2026-07-04 23:00:00",
+    "updated_at": "2026-07-04 23:00:00"
+  },
+  {
+    "id": 50,
+    "advertisement_id": 13,
+    "date": "2026-07-04",
+    "impressions_count": 210,
+    "clicks_count": 0,
+    "created_at": "2026-07-04 23:00:00",
+    "updated_at": "2026-07-04 23:00:00"
+  },
+  {
+    "id": 51,
+    "advertisement_id": 2,
+    "date": "2026-07-04",
+    "impressions_count": 139,
+    "clicks_count": 2,
+    "created_at": "2026-07-04 23:00:00",
+    "updated_at": "2026-07-04 23:00:00"
+  },
+  {
+    "id": 52,
+    "advertisement_id": 5,
+    "date": "2026-07-04",
+    "impressions_count": 142,
+    "clicks_count": 2,
+    "created_at": "2026-07-04 23:00:00",
+    "updated_at": "2026-07-04 23:00:00"
+  },
+  {
+    "id": 53,
+    "advertisement_id": 8,
+    "date": "2026-07-04",
+    "impressions_count": 134,
+    "clicks_count": 1,
+    "created_at": "2026-07-04 23:00:00",
+    "updated_at": "2026-07-04 23:00:00"
+  },
+  {
+    "id": 54,
+    "advertisement_id": 11,
+    "date": "2026-07-04",
+    "impressions_count": 119,
+    "clicks_count": 1,
+    "created_at": "2026-07-04 23:00:00",
+    "updated_at": "2026-07-04 23:00:00"
+  },
+  {
+    "id": 55,
+    "advertisement_id": 14,
+    "date": "2026-07-04",
+    "impressions_count": 141,
+    "clicks_count": 0,
+    "created_at": "2026-07-04 23:00:00",
+    "updated_at": "2026-07-04 23:00:00"
+  },
+  {
+    "id": 56,
+    "advertisement_id": 3,
+    "date": "2026-07-04",
+    "impressions_count": 86,
+    "clicks_count": 0,
+    "created_at": "2026-07-04 23:00:00",
+    "updated_at": "2026-07-04 23:00:00"
+  },
+  {
+    "id": 57,
+    "advertisement_id": 6,
+    "date": "2026-07-04",
+    "impressions_count": 81,
+    "clicks_count": 0,
+    "created_at": "2026-07-04 23:00:00",
+    "updated_at": "2026-07-04 23:00:00"
+  },
+  {
+    "id": 58,
+    "advertisement_id": 9,
+    "date": "2026-07-04",
+    "impressions_count": 85,
+    "clicks_count": 0,
+    "created_at": "2026-07-04 23:00:00",
+    "updated_at": "2026-07-04 23:00:00"
+  },
+  {
+    "id": 59,
+    "advertisement_id": 12,
+    "date": "2026-07-04",
+    "impressions_count": 78,
+    "clicks_count": 0,
+    "created_at": "2026-07-04 23:00:00",
+    "updated_at": "2026-07-04 23:00:00"
+  },
+  {
+    "id": 60,
+    "advertisement_id": 15,
+    "date": "2026-07-04",
+    "impressions_count": 91,
+    "clicks_count": 0,
+    "created_at": "2026-07-04 23:00:00",
+    "updated_at": "2026-07-04 23:00:00"
+  },
+  {
+    "id": 61,
+    "advertisement_id": 1,
+    "date": "2026-07-05",
+    "impressions_count": 240,
+    "clicks_count": 2,
+    "created_at": "2026-07-05 23:00:00",
+    "updated_at": "2026-07-05 23:00:00"
+  },
+  {
+    "id": 62,
+    "advertisement_id": 4,
+    "date": "2026-07-05",
+    "impressions_count": 207,
+    "clicks_count": 0,
+    "created_at": "2026-07-05 23:00:00",
+    "updated_at": "2026-07-05 23:00:00"
+  },
+  {
+    "id": 63,
+    "advertisement_id": 7,
+    "date": "2026-07-05",
+    "impressions_count": 253,
+    "clicks_count": 0,
+    "created_at": "2026-07-05 23:00:00",
+    "updated_at": "2026-07-05 23:00:00"
+  },
+  {
+    "id": 64,
+    "advertisement_id": 10,
+    "date": "2026-07-05",
+    "impressions_count": 205,
+    "clicks_count": 0,
+    "created_at": "2026-07-05 23:00:00",
+    "updated_at": "2026-07-05 23:00:00"
+  },
+  {
+    "id": 65,
+    "advertisement_id": 13,
+    "date": "2026-07-05",
+    "impressions_count": 220,
+    "clicks_count": 0,
+    "created_at": "2026-07-05 23:00:00",
+    "updated_at": "2026-07-05 23:00:00"
+  },
+  {
+    "id": 66,
+    "advertisement_id": 2,
+    "date": "2026-07-05",
+    "impressions_count": 137,
+    "clicks_count": 0,
+    "created_at": "2026-07-05 23:00:00",
+    "updated_at": "2026-07-05 23:00:00"
+  },
+  {
+    "id": 67,
+    "advertisement_id": 5,
+    "date": "2026-07-05",
+    "impressions_count": 136,
+    "clicks_count": 0,
+    "created_at": "2026-07-05 23:00:00",
+    "updated_at": "2026-07-05 23:00:00"
+  },
+  {
+    "id": 68,
+    "advertisement_id": 8,
+    "date": "2026-07-05",
+    "impressions_count": 151,
+    "clicks_count": 1,
+    "created_at": "2026-07-05 23:00:00",
+    "updated_at": "2026-07-05 23:00:00"
+  },
+  {
+    "id": 69,
+    "advertisement_id": 11,
+    "date": "2026-07-05",
+    "impressions_count": 131,
+    "clicks_count": 1,
+    "created_at": "2026-07-05 23:00:00",
+    "updated_at": "2026-07-05 23:00:00"
+  },
+  {
+    "id": 70,
+    "advertisement_id": 14,
+    "date": "2026-07-05",
+    "impressions_count": 141,
+    "clicks_count": 1,
+    "created_at": "2026-07-05 23:00:00",
+    "updated_at": "2026-07-05 23:00:00"
+  },
+  {
+    "id": 71,
+    "advertisement_id": 3,
+    "date": "2026-07-05",
+    "impressions_count": 111,
+    "clicks_count": 0,
+    "created_at": "2026-07-05 23:00:00",
+    "updated_at": "2026-07-05 23:00:00"
+  },
+  {
+    "id": 72,
+    "advertisement_id": 6,
+    "date": "2026-07-05",
+    "impressions_count": 105,
+    "clicks_count": 0,
+    "created_at": "2026-07-05 23:00:00",
+    "updated_at": "2026-07-05 23:00:00"
+  },
+  {
+    "id": 73,
+    "advertisement_id": 9,
+    "date": "2026-07-05",
+    "impressions_count": 109,
+    "clicks_count": 1,
+    "created_at": "2026-07-05 23:00:00",
+    "updated_at": "2026-07-05 23:00:00"
+  },
+  {
+    "id": 74,
+    "advertisement_id": 12,
+    "date": "2026-07-05",
+    "impressions_count": 92,
+    "clicks_count": 0,
+    "created_at": "2026-07-05 23:00:00",
+    "updated_at": "2026-07-05 23:00:00"
+  },
+  {
+    "id": 75,
+    "advertisement_id": 15,
+    "date": "2026-07-05",
+    "impressions_count": 101,
+    "clicks_count": 0,
+    "created_at": "2026-07-05 23:00:00",
+    "updated_at": "2026-07-05 23:00:00"
+  },
+  {
+    "id": 76,
+    "advertisement_id": 1,
+    "date": "2026-07-06",
+    "impressions_count": 248,
+    "clicks_count": 1,
+    "created_at": "2026-07-06 23:00:00",
+    "updated_at": "2026-07-06 23:00:00"
+  },
+  {
+    "id": 77,
+    "advertisement_id": 4,
+    "date": "2026-07-06",
+    "impressions_count": 233,
+    "clicks_count": 1,
+    "created_at": "2026-07-06 23:00:00",
+    "updated_at": "2026-07-06 23:00:00"
+  },
+  {
+    "id": 78,
+    "advertisement_id": 7,
+    "date": "2026-07-06",
+    "impressions_count": 240,
+    "clicks_count": 0,
+    "created_at": "2026-07-06 23:00:00",
+    "updated_at": "2026-07-06 23:00:00"
+  },
+  {
+    "id": 79,
+    "advertisement_id": 10,
+    "date": "2026-07-06",
+    "impressions_count": 214,
+    "clicks_count": 1,
+    "created_at": "2026-07-06 23:00:00",
+    "updated_at": "2026-07-06 23:00:00"
+  },
+  {
+    "id": 80,
+    "advertisement_id": 13,
+    "date": "2026-07-06",
+    "impressions_count": 231,
+    "clicks_count": 1,
+    "created_at": "2026-07-06 23:00:00",
+    "updated_at": "2026-07-06 23:00:00"
+  },
+  {
+    "id": 81,
+    "advertisement_id": 2,
+    "date": "2026-07-06",
+    "impressions_count": 157,
+    "clicks_count": 1,
+    "created_at": "2026-07-06 23:00:00",
+    "updated_at": "2026-07-06 23:00:00"
+  },
+  {
+    "id": 82,
+    "advertisement_id": 5,
+    "date": "2026-07-06",
+    "impressions_count": 138,
+    "clicks_count": 0,
+    "created_at": "2026-07-06 23:00:00",
+    "updated_at": "2026-07-06 23:00:00"
+  },
+  {
+    "id": 83,
+    "advertisement_id": 8,
+    "date": "2026-07-06",
+    "impressions_count": 154,
+    "clicks_count": 1,
+    "created_at": "2026-07-06 23:00:00",
+    "updated_at": "2026-07-06 23:00:00"
+  },
+  {
+    "id": 84,
+    "advertisement_id": 11,
+    "date": "2026-07-06",
+    "impressions_count": 139,
+    "clicks_count": 0,
+    "created_at": "2026-07-06 23:00:00",
+    "updated_at": "2026-07-06 23:00:00"
+  },
+  {
+    "id": 85,
+    "advertisement_id": 14,
+    "date": "2026-07-06",
+    "impressions_count": 149,
+    "clicks_count": 0,
+    "created_at": "2026-07-06 23:00:00",
+    "updated_at": "2026-07-06 23:00:00"
+  },
+  {
+    "id": 86,
+    "advertisement_id": 3,
+    "date": "2026-07-06",
+    "impressions_count": 75,
+    "clicks_count": 0,
+    "created_at": "2026-07-06 23:00:00",
+    "updated_at": "2026-07-06 23:00:00"
+  },
+  {
+    "id": 87,
+    "advertisement_id": 6,
+    "date": "2026-07-06",
+    "impressions_count": 79,
+    "clicks_count": 0,
+    "created_at": "2026-07-06 23:00:00",
+    "updated_at": "2026-07-06 23:00:00"
+  },
+  {
+    "id": 88,
+    "advertisement_id": 9,
+    "date": "2026-07-06",
+    "impressions_count": 88,
+    "clicks_count": 1,
+    "created_at": "2026-07-06 23:00:00",
+    "updated_at": "2026-07-06 23:00:00"
+  },
+  {
+    "id": 89,
+    "advertisement_id": 12,
+    "date": "2026-07-06",
+    "impressions_count": 75,
+    "clicks_count": 0,
+    "created_at": "2026-07-06 23:00:00",
+    "updated_at": "2026-07-06 23:00:00"
+  },
+  {
+    "id": 90,
+    "advertisement_id": 15,
+    "date": "2026-07-06",
+    "impressions_count": 77,
+    "clicks_count": 0,
+    "created_at": "2026-07-06 23:00:00",
+    "updated_at": "2026-07-06 23:00:00"
+  },
+  {
+    "id": 91,
+    "advertisement_id": 1,
+    "date": "2026-07-07",
+    "impressions_count": 231,
+    "clicks_count": 0,
+    "created_at": "2026-07-07 23:00:00",
+    "updated_at": "2026-07-07 23:00:00"
+  },
+  {
+    "id": 92,
+    "advertisement_id": 4,
+    "date": "2026-07-07",
+    "impressions_count": 229,
+    "clicks_count": 0,
+    "created_at": "2026-07-07 23:00:00",
+    "updated_at": "2026-07-07 23:00:00"
+  },
+  {
+    "id": 93,
+    "advertisement_id": 7,
+    "date": "2026-07-07",
+    "impressions_count": 246,
+    "clicks_count": 2,
+    "created_at": "2026-07-07 23:00:00",
+    "updated_at": "2026-07-07 23:00:00"
+  },
+  {
+    "id": 94,
+    "advertisement_id": 10,
+    "date": "2026-07-07",
+    "impressions_count": 225,
+    "clicks_count": 0,
+    "created_at": "2026-07-07 23:00:00",
+    "updated_at": "2026-07-07 23:00:00"
+  },
+  {
+    "id": 95,
+    "advertisement_id": 13,
+    "date": "2026-07-07",
+    "impressions_count": 219,
+    "clicks_count": 0,
+    "created_at": "2026-07-07 23:00:00",
+    "updated_at": "2026-07-07 23:00:00"
+  },
+  {
+    "id": 96,
+    "advertisement_id": 2,
+    "date": "2026-07-07",
+    "impressions_count": 145,
+    "clicks_count": 1,
+    "created_at": "2026-07-07 23:00:00",
+    "updated_at": "2026-07-07 23:00:00"
+  },
+  {
+    "id": 97,
+    "advertisement_id": 5,
+    "date": "2026-07-07",
+    "impressions_count": 153,
+    "clicks_count": 1,
+    "created_at": "2026-07-07 23:00:00",
+    "updated_at": "2026-07-07 23:00:00"
+  },
+  {
+    "id": 98,
+    "advertisement_id": 8,
+    "date": "2026-07-07",
+    "impressions_count": 147,
+    "clicks_count": 0,
+    "created_at": "2026-07-07 23:00:00",
+    "updated_at": "2026-07-07 23:00:00"
+  },
+  {
+    "id": 99,
+    "advertisement_id": 11,
+    "date": "2026-07-07",
+    "impressions_count": 143,
+    "clicks_count": 0,
+    "created_at": "2026-07-07 23:00:00",
+    "updated_at": "2026-07-07 23:00:00"
+  },
+  {
+    "id": 100,
+    "advertisement_id": 14,
+    "date": "2026-07-07",
+    "impressions_count": 142,
+    "clicks_count": 0,
+    "created_at": "2026-07-07 23:00:00",
+    "updated_at": "2026-07-07 23:00:00"
+  },
+  {
+    "id": 101,
+    "advertisement_id": 3,
+    "date": "2026-07-07",
+    "impressions_count": 80,
+    "clicks_count": 1,
+    "created_at": "2026-07-07 23:00:00",
+    "updated_at": "2026-07-07 23:00:00"
+  },
+  {
+    "id": 102,
+    "advertisement_id": 6,
+    "date": "2026-07-07",
+    "impressions_count": 83,
+    "clicks_count": 0,
+    "created_at": "2026-07-07 23:00:00",
+    "updated_at": "2026-07-07 23:00:00"
+  },
+  {
+    "id": 103,
+    "advertisement_id": 9,
+    "date": "2026-07-07",
+    "impressions_count": 80,
+    "clicks_count": 0,
+    "created_at": "2026-07-07 23:00:00",
+    "updated_at": "2026-07-07 23:00:00"
+  },
+  {
+    "id": 104,
+    "advertisement_id": 12,
+    "date": "2026-07-07",
+    "impressions_count": 83,
+    "clicks_count": 0,
+    "created_at": "2026-07-07 23:00:00",
+    "updated_at": "2026-07-07 23:00:00"
+  },
+  {
+    "id": 105,
+    "advertisement_id": 15,
+    "date": "2026-07-07",
+    "impressions_count": 80,
+    "clicks_count": 0,
+    "created_at": "2026-07-07 23:00:00",
+    "updated_at": "2026-07-07 23:00:00"
+  },
+  {
+    "id": 106,
+    "advertisement_id": 1,
+    "date": "2026-07-08",
+    "impressions_count": 242,
+    "clicks_count": 0,
+    "created_at": "2026-07-08 23:00:00",
+    "updated_at": "2026-07-08 23:00:00"
+  },
+  {
+    "id": 107,
+    "advertisement_id": 4,
+    "date": "2026-07-08",
+    "impressions_count": 233,
+    "clicks_count": 1,
+    "created_at": "2026-07-08 23:00:00",
+    "updated_at": "2026-07-08 23:00:00"
+  },
+  {
+    "id": 108,
+    "advertisement_id": 7,
+    "date": "2026-07-08",
+    "impressions_count": 257,
+    "clicks_count": 2,
+    "created_at": "2026-07-08 23:00:00",
+    "updated_at": "2026-07-08 23:00:00"
+  },
+  {
+    "id": 109,
+    "advertisement_id": 10,
+    "date": "2026-07-08",
+    "impressions_count": 217,
+    "clicks_count": 0,
+    "created_at": "2026-07-08 23:00:00",
+    "updated_at": "2026-07-08 23:00:00"
+  },
+  {
+    "id": 110,
+    "advertisement_id": 13,
+    "date": "2026-07-08",
+    "impressions_count": 237,
+    "clicks_count": 1,
+    "created_at": "2026-07-08 23:00:00",
+    "updated_at": "2026-07-08 23:00:00"
+  },
+  {
+    "id": 111,
+    "advertisement_id": 2,
+    "date": "2026-07-08",
+    "impressions_count": 138,
+    "clicks_count": 1,
+    "created_at": "2026-07-08 23:00:00",
+    "updated_at": "2026-07-08 23:00:00"
+  },
+  {
+    "id": 112,
+    "advertisement_id": 5,
+    "date": "2026-07-08",
+    "impressions_count": 127,
+    "clicks_count": 1,
+    "created_at": "2026-07-08 23:00:00",
+    "updated_at": "2026-07-08 23:00:00"
+  },
+  {
+    "id": 113,
+    "advertisement_id": 8,
+    "date": "2026-07-08",
+    "impressions_count": 151,
+    "clicks_count": 1,
+    "created_at": "2026-07-08 23:00:00",
+    "updated_at": "2026-07-08 23:00:00"
+  },
+  {
+    "id": 114,
+    "advertisement_id": 11,
+    "date": "2026-07-08",
+    "impressions_count": 141,
+    "clicks_count": 1,
+    "created_at": "2026-07-08 23:00:00",
+    "updated_at": "2026-07-08 23:00:00"
+  },
+  {
+    "id": 115,
+    "advertisement_id": 14,
+    "date": "2026-07-08",
+    "impressions_count": 150,
+    "clicks_count": 1,
+    "created_at": "2026-07-08 23:00:00",
+    "updated_at": "2026-07-08 23:00:00"
+  },
+  {
+    "id": 116,
+    "advertisement_id": 3,
+    "date": "2026-07-08",
+    "impressions_count": 106,
+    "clicks_count": 0,
+    "created_at": "2026-07-08 23:00:00",
+    "updated_at": "2026-07-08 23:00:00"
+  },
+  {
+    "id": 117,
+    "advertisement_id": 6,
+    "date": "2026-07-08",
+    "impressions_count": 91,
+    "clicks_count": 0,
+    "created_at": "2026-07-08 23:00:00",
+    "updated_at": "2026-07-08 23:00:00"
+  },
+  {
+    "id": 118,
+    "advertisement_id": 9,
+    "date": "2026-07-08",
+    "impressions_count": 104,
+    "clicks_count": 0,
+    "created_at": "2026-07-08 23:00:00",
+    "updated_at": "2026-07-08 23:00:00"
+  },
+  {
+    "id": 119,
+    "advertisement_id": 12,
+    "date": "2026-07-08",
+    "impressions_count": 90,
+    "clicks_count": 0,
+    "created_at": "2026-07-08 23:00:00",
+    "updated_at": "2026-07-08 23:00:00"
+  },
+  {
+    "id": 120,
+    "advertisement_id": 15,
+    "date": "2026-07-08",
+    "impressions_count": 107,
+    "clicks_count": 0,
+    "created_at": "2026-07-08 23:00:00",
+    "updated_at": "2026-07-08 23:00:00"
+  },
+  {
+    "id": 121,
+    "advertisement_id": 1,
+    "date": "2026-07-09",
+    "impressions_count": 211,
+    "clicks_count": 0,
+    "created_at": "2026-07-09 23:00:00",
+    "updated_at": "2026-07-09 23:00:00"
+  },
+  {
+    "id": 122,
+    "advertisement_id": 4,
+    "date": "2026-07-09",
+    "impressions_count": 197,
+    "clicks_count": 3,
+    "created_at": "2026-07-09 23:00:00",
+    "updated_at": "2026-07-09 23:00:00"
+  },
+  {
+    "id": 123,
+    "advertisement_id": 7,
+    "date": "2026-07-09",
+    "impressions_count": 214,
+    "clicks_count": 0,
+    "created_at": "2026-07-09 23:00:00",
+    "updated_at": "2026-07-09 23:00:00"
+  },
+  {
+    "id": 124,
+    "advertisement_id": 10,
+    "date": "2026-07-09",
+    "impressions_count": 191,
+    "clicks_count": 0,
+    "created_at": "2026-07-09 23:00:00",
+    "updated_at": "2026-07-09 23:00:00"
+  },
+  {
+    "id": 125,
+    "advertisement_id": 13,
+    "date": "2026-07-09",
+    "impressions_count": 225,
+    "clicks_count": 0,
+    "created_at": "2026-07-09 23:00:00",
+    "updated_at": "2026-07-09 23:00:00"
+  },
+  {
+    "id": 126,
+    "advertisement_id": 2,
+    "date": "2026-07-09",
+    "impressions_count": 145,
+    "clicks_count": 1,
+    "created_at": "2026-07-09 23:00:00",
+    "updated_at": "2026-07-09 23:00:00"
+  },
+  {
+    "id": 127,
+    "advertisement_id": 5,
+    "date": "2026-07-09",
+    "impressions_count": 132,
+    "clicks_count": 0,
+    "created_at": "2026-07-09 23:00:00",
+    "updated_at": "2026-07-09 23:00:00"
+  },
+  {
+    "id": 128,
+    "advertisement_id": 8,
+    "date": "2026-07-09",
+    "impressions_count": 138,
+    "clicks_count": 3,
+    "created_at": "2026-07-09 23:00:00",
+    "updated_at": "2026-07-09 23:00:00"
+  },
+  {
+    "id": 129,
+    "advertisement_id": 11,
+    "date": "2026-07-09",
+    "impressions_count": 138,
+    "clicks_count": 3,
+    "created_at": "2026-07-09 23:00:00",
+    "updated_at": "2026-07-09 23:00:00"
+  },
+  {
+    "id": 130,
+    "advertisement_id": 14,
+    "date": "2026-07-09",
+    "impressions_count": 135,
+    "clicks_count": 1,
+    "created_at": "2026-07-09 23:00:00",
+    "updated_at": "2026-07-09 23:00:00"
+  },
+  {
+    "id": 131,
+    "advertisement_id": 3,
+    "date": "2026-07-09",
+    "impressions_count": 80,
+    "clicks_count": 2,
+    "created_at": "2026-07-09 23:00:00",
+    "updated_at": "2026-07-09 23:00:00"
+  },
+  {
+    "id": 132,
+    "advertisement_id": 6,
+    "date": "2026-07-09",
+    "impressions_count": 79,
+    "clicks_count": 0,
+    "created_at": "2026-07-09 23:00:00",
+    "updated_at": "2026-07-09 23:00:00"
+  },
+  {
+    "id": 133,
+    "advertisement_id": 9,
+    "date": "2026-07-09",
+    "impressions_count": 90,
+    "clicks_count": 1,
+    "created_at": "2026-07-09 23:00:00",
+    "updated_at": "2026-07-09 23:00:00"
+  },
+  {
+    "id": 134,
+    "advertisement_id": 12,
+    "date": "2026-07-09",
+    "impressions_count": 77,
+    "clicks_count": 1,
+    "created_at": "2026-07-09 23:00:00",
+    "updated_at": "2026-07-09 23:00:00"
+  },
+  {
+    "id": 135,
+    "advertisement_id": 15,
+    "date": "2026-07-09",
+    "impressions_count": 78,
+    "clicks_count": 0,
+    "created_at": "2026-07-09 23:00:00",
+    "updated_at": "2026-07-09 23:00:00"
+  },
+  {
+    "id": 136,
+    "advertisement_id": 1,
+    "date": "2026-07-10",
+    "impressions_count": 214,
+    "clicks_count": 0,
+    "created_at": "2026-07-10 23:00:00",
+    "updated_at": "2026-07-10 23:00:00"
+  },
+  {
+    "id": 137,
+    "advertisement_id": 4,
+    "date": "2026-07-10",
+    "impressions_count": 187,
+    "clicks_count": 1,
+    "created_at": "2026-07-10 23:00:00",
+    "updated_at": "2026-07-10 23:00:00"
+  },
+  {
+    "id": 138,
+    "advertisement_id": 7,
+    "date": "2026-07-10",
+    "impressions_count": 202,
+    "clicks_count": 0,
+    "created_at": "2026-07-10 23:00:00",
+    "updated_at": "2026-07-10 23:00:00"
+  },
+  {
+    "id": 139,
+    "advertisement_id": 10,
+    "date": "2026-07-10",
+    "impressions_count": 193,
+    "clicks_count": 1,
+    "created_at": "2026-07-10 23:00:00",
+    "updated_at": "2026-07-10 23:00:00"
+  },
+  {
+    "id": 140,
+    "advertisement_id": 13,
+    "date": "2026-07-10",
+    "impressions_count": 202,
+    "clicks_count": 3,
+    "created_at": "2026-07-10 23:00:00",
+    "updated_at": "2026-07-10 23:00:00"
+  },
+  {
+    "id": 141,
+    "advertisement_id": 2,
+    "date": "2026-07-10",
+    "impressions_count": 134,
+    "clicks_count": 0,
+    "created_at": "2026-07-10 23:00:00",
+    "updated_at": "2026-07-10 23:00:00"
+  },
+  {
+    "id": 142,
+    "advertisement_id": 5,
+    "date": "2026-07-10",
+    "impressions_count": 112,
+    "clicks_count": 0,
+    "created_at": "2026-07-10 23:00:00",
+    "updated_at": "2026-07-10 23:00:00"
+  },
+  {
+    "id": 143,
+    "advertisement_id": 8,
+    "date": "2026-07-10",
+    "impressions_count": 132,
+    "clicks_count": 1,
+    "created_at": "2026-07-10 23:00:00",
+    "updated_at": "2026-07-10 23:00:00"
+  },
+  {
+    "id": 144,
+    "advertisement_id": 11,
+    "date": "2026-07-10",
+    "impressions_count": 112,
+    "clicks_count": 0,
+    "created_at": "2026-07-10 23:00:00",
+    "updated_at": "2026-07-10 23:00:00"
+  },
+  {
+    "id": 145,
+    "advertisement_id": 14,
+    "date": "2026-07-10",
+    "impressions_count": 132,
+    "clicks_count": 0,
+    "created_at": "2026-07-10 23:00:00",
+    "updated_at": "2026-07-10 23:00:00"
+  },
+  {
+    "id": 146,
+    "advertisement_id": 3,
+    "date": "2026-07-10",
+    "impressions_count": 69,
+    "clicks_count": 0,
+    "created_at": "2026-07-10 23:00:00",
+    "updated_at": "2026-07-10 23:00:00"
+  },
+  {
+    "id": 147,
+    "advertisement_id": 6,
+    "date": "2026-07-10",
+    "impressions_count": 70,
+    "clicks_count": 0,
+    "created_at": "2026-07-10 23:00:00",
+    "updated_at": "2026-07-10 23:00:00"
+  },
+  {
+    "id": 148,
+    "advertisement_id": 9,
+    "date": "2026-07-10",
+    "impressions_count": 74,
+    "clicks_count": 2,
+    "created_at": "2026-07-10 23:00:00",
+    "updated_at": "2026-07-10 23:00:00"
+  },
+  {
+    "id": 149,
+    "advertisement_id": 12,
+    "date": "2026-07-10",
+    "impressions_count": 65,
+    "clicks_count": 0,
+    "created_at": "2026-07-10 23:00:00",
+    "updated_at": "2026-07-10 23:00:00"
+  },
+  {
+    "id": 150,
+    "advertisement_id": 15,
+    "date": "2026-07-10",
+    "impressions_count": 72,
+    "clicks_count": 0,
+    "created_at": "2026-07-10 23:00:00",
+    "updated_at": "2026-07-10 23:00:00"
+  },
+  {
+    "id": 151,
+    "advertisement_id": 1,
+    "date": "2026-07-11",
+    "impressions_count": 172,
+    "clicks_count": 0,
+    "created_at": "2026-07-11 23:00:00",
+    "updated_at": "2026-07-11 23:00:00"
+  },
+  {
+    "id": 152,
+    "advertisement_id": 4,
+    "date": "2026-07-11",
+    "impressions_count": 182,
+    "clicks_count": 1,
+    "created_at": "2026-07-11 23:00:00",
+    "updated_at": "2026-07-11 23:00:00"
+  },
+  {
+    "id": 153,
+    "advertisement_id": 7,
+    "date": "2026-07-11",
+    "impressions_count": 199,
+    "clicks_count": 1,
+    "created_at": "2026-07-11 23:00:00",
+    "updated_at": "2026-07-11 23:00:00"
+  },
+  {
+    "id": 154,
+    "advertisement_id": 10,
+    "date": "2026-07-11",
+    "impressions_count": 170,
+    "clicks_count": 0,
+    "created_at": "2026-07-11 23:00:00",
+    "updated_at": "2026-07-11 23:00:00"
+  },
+  {
+    "id": 155,
+    "advertisement_id": 13,
+    "date": "2026-07-11",
+    "impressions_count": 175,
+    "clicks_count": 0,
+    "created_at": "2026-07-11 23:00:00",
+    "updated_at": "2026-07-11 23:00:00"
+  },
+  {
+    "id": 156,
+    "advertisement_id": 2,
+    "date": "2026-07-11",
+    "impressions_count": 118,
+    "clicks_count": 0,
+    "created_at": "2026-07-11 23:00:00",
+    "updated_at": "2026-07-11 23:00:00"
+  },
+  {
+    "id": 157,
+    "advertisement_id": 5,
+    "date": "2026-07-11",
+    "impressions_count": 116,
+    "clicks_count": 0,
+    "created_at": "2026-07-11 23:00:00",
+    "updated_at": "2026-07-11 23:00:00"
+  },
+  {
+    "id": 158,
+    "advertisement_id": 8,
+    "date": "2026-07-11",
+    "impressions_count": 122,
+    "clicks_count": 0,
+    "created_at": "2026-07-11 23:00:00",
+    "updated_at": "2026-07-11 23:00:00"
+  },
+  {
+    "id": 159,
+    "advertisement_id": 11,
+    "date": "2026-07-11",
+    "impressions_count": 122,
+    "clicks_count": 0,
+    "created_at": "2026-07-11 23:00:00",
+    "updated_at": "2026-07-11 23:00:00"
+  },
+  {
+    "id": 160,
+    "advertisement_id": 14,
+    "date": "2026-07-11",
+    "impressions_count": 118,
+    "clicks_count": 1,
+    "created_at": "2026-07-11 23:00:00",
+    "updated_at": "2026-07-11 23:00:00"
+  },
+  {
+    "id": 161,
+    "advertisement_id": 3,
+    "date": "2026-07-11",
+    "impressions_count": 85,
+    "clicks_count": 0,
+    "created_at": "2026-07-11 23:00:00",
+    "updated_at": "2026-07-11 23:00:00"
+  },
+  {
+    "id": 162,
+    "advertisement_id": 6,
+    "date": "2026-07-11",
+    "impressions_count": 93,
+    "clicks_count": 1,
+    "created_at": "2026-07-11 23:00:00",
+    "updated_at": "2026-07-11 23:00:00"
+  },
+  {
+    "id": 163,
+    "advertisement_id": 9,
+    "date": "2026-07-11",
+    "impressions_count": 98,
+    "clicks_count": 0,
+    "created_at": "2026-07-11 23:00:00",
+    "updated_at": "2026-07-11 23:00:00"
+  },
+  {
+    "id": 164,
+    "advertisement_id": 12,
+    "date": "2026-07-11",
+    "impressions_count": 82,
+    "clicks_count": 1,
+    "created_at": "2026-07-11 23:00:00",
+    "updated_at": "2026-07-11 23:00:00"
+  },
+  {
+    "id": 165,
+    "advertisement_id": 15,
+    "date": "2026-07-11",
+    "impressions_count": 88,
+    "clicks_count": 1,
+    "created_at": "2026-07-11 23:00:00",
+    "updated_at": "2026-07-11 23:00:00"
+  },
+  {
+    "id": 166,
+    "advertisement_id": 1,
+    "date": "2026-07-12",
+    "impressions_count": 189,
+    "clicks_count": 1,
+    "created_at": "2026-07-12 23:00:00",
+    "updated_at": "2026-07-12 23:00:00"
+  },
+  {
+    "id": 167,
+    "advertisement_id": 4,
+    "date": "2026-07-12",
+    "impressions_count": 165,
+    "clicks_count": 0,
+    "created_at": "2026-07-12 23:00:00",
+    "updated_at": "2026-07-12 23:00:00"
+  },
+  {
+    "id": 168,
+    "advertisement_id": 7,
+    "date": "2026-07-12",
+    "impressions_count": 186,
+    "clicks_count": 1,
+    "created_at": "2026-07-12 23:00:00",
+    "updated_at": "2026-07-12 23:00:00"
+  },
+  {
+    "id": 169,
+    "advertisement_id": 10,
+    "date": "2026-07-12",
+    "impressions_count": 160,
+    "clicks_count": 0,
+    "created_at": "2026-07-12 23:00:00",
+    "updated_at": "2026-07-12 23:00:00"
+  },
+  {
+    "id": 170,
+    "advertisement_id": 13,
+    "date": "2026-07-12",
+    "impressions_count": 171,
+    "clicks_count": 2,
+    "created_at": "2026-07-12 23:00:00",
+    "updated_at": "2026-07-12 23:00:00"
+  },
+  {
+    "id": 171,
+    "advertisement_id": 2,
+    "date": "2026-07-12",
+    "impressions_count": 118,
+    "clicks_count": 0,
+    "created_at": "2026-07-12 23:00:00",
+    "updated_at": "2026-07-12 23:00:00"
+  },
+  {
+    "id": 172,
+    "advertisement_id": 5,
+    "date": "2026-07-12",
+    "impressions_count": 117,
+    "clicks_count": 0,
+    "created_at": "2026-07-12 23:00:00",
+    "updated_at": "2026-07-12 23:00:00"
+  },
+  {
+    "id": 173,
+    "advertisement_id": 8,
+    "date": "2026-07-12",
+    "impressions_count": 122,
+    "clicks_count": 0,
+    "created_at": "2026-07-12 23:00:00",
+    "updated_at": "2026-07-12 23:00:00"
+  },
+  {
+    "id": 174,
+    "advertisement_id": 11,
+    "date": "2026-07-12",
+    "impressions_count": 119,
+    "clicks_count": 1,
+    "created_at": "2026-07-12 23:00:00",
+    "updated_at": "2026-07-12 23:00:00"
+  },
+  {
+    "id": 175,
+    "advertisement_id": 14,
+    "date": "2026-07-12",
+    "impressions_count": 123,
+    "clicks_count": 1,
+    "created_at": "2026-07-12 23:00:00",
+    "updated_at": "2026-07-12 23:00:00"
+  },
+  {
+    "id": 176,
+    "advertisement_id": 3,
+    "date": "2026-07-12",
+    "impressions_count": 68,
+    "clicks_count": 0,
+    "created_at": "2026-07-12 23:00:00",
+    "updated_at": "2026-07-12 23:00:00"
+  },
+  {
+    "id": 177,
+    "advertisement_id": 6,
+    "date": "2026-07-12",
+    "impressions_count": 70,
+    "clicks_count": 0,
+    "created_at": "2026-07-12 23:00:00",
+    "updated_at": "2026-07-12 23:00:00"
+  },
+  {
+    "id": 178,
+    "advertisement_id": 9,
+    "date": "2026-07-12",
+    "impressions_count": 76,
+    "clicks_count": 0,
+    "created_at": "2026-07-12 23:00:00",
+    "updated_at": "2026-07-12 23:00:00"
+  },
+  {
+    "id": 179,
+    "advertisement_id": 12,
+    "date": "2026-07-12",
+    "impressions_count": 66,
+    "clicks_count": 0,
+    "created_at": "2026-07-12 23:00:00",
+    "updated_at": "2026-07-12 23:00:00"
+  },
+  {
+    "id": 180,
+    "advertisement_id": 15,
+    "date": "2026-07-12",
+    "impressions_count": 78,
+    "clicks_count": 1,
+    "created_at": "2026-07-12 23:00:00",
+    "updated_at": "2026-07-12 23:00:00"
+  },
+  {
+    "id": 181,
+    "advertisement_id": 1,
+    "date": "2026-07-13",
+    "impressions_count": 179,
+    "clicks_count": 0,
+    "created_at": "2026-07-13 23:00:00",
+    "updated_at": "2026-07-13 23:00:00"
+  },
+  {
+    "id": 182,
+    "advertisement_id": 4,
+    "date": "2026-07-13",
+    "impressions_count": 165,
+    "clicks_count": 2,
+    "created_at": "2026-07-13 23:00:00",
+    "updated_at": "2026-07-13 23:00:00"
+  },
+  {
+    "id": 183,
+    "advertisement_id": 7,
+    "date": "2026-07-13",
+    "impressions_count": 177,
+    "clicks_count": 1,
+    "created_at": "2026-07-13 23:00:00",
+    "updated_at": "2026-07-13 23:00:00"
+  },
+  {
+    "id": 184,
+    "advertisement_id": 10,
+    "date": "2026-07-13",
+    "impressions_count": 173,
+    "clicks_count": 0,
+    "created_at": "2026-07-13 23:00:00",
+    "updated_at": "2026-07-13 23:00:00"
+  },
+  {
+    "id": 185,
+    "advertisement_id": 13,
+    "date": "2026-07-13",
+    "impressions_count": 189,
+    "clicks_count": 1,
+    "created_at": "2026-07-13 23:00:00",
+    "updated_at": "2026-07-13 23:00:00"
+  },
+  {
+    "id": 186,
+    "advertisement_id": 2,
+    "date": "2026-07-13",
+    "impressions_count": 120,
+    "clicks_count": 0,
+    "created_at": "2026-07-13 23:00:00",
+    "updated_at": "2026-07-13 23:00:00"
+  },
+  {
+    "id": 187,
+    "advertisement_id": 5,
+    "date": "2026-07-13",
+    "impressions_count": 105,
+    "clicks_count": 0,
+    "created_at": "2026-07-13 23:00:00",
+    "updated_at": "2026-07-13 23:00:00"
+  },
+  {
+    "id": 188,
+    "advertisement_id": 8,
+    "date": "2026-07-13",
+    "impressions_count": 117,
+    "clicks_count": 0,
+    "created_at": "2026-07-13 23:00:00",
+    "updated_at": "2026-07-13 23:00:00"
+  },
+  {
+    "id": 189,
+    "advertisement_id": 11,
+    "date": "2026-07-13",
+    "impressions_count": 101,
+    "clicks_count": 0,
+    "created_at": "2026-07-13 23:00:00",
+    "updated_at": "2026-07-13 23:00:00"
+  },
+  {
+    "id": 190,
+    "advertisement_id": 14,
+    "date": "2026-07-13",
+    "impressions_count": 124,
+    "clicks_count": 3,
+    "created_at": "2026-07-13 23:00:00",
+    "updated_at": "2026-07-13 23:00:00"
+  },
+  {
+    "id": 191,
+    "advertisement_id": 3,
+    "date": "2026-07-13",
+    "impressions_count": 58,
+    "clicks_count": 1,
+    "created_at": "2026-07-13 23:00:00",
+    "updated_at": "2026-07-13 23:00:00"
+  },
+  {
+    "id": 192,
+    "advertisement_id": 6,
+    "date": "2026-07-13",
+    "impressions_count": 65,
+    "clicks_count": 0,
+    "created_at": "2026-07-13 23:00:00",
+    "updated_at": "2026-07-13 23:00:00"
+  },
+  {
+    "id": 193,
+    "advertisement_id": 9,
+    "date": "2026-07-13",
+    "impressions_count": 66,
+    "clicks_count": 0,
+    "created_at": "2026-07-13 23:00:00",
+    "updated_at": "2026-07-13 23:00:00"
+  },
+  {
+    "id": 194,
+    "advertisement_id": 12,
+    "date": "2026-07-13",
+    "impressions_count": 60,
+    "clicks_count": 0,
+    "created_at": "2026-07-13 23:00:00",
+    "updated_at": "2026-07-13 23:00:00"
+  },
+  {
+    "id": 195,
+    "advertisement_id": 15,
+    "date": "2026-07-13",
+    "impressions_count": 64,
+    "clicks_count": 2,
+    "created_at": "2026-07-13 23:00:00",
+    "updated_at": "2026-07-13 23:00:00"
+  },
+  {
+    "id": 196,
+    "advertisement_id": 1,
+    "date": "2026-07-14",
+    "impressions_count": 178,
+    "clicks_count": 2,
+    "created_at": "2026-07-14 23:00:00",
+    "updated_at": "2026-07-14 23:00:00"
+  },
+  {
+    "id": 197,
+    "advertisement_id": 4,
+    "date": "2026-07-14",
+    "impressions_count": 172,
+    "clicks_count": 0,
+    "created_at": "2026-07-14 23:00:00",
+    "updated_at": "2026-07-14 23:00:00"
+  },
+  {
+    "id": 198,
+    "advertisement_id": 7,
+    "date": "2026-07-14",
+    "impressions_count": 175,
+    "clicks_count": 1,
+    "created_at": "2026-07-14 23:00:00",
+    "updated_at": "2026-07-14 23:00:00"
+  },
+  {
+    "id": 199,
+    "advertisement_id": 10,
+    "date": "2026-07-14",
+    "impressions_count": 169,
+    "clicks_count": 0,
+    "created_at": "2026-07-14 23:00:00",
+    "updated_at": "2026-07-14 23:00:00"
+  },
+  {
+    "id": 200,
+    "advertisement_id": 13,
+    "date": "2026-07-14",
+    "impressions_count": 177,
+    "clicks_count": 3,
+    "created_at": "2026-07-14 23:00:00",
+    "updated_at": "2026-07-14 23:00:00"
+  },
+  {
+    "id": 201,
+    "advertisement_id": 2,
+    "date": "2026-07-14",
+    "impressions_count": 109,
+    "clicks_count": 0,
+    "created_at": "2026-07-14 23:00:00",
+    "updated_at": "2026-07-14 23:00:00"
+  },
+  {
+    "id": 202,
+    "advertisement_id": 5,
+    "date": "2026-07-14",
+    "impressions_count": 98,
+    "clicks_count": 0,
+    "created_at": "2026-07-14 23:00:00",
+    "updated_at": "2026-07-14 23:00:00"
+  },
+  {
+    "id": 203,
+    "advertisement_id": 8,
+    "date": "2026-07-14",
+    "impressions_count": 120,
+    "clicks_count": 0,
+    "created_at": "2026-07-14 23:00:00",
+    "updated_at": "2026-07-14 23:00:00"
+  },
+  {
+    "id": 204,
+    "advertisement_id": 11,
+    "date": "2026-07-14",
+    "impressions_count": 95,
+    "clicks_count": 0,
+    "created_at": "2026-07-14 23:00:00",
+    "updated_at": "2026-07-14 23:00:00"
+  },
+  {
+    "id": 205,
+    "advertisement_id": 14,
+    "date": "2026-07-14",
+    "impressions_count": 110,
+    "clicks_count": 0,
+    "created_at": "2026-07-14 23:00:00",
+    "updated_at": "2026-07-14 23:00:00"
+  },
+  {
+    "id": 206,
+    "advertisement_id": 3,
+    "date": "2026-07-14",
+    "impressions_count": 82,
+    "clicks_count": 2,
+    "created_at": "2026-07-14 23:00:00",
+    "updated_at": "2026-07-14 23:00:00"
+  },
+  {
+    "id": 207,
+    "advertisement_id": 6,
+    "date": "2026-07-14",
+    "impressions_count": 85,
+    "clicks_count": 0,
+    "created_at": "2026-07-14 23:00:00",
+    "updated_at": "2026-07-14 23:00:00"
+  },
+  {
+    "id": 208,
+    "advertisement_id": 9,
+    "date": "2026-07-14",
+    "impressions_count": 93,
+    "clicks_count": 0,
+    "created_at": "2026-07-14 23:00:00",
+    "updated_at": "2026-07-14 23:00:00"
+  },
+  {
+    "id": 209,
+    "advertisement_id": 12,
+    "date": "2026-07-14",
+    "impressions_count": 77,
+    "clicks_count": 1,
+    "created_at": "2026-07-14 23:00:00",
+    "updated_at": "2026-07-14 23:00:00"
+  },
+  {
+    "id": 210,
+    "advertisement_id": 15,
+    "date": "2026-07-14",
+    "impressions_count": 78,
+    "clicks_count": 1,
+    "created_at": "2026-07-14 23:00:00",
+    "updated_at": "2026-07-14 23:00:00"
+  },
+  {
+    "id": 211,
+    "advertisement_id": 1,
+    "date": "2026-07-15",
+    "impressions_count": 175,
+    "clicks_count": 1,
+    "created_at": "2026-07-15 23:00:00",
+    "updated_at": "2026-07-15 23:00:00"
+  },
+  {
+    "id": 212,
+    "advertisement_id": 4,
+    "date": "2026-07-15",
+    "impressions_count": 181,
+    "clicks_count": 0,
+    "created_at": "2026-07-15 23:00:00",
+    "updated_at": "2026-07-15 23:00:00"
+  },
+  {
+    "id": 213,
+    "advertisement_id": 7,
+    "date": "2026-07-15",
+    "impressions_count": 178,
+    "clicks_count": 1,
+    "created_at": "2026-07-15 23:00:00",
+    "updated_at": "2026-07-15 23:00:00"
+  },
+  {
+    "id": 214,
+    "advertisement_id": 10,
+    "date": "2026-07-15",
+    "impressions_count": 185,
+    "clicks_count": 0,
+    "created_at": "2026-07-15 23:00:00",
+    "updated_at": "2026-07-15 23:00:00"
+  },
+  {
+    "id": 215,
+    "advertisement_id": 13,
+    "date": "2026-07-15",
+    "impressions_count": 199,
+    "clicks_count": 1,
+    "created_at": "2026-07-15 23:00:00",
+    "updated_at": "2026-07-15 23:00:00"
+  },
+  {
+    "id": 216,
+    "advertisement_id": 2,
+    "date": "2026-07-15",
+    "impressions_count": 116,
+    "clicks_count": 0,
+    "created_at": "2026-07-15 23:00:00",
+    "updated_at": "2026-07-15 23:00:00"
+  },
+  {
+    "id": 217,
+    "advertisement_id": 5,
+    "date": "2026-07-15",
+    "impressions_count": 122,
+    "clicks_count": 1,
+    "created_at": "2026-07-15 23:00:00",
+    "updated_at": "2026-07-15 23:00:00"
+  },
+  {
+    "id": 218,
+    "advertisement_id": 8,
+    "date": "2026-07-15",
+    "impressions_count": 130,
+    "clicks_count": 2,
+    "created_at": "2026-07-15 23:00:00",
+    "updated_at": "2026-07-15 23:00:00"
+  },
+  {
+    "id": 219,
+    "advertisement_id": 11,
+    "date": "2026-07-15",
+    "impressions_count": 115,
+    "clicks_count": 0,
+    "created_at": "2026-07-15 23:00:00",
+    "updated_at": "2026-07-15 23:00:00"
+  },
+  {
+    "id": 220,
+    "advertisement_id": 14,
+    "date": "2026-07-15",
+    "impressions_count": 113,
+    "clicks_count": 0,
+    "created_at": "2026-07-15 23:00:00",
+    "updated_at": "2026-07-15 23:00:00"
+  },
+  {
+    "id": 221,
+    "advertisement_id": 3,
+    "date": "2026-07-15",
+    "impressions_count": 76,
+    "clicks_count": 1,
+    "created_at": "2026-07-15 23:00:00",
+    "updated_at": "2026-07-15 23:00:00"
+  },
+  {
+    "id": 222,
+    "advertisement_id": 6,
+    "date": "2026-07-15",
+    "impressions_count": 73,
+    "clicks_count": 0,
+    "created_at": "2026-07-15 23:00:00",
+    "updated_at": "2026-07-15 23:00:00"
+  },
+  {
+    "id": 223,
+    "advertisement_id": 9,
+    "date": "2026-07-15",
+    "impressions_count": 83,
+    "clicks_count": 0,
+    "created_at": "2026-07-15 23:00:00",
+    "updated_at": "2026-07-15 23:00:00"
+  },
+  {
+    "id": 224,
+    "advertisement_id": 12,
+    "date": "2026-07-15",
+    "impressions_count": 68,
+    "clicks_count": 0,
+    "created_at": "2026-07-15 23:00:00",
+    "updated_at": "2026-07-15 23:00:00"
+  },
+  {
+    "id": 225,
+    "advertisement_id": 15,
+    "date": "2026-07-15",
+    "impressions_count": 73,
+    "clicks_count": 0,
+    "created_at": "2026-07-15 23:00:00",
+    "updated_at": "2026-07-15 23:00:00"
+  },
+  {
+    "id": 226,
+    "advertisement_id": 1,
+    "date": "2026-07-16",
+    "impressions_count": 174,
+    "clicks_count": 0,
+    "created_at": "2026-07-16 23:00:00",
+    "updated_at": "2026-07-16 23:00:00"
+  },
+  {
+    "id": 227,
+    "advertisement_id": 4,
+    "date": "2026-07-16",
+    "impressions_count": 169,
+    "clicks_count": 0,
+    "created_at": "2026-07-16 23:00:00",
+    "updated_at": "2026-07-16 23:00:00"
+  },
+  {
+    "id": 228,
+    "advertisement_id": 7,
+    "date": "2026-07-16",
+    "impressions_count": 187,
+    "clicks_count": 1,
+    "created_at": "2026-07-16 23:00:00",
+    "updated_at": "2026-07-16 23:00:00"
+  },
+  {
+    "id": 229,
+    "advertisement_id": 10,
+    "date": "2026-07-16",
+    "impressions_count": 147,
+    "clicks_count": 1,
+    "created_at": "2026-07-16 23:00:00",
+    "updated_at": "2026-07-16 23:00:00"
+  },
+  {
+    "id": 230,
+    "advertisement_id": 13,
+    "date": "2026-07-16",
+    "impressions_count": 169,
+    "clicks_count": 0,
+    "created_at": "2026-07-16 23:00:00",
+    "updated_at": "2026-07-16 23:00:00"
+  },
+  {
+    "id": 231,
+    "advertisement_id": 2,
+    "date": "2026-07-16",
+    "impressions_count": 105,
+    "clicks_count": 0,
+    "created_at": "2026-07-16 23:00:00",
+    "updated_at": "2026-07-16 23:00:00"
+  },
+  {
+    "id": 232,
+    "advertisement_id": 5,
+    "date": "2026-07-16",
+    "impressions_count": 91,
+    "clicks_count": 0,
+    "created_at": "2026-07-16 23:00:00",
+    "updated_at": "2026-07-16 23:00:00"
+  },
+  {
+    "id": 233,
+    "advertisement_id": 8,
+    "date": "2026-07-16",
+    "impressions_count": 101,
+    "clicks_count": 0,
+    "created_at": "2026-07-16 23:00:00",
+    "updated_at": "2026-07-16 23:00:00"
+  },
+  {
+    "id": 234,
+    "advertisement_id": 11,
+    "date": "2026-07-16",
+    "impressions_count": 90,
+    "clicks_count": 0,
+    "created_at": "2026-07-16 23:00:00",
+    "updated_at": "2026-07-16 23:00:00"
+  },
+  {
+    "id": 235,
+    "advertisement_id": 14,
+    "date": "2026-07-16",
+    "impressions_count": 105,
+    "clicks_count": 0,
+    "created_at": "2026-07-16 23:00:00",
+    "updated_at": "2026-07-16 23:00:00"
+  },
+  {
+    "id": 236,
+    "advertisement_id": 3,
+    "date": "2026-07-16",
+    "impressions_count": 52,
+    "clicks_count": 0,
+    "created_at": "2026-07-16 23:00:00",
+    "updated_at": "2026-07-16 23:00:00"
+  },
+  {
+    "id": 237,
+    "advertisement_id": 6,
+    "date": "2026-07-16",
+    "impressions_count": 50,
+    "clicks_count": 0,
+    "created_at": "2026-07-16 23:00:00",
+    "updated_at": "2026-07-16 23:00:00"
+  },
+  {
+    "id": 238,
+    "advertisement_id": 9,
+    "date": "2026-07-16",
+    "impressions_count": 58,
+    "clicks_count": 0,
+    "created_at": "2026-07-16 23:00:00",
+    "updated_at": "2026-07-16 23:00:00"
+  },
+  {
+    "id": 239,
+    "advertisement_id": 12,
+    "date": "2026-07-16",
+    "impressions_count": 50,
+    "clicks_count": 0,
+    "created_at": "2026-07-16 23:00:00",
+    "updated_at": "2026-07-16 23:00:00"
+  },
+  {
+    "id": 240,
+    "advertisement_id": 15,
+    "date": "2026-07-16",
+    "impressions_count": 59,
+    "clicks_count": 0,
+    "created_at": "2026-07-16 23:00:00",
+    "updated_at": "2026-07-16 23:00:00"
+  },
+  {
+    "id": 241,
+    "advertisement_id": 1,
+    "date": "2026-07-17",
+    "impressions_count": 133,
+    "clicks_count": 1,
+    "created_at": "2026-07-17 23:00:00",
+    "updated_at": "2026-07-17 23:00:00"
+  },
+  {
+    "id": 242,
+    "advertisement_id": 4,
+    "date": "2026-07-17",
+    "impressions_count": 146,
+    "clicks_count": 1,
+    "created_at": "2026-07-17 23:00:00",
+    "updated_at": "2026-07-17 23:00:00"
+  },
+  {
+    "id": 243,
+    "advertisement_id": 7,
+    "date": "2026-07-17",
+    "impressions_count": 138,
+    "clicks_count": 0,
+    "created_at": "2026-07-17 23:00:00",
+    "updated_at": "2026-07-17 23:00:00"
+  },
+  {
+    "id": 244,
+    "advertisement_id": 10,
+    "date": "2026-07-17",
+    "impressions_count": 122,
+    "clicks_count": 0,
+    "created_at": "2026-07-17 23:00:00",
+    "updated_at": "2026-07-17 23:00:00"
+  },
+  {
+    "id": 245,
+    "advertisement_id": 13,
+    "date": "2026-07-17",
+    "impressions_count": 153,
+    "clicks_count": 1,
+    "created_at": "2026-07-17 23:00:00",
+    "updated_at": "2026-07-17 23:00:00"
+  },
+  {
+    "id": 246,
+    "advertisement_id": 2,
+    "date": "2026-07-17",
+    "impressions_count": 93,
+    "clicks_count": 1,
+    "created_at": "2026-07-17 23:00:00",
+    "updated_at": "2026-07-17 23:00:00"
+  },
+  {
+    "id": 247,
+    "advertisement_id": 5,
+    "date": "2026-07-17",
+    "impressions_count": 97,
+    "clicks_count": 0,
+    "created_at": "2026-07-17 23:00:00",
+    "updated_at": "2026-07-17 23:00:00"
+  },
+  {
+    "id": 248,
+    "advertisement_id": 8,
+    "date": "2026-07-17",
+    "impressions_count": 102,
+    "clicks_count": 0,
+    "created_at": "2026-07-17 23:00:00",
+    "updated_at": "2026-07-17 23:00:00"
+  },
+  {
+    "id": 249,
+    "advertisement_id": 11,
+    "date": "2026-07-17",
+    "impressions_count": 82,
+    "clicks_count": 0,
+    "created_at": "2026-07-17 23:00:00",
+    "updated_at": "2026-07-17 23:00:00"
+  },
+  {
+    "id": 250,
+    "advertisement_id": 14,
+    "date": "2026-07-17",
+    "impressions_count": 95,
+    "clicks_count": 1,
+    "created_at": "2026-07-17 23:00:00",
+    "updated_at": "2026-07-17 23:00:00"
+  },
+  {
+    "id": 251,
+    "advertisement_id": 3,
+    "date": "2026-07-17",
+    "impressions_count": 53,
+    "clicks_count": 0,
+    "created_at": "2026-07-17 23:00:00",
+    "updated_at": "2026-07-17 23:00:00"
+  },
+  {
+    "id": 252,
+    "advertisement_id": 6,
+    "date": "2026-07-17",
+    "impressions_count": 47,
+    "clicks_count": 0,
+    "created_at": "2026-07-17 23:00:00",
+    "updated_at": "2026-07-17 23:00:00"
+  },
+  {
+    "id": 253,
+    "advertisement_id": 9,
+    "date": "2026-07-17",
+    "impressions_count": 55,
+    "clicks_count": 0,
+    "created_at": "2026-07-17 23:00:00",
+    "updated_at": "2026-07-17 23:00:00"
+  },
+  {
+    "id": 254,
+    "advertisement_id": 12,
+    "date": "2026-07-17",
+    "impressions_count": 52,
+    "clicks_count": 0,
+    "created_at": "2026-07-17 23:00:00",
+    "updated_at": "2026-07-17 23:00:00"
+  },
+  {
+    "id": 255,
+    "advertisement_id": 15,
+    "date": "2026-07-17",
+    "impressions_count": 55,
+    "clicks_count": 1,
+    "created_at": "2026-07-17 23:00:00",
+    "updated_at": "2026-07-17 23:00:00"
+  },
+  {
+    "id": 256,
+    "advertisement_id": 1,
+    "date": "2026-07-18",
+    "impressions_count": 136,
+    "clicks_count": 0,
+    "created_at": "2026-07-18 23:00:00",
+    "updated_at": "2026-07-18 23:00:00"
+  },
+  {
+    "id": 257,
+    "advertisement_id": 4,
+    "date": "2026-07-18",
+    "impressions_count": 137,
+    "clicks_count": 2,
+    "created_at": "2026-07-18 23:00:00",
+    "updated_at": "2026-07-18 23:00:00"
+  },
+  {
+    "id": 258,
+    "advertisement_id": 7,
+    "date": "2026-07-18",
+    "impressions_count": 154,
+    "clicks_count": 0,
+    "created_at": "2026-07-18 23:00:00",
+    "updated_at": "2026-07-18 23:00:00"
+  },
+  {
+    "id": 259,
+    "advertisement_id": 10,
+    "date": "2026-07-18",
+    "impressions_count": 128,
+    "clicks_count": 0,
+    "created_at": "2026-07-18 23:00:00",
+    "updated_at": "2026-07-18 23:00:00"
+  },
+  {
+    "id": 260,
+    "advertisement_id": 13,
+    "date": "2026-07-18",
+    "impressions_count": 132,
+    "clicks_count": 1,
+    "created_at": "2026-07-18 23:00:00",
+    "updated_at": "2026-07-18 23:00:00"
+  },
+  {
+    "id": 261,
+    "advertisement_id": 2,
+    "date": "2026-07-18",
+    "impressions_count": 74,
+    "clicks_count": 0,
+    "created_at": "2026-07-18 23:00:00",
+    "updated_at": "2026-07-18 23:00:00"
+  },
+  {
+    "id": 262,
+    "advertisement_id": 5,
+    "date": "2026-07-18",
+    "impressions_count": 72,
+    "clicks_count": 2,
+    "created_at": "2026-07-18 23:00:00",
+    "updated_at": "2026-07-18 23:00:00"
+  },
+  {
+    "id": 263,
+    "advertisement_id": 8,
+    "date": "2026-07-18",
+    "impressions_count": 74,
+    "clicks_count": 0,
+    "created_at": "2026-07-18 23:00:00",
+    "updated_at": "2026-07-18 23:00:00"
+  },
+  {
+    "id": 264,
+    "advertisement_id": 11,
+    "date": "2026-07-18",
+    "impressions_count": 66,
+    "clicks_count": 1,
+    "created_at": "2026-07-18 23:00:00",
+    "updated_at": "2026-07-18 23:00:00"
+  },
+  {
+    "id": 265,
+    "advertisement_id": 14,
+    "date": "2026-07-18",
+    "impressions_count": 81,
+    "clicks_count": 0,
+    "created_at": "2026-07-18 23:00:00",
+    "updated_at": "2026-07-18 23:00:00"
+  },
+  {
+    "id": 266,
+    "advertisement_id": 3,
+    "date": "2026-07-18",
+    "impressions_count": 52,
+    "clicks_count": 0,
+    "created_at": "2026-07-18 23:00:00",
+    "updated_at": "2026-07-18 23:00:00"
+  },
+  {
+    "id": 267,
+    "advertisement_id": 6,
+    "date": "2026-07-18",
+    "impressions_count": 58,
+    "clicks_count": 0,
+    "created_at": "2026-07-18 23:00:00",
+    "updated_at": "2026-07-18 23:00:00"
+  },
+  {
+    "id": 268,
+    "advertisement_id": 9,
+    "date": "2026-07-18",
+    "impressions_count": 59,
+    "clicks_count": 1,
+    "created_at": "2026-07-18 23:00:00",
+    "updated_at": "2026-07-18 23:00:00"
+  },
+  {
+    "id": 269,
+    "advertisement_id": 12,
+    "date": "2026-07-18",
+    "impressions_count": 56,
+    "clicks_count": 0,
+    "created_at": "2026-07-18 23:00:00",
+    "updated_at": "2026-07-18 23:00:00"
+  },
+  {
+    "id": 270,
+    "advertisement_id": 15,
+    "date": "2026-07-18",
+    "impressions_count": 52,
+    "clicks_count": 0,
+    "created_at": "2026-07-18 23:00:00",
+    "updated_at": "2026-07-18 23:00:00"
+  },
+  {
+    "id": 271,
+    "advertisement_id": 1,
+    "date": "2026-07-19",
+    "impressions_count": 40,
+    "clicks_count": 0,
+    "created_at": "2026-07-19 23:00:00",
+    "updated_at": "2026-07-19 23:00:00"
+  },
+  {
+    "id": 272,
+    "advertisement_id": 4,
+    "date": "2026-07-19",
+    "impressions_count": 43,
+    "clicks_count": 0,
+    "created_at": "2026-07-19 23:00:00",
+    "updated_at": "2026-07-19 23:00:00"
+  },
+  {
+    "id": 273,
+    "advertisement_id": 7,
+    "date": "2026-07-19",
+    "impressions_count": 42,
+    "clicks_count": 0,
+    "created_at": "2026-07-19 23:00:00",
+    "updated_at": "2026-07-19 23:00:00"
+  },
+  {
+    "id": 274,
+    "advertisement_id": 10,
+    "date": "2026-07-19",
+    "impressions_count": 42,
+    "clicks_count": 0,
+    "created_at": "2026-07-19 23:00:00",
+    "updated_at": "2026-07-19 23:00:00"
+  },
+  {
+    "id": 275,
+    "advertisement_id": 13,
+    "date": "2026-07-19",
+    "impressions_count": 43,
+    "clicks_count": 0,
+    "created_at": "2026-07-19 23:00:00",
+    "updated_at": "2026-07-19 23:00:00"
+  },
+  {
+    "id": 276,
+    "advertisement_id": 2,
+    "date": "2026-07-19",
+    "impressions_count": 27,
+    "clicks_count": 0,
+    "created_at": "2026-07-19 23:00:00",
+    "updated_at": "2026-07-19 23:00:00"
+  },
+  {
+    "id": 277,
+    "advertisement_id": 5,
+    "date": "2026-07-19",
+    "impressions_count": 26,
+    "clicks_count": 0,
+    "created_at": "2026-07-19 23:00:00",
+    "updated_at": "2026-07-19 23:00:00"
+  },
+  {
+    "id": 278,
+    "advertisement_id": 8,
+    "date": "2026-07-19",
+    "impressions_count": 29,
+    "clicks_count": 0,
+    "created_at": "2026-07-19 23:00:00",
+    "updated_at": "2026-07-19 23:00:00"
+  },
+  {
+    "id": 279,
+    "advertisement_id": 11,
+    "date": "2026-07-19",
+    "impressions_count": 27,
+    "clicks_count": 0,
+    "created_at": "2026-07-19 23:00:00",
+    "updated_at": "2026-07-19 23:00:00"
+  },
+  {
+    "id": 280,
+    "advertisement_id": 14,
+    "date": "2026-07-19",
+    "impressions_count": 26,
+    "clicks_count": 1,
+    "created_at": "2026-07-19 23:00:00",
+    "updated_at": "2026-07-19 23:00:00"
+  },
+  {
+    "id": 281,
+    "advertisement_id": 3,
+    "date": "2026-07-19",
+    "impressions_count": 17,
+    "clicks_count": 0,
+    "created_at": "2026-07-19 23:00:00",
+    "updated_at": "2026-07-19 23:00:00"
+  },
+  {
+    "id": 282,
+    "advertisement_id": 6,
+    "date": "2026-07-19",
+    "impressions_count": 17,
+    "clicks_count": 0,
+    "created_at": "2026-07-19 23:00:00",
+    "updated_at": "2026-07-19 23:00:00"
+  },
+  {
+    "id": 283,
+    "advertisement_id": 9,
+    "date": "2026-07-19",
+    "impressions_count": 18,
+    "clicks_count": 0,
+    "created_at": "2026-07-19 23:00:00",
+    "updated_at": "2026-07-19 23:00:00"
+  },
+  {
+    "id": 284,
+    "advertisement_id": 12,
+    "date": "2026-07-19",
+    "impressions_count": 14,
+    "clicks_count": 0,
+    "created_at": "2026-07-19 23:00:00",
+    "updated_at": "2026-07-19 23:00:00"
+  },
+  {
+    "id": 285,
+    "advertisement_id": 15,
+    "date": "2026-07-19",
+    "impressions_count": 16,
+    "clicks_count": 0,
+    "created_at": "2026-07-19 23:00:00",
+    "updated_at": "2026-07-19 23:00:00"
+  }
+]

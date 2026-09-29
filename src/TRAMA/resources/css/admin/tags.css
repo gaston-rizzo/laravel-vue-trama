@@ -1,0 +1,373 @@
+/* ============================================================================
+ * CSS ADMIN · ETIQUETAS
+ *
+ * Estilos específicos del panel de etiquetas: filtros, tabla, celdas,
+ * contadores de caracteres y modal de fusión.
+ * ============================================================================ */
+
+/* ==========================================================================
+ * ANCHO DE COLUMNAS DE LA TABLA DE ETIQUETAS
+ * ========================================================================== */
+
+.admin-tags-table th:nth-child(1) {
+    width: 24%;
+}
+
+.admin-tags-table th:nth-child(2) {
+    width: 42%;
+}
+
+.admin-tags-table th:nth-child(3) {
+    width: 10%;
+}
+
+.admin-tags-table th:nth-child(4) {
+    width: 12%;
+}
+
+.admin-tags-table th:nth-child(5) {
+    width: 12%;
+}
+
+/*
+ * Hace visible que toda la fila de una etiqueta puede abrir
+ * el modal de edición.
+ */
+.admin-tags-table-row {
+    cursor: pointer;
+}
+
+/*
+ * Evita mostrar el contorno nativo cuando la fila recibe foco
+ * mediante teclado.
+ */
+.admin-tags-table-row:focus-visible {
+    outline: none;
+}
+
+/* ============================================================================
+ * BARRA DE BÚSQUEDA Y FILTROS DE ETIQUETAS
+ * ============================================================================
+ *
+ * Replica el patrón compacto de Noticias y Moderación:
+ * buscador + Buscar, filtros automáticos, Limpiar y acciones en una sola línea.
+ * ============================================================================ */
+
+.tags-toolbar-v2 {
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow: visible;
+    position: sticky;
+    top: 0;
+    z-index: 60;
+}
+
+.tags-search-form {
+    display: grid;
+    flex: 1 1 440px;
+    gap: 8px;
+    grid-template-columns: auto minmax(230px, 1fr) auto;
+    max-width: 500px;
+    min-width: 400px;
+    width: auto;
+}
+
+.tags-search-form button {
+    cursor: pointer;
+    min-width: 82px;
+    transform: none;
+}
+
+.tags-search-form button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.tags-status-filter {
+    cursor: pointer;
+    flex: 0 0 200px;
+    min-width: 200px;
+    width: 200px;
+}
+
+.tags-usage-filter {
+    cursor: pointer;
+    flex: 0 0 155px;
+    min-width: 155px;
+    width: 155px;
+}
+
+.tags-toolbar-v2 select.editorial-filter-control {
+    overflow: visible;
+    padding-left: 12px;
+    padding-right: 42px;
+    text-overflow: clip;
+    white-space: nowrap;
+}
+
+.tags-toolbar-v2 .editorial-filter-clear {
+    flex: 0 0 auto;
+    min-width: 96px;
+}
+
+.tags-toolbar-v2 .editorial-filter-clear:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+.tags-active-counter {
+    color: #8d99a5;
+    flex: 0 0 auto;
+    font-size: 0.8rem;
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+.tags-create-button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+/*
+ * Estado histórico de etiquetas ya fusionadas.
+ *
+ * Usa violeta apagado para diferenciarlo de Inactiva, que conserva el rojo de
+ * alerta/baja, y de Activa, que mantiene el verde operativo.
+ */
+.admin-tags-table .status-merged {
+    background: #5a4b8b;
+    color: #f1edff;
+}
+
+/* ============================================================================
+ * CELDAS Y RECORTES DE TEXTO DE LA TABLA
+ * ============================================================================
+ *
+ * La tabla usa distribución fija para impedir que nombres o descripciones
+ * extensas modifiquen el ancho general de la grilla.
+ * ============================================================================ */
+
+.admin-tags-table {
+    min-width: 980px;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.admin-tags-table th:nth-child(1),
+.admin-tags-table td:nth-child(1) {
+    width: 22%;
+}
+
+.admin-tags-table th:nth-child(2),
+.admin-tags-table td:nth-child(2) {
+    width: 41%;
+}
+
+.admin-tags-table th:nth-child(3),
+.admin-tags-table td:nth-child(3) {
+    width: 8%;
+}
+
+.admin-tags-table th:nth-child(4),
+.admin-tags-table td:nth-child(4) {
+    width: 11%;
+}
+
+.admin-tags-table th:nth-child(5),
+.admin-tags-table td:nth-child(5) {
+    width: 18%;
+}
+
+/*
+ * Las dos columnas textuales recortan cualquier contenido que supere
+ * el espacio disponible de la fila.
+ */
+.admin-tags-table td:nth-child(1),
+.admin-tags-table td:nth-child(2) {
+    overflow: hidden;
+}
+
+/*
+ * Nombre, slug y descripción permanecen en una sola línea.
+ *
+ * text-overflow agrega los puntos suspensivos cuando el texto no entra.
+ */
+.admin-tags-name-text,
+.admin-tags-slug-text,
+.admin-tags-description-text {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.admin-tags-table .admin-table-primary-cell {
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* ============================================================================
+ * MODAL PARA FUSIONAR ETIQUETAS
+ * ============================================================================ */
+
+.admin-tag-merge-modal {
+    max-width: 560px;
+    overflow: visible;
+}
+
+.admin-tag-merge-modal header,
+.admin-tag-merge-modal__heading,
+.admin-tag-merge-modal label {
+    min-width: 0;
+}
+
+.admin-tag-merge-modal h2 {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+}
+
+.admin-tag-merge-modal h2 span,
+.admin-tag-merge-modal__info b {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.admin-tag-merge-modal__info {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.admin-tag-merge-modal__info p {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.admin-tag-merge-search {
+    position: relative;
+    width: 100%;
+}
+
+.admin-tag-merge-search > input {
+    overflow: hidden;
+    padding-right: 92px;
+    text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.admin-tag-merge-search > input::-webkit-search-cancel-button,
+.admin-tag-merge-search > input::-webkit-search-decoration {
+    appearance: none;
+    -webkit-appearance: none;
+    display: none;
+}
+
+.admin-tag-merge-search .tag-search-close {
+    right: 47px;
+}
+
+.admin-tag-merge-chevron {
+    align-items: center;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    border-radius: 6px;
+    color: #9ba6b2;
+    display: inline-flex;
+    height: 30px;
+    justify-content: center;
+    padding: 0;
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    z-index: 2;
+}
+
+.admin-tag-merge-chevron:hover:not(:disabled),
+.admin-tag-merge-chevron:focus-visible:not(:disabled) {
+    background: rgba(224, 169, 58, 0.1);
+    color: var(--gold);
+    outline: none;
+}
+
+.admin-tag-merge-chevron[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+}
+
+.admin-tag-merge-suggestions {
+    max-height: 112px;
+    position: absolute;
+    width: 100%;
+}
+
+.admin-tag-merge-suggestions button span {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ============================================================================
+ * CAMPOS DE TEXTO DE ETIQUETAS
+ * ============================================================================ */
+
+/*
+ * Da a la descripción espacio suficiente para unas cuatro líneas visuales.
+ *
+ * El texto puede ajustarse automáticamente al ancho del textarea, pero los
+ * saltos de línea manuales no se almacenan.
+ */
+.admin-tag-field textarea {
+    min-height: 92px;
+    resize: vertical;
+}
+
+
+/* ============================================================================
+ * CONTADORES DE CARACTERES DE ETIQUETAS
+ * ============================================================================ */
+
+/*
+ * Mantiene el contador alineado a la derecha, igual que otros formularios
+ * editoriales con límites de caracteres.
+ */
+.admin-tag-character-counter {
+    color: #7f8b97;
+    font-size: 0.76rem;
+    font-weight: 800;
+    justify-self: end;
+    margin: 0;
+}
+
+/*
+ * Resalta el contador mientras todavía no se alcanzó el mínimo requerido.
+ */
+.admin-tag-character-counter--warning {
+    color: #7f8b97;
+}
+
+@media (max-width: 1180px) {
+    .tags-toolbar-v2 {
+        overflow-x: auto;
+    }
+
+    .tags-search-form {
+        flex: 0 0 430px;
+        min-width: 430px;
+    }
+
+    .tags-active-counter {
+        margin-left: 0;
+    }
+}

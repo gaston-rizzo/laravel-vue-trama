@@ -1,0 +1,581 @@
+/* ============================================================================
+ * CSS ADMIN · EMPLEADOS Y USUARIOS REGISTRADOS
+ *
+ * Estilos específicos de cuentas internas y lectores: filtros, tablas,
+ * detalle de actividad, formulario de empleado y modales de cuenta.
+ * ============================================================================ */
+
+/* ==========================================================================
+ * ANCHO DE COLUMNAS DE LA TABLA DE EMPLEADOS
+ * ========================================================================== */
+
+.admin-employees-table th:nth-child(1) {
+    width: 35%;
+}
+
+.admin-employees-table th:nth-child(2) {
+    width: 12%;
+}
+
+.admin-employees-table th:nth-child(3) {
+    width: 9%;
+}
+
+.admin-employees-table th:nth-child(4) {
+    width: 18%;
+}
+
+.admin-employees-table th:nth-child(5) {
+    width: 11%;
+}
+
+.admin-employees-table th:nth-child(6) {
+    width: 15%;
+}
+
+/* ==========================================================================
+ * ANCHO DE COLUMNAS DE LA TABLA DE USUARIOS REGISTRADOS
+ * ========================================================================== */
+
+.admin-readers-table th:nth-child(1) {
+    width: 28%;
+}
+
+.admin-readers-table th:nth-child(2) {
+    width: 9%;
+}
+
+.admin-readers-table th:nth-child(3) {
+    width: 14%;
+}
+
+.admin-readers-table th:nth-child(4) {
+    width: 10%;
+}
+
+.admin-readers-table th:nth-child(5) {
+    width: 19%;
+}
+
+.admin-readers-table th:nth-child(6) {
+    width: 13%;
+}
+
+.admin-readers-table th:nth-child(7) {
+    width: 7%;
+}
+
+/*
+ * Comentarios se centra debajo de su encabezado.
+ * No utiliza la alineación derecha de las columnas numéricas generales.
+ */
+.admin-readers-table .comments-column {
+    text-align: center;
+}
+
+.admin-readers-table th.comments-column .editorial-sort-button {
+    justify-content: center;
+    width: 100%;
+}
+
+/*
+ * Evita que el estado de revisión invada la columna Alta.
+ */
+.admin-readers-table th:nth-child(5),
+.admin-readers-table td:nth-child(5) {
+    overflow: hidden;
+}
+
+.admin-readers-table .user-review-requested-badge {
+    box-sizing: border-box;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+/*
+ * Alta permanece en una sola línea.
+ */
+.admin-readers-table th:nth-child(6),
+.admin-readers-table td:nth-child(6) {
+    white-space: nowrap;    
+}
+
+/*
+ * Acciones alineadas al borde derecho.
+ */
+.admin-tags-table th:last-child,
+.admin-tags-table td:last-child,
+.admin-employees-table th:last-child,
+.admin-employees-table td:last-child,
+.admin-readers-table th:last-child,
+.admin-readers-table td:last-child {
+    text-align: right;
+}
+
+/*
+ * En pantallas realmente chicas se habilita scroll horizontal,
+ * pero en escritorio no se rompen los filtros en cinco líneas.
+ */
+@media (max-width: 1100px) {
+    .admin-list-toolbar {
+        overflow-x: auto;
+    }
+
+    .admin-list-filter-form {
+        flex: 0 0 auto;
+    }
+}
+
+/* ============================================================================
+ * BARRA DE FILTROS Y PERFIL DE CUENTAS
+ * ============================================================================
+ *
+ * La grilla de cuentas replica el patrón compacto de Etiquetas: buscador,
+ * filtros y acción principal en una sola línea sticky. La selección de 25/50/100
+ * registros queda exclusivamente en AdminPagination.
+ * ============================================================================ */
+
+.users-list-toolbar {
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow: visible;
+    position: sticky;
+    top: 0;
+    z-index: 60;
+}
+
+.users-search-form {
+    display: grid;
+    flex: 1 1 440px;
+    gap: 8px;
+    grid-template-columns: auto minmax(230px, 1fr) auto;
+    max-width: 500px;
+    min-width: 400px;
+    width: auto;
+}
+
+.users-search-form button {
+    cursor: pointer;
+    min-width: 82px;
+    transform: none;
+}
+
+.users-search-form button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+.users-status-filter {
+    cursor: pointer;
+    flex: 0 0 200px;
+    min-width: 200px;
+    width: 200px;
+}
+
+.users-review-filter {
+    cursor: pointer;    
+    flex-basis: 225px;
+}
+
+.users-list-toolbar select.editorial-filter-control {
+    overflow: visible;
+    padding-left: 12px;
+    padding-right: 42px;
+    text-overflow: clip;
+    white-space: nowrap;
+}
+
+.users-list-toolbar .editorial-filter-clear {
+    flex: 0 0 auto;
+    min-width: 96px;
+}
+
+.users-list-toolbar .editorial-filter-clear:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+.users-create-button {
+    flex: 0 0 auto;
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+/*
+ * La biografía necesita más altura que un campo breve. El navegador envuelve
+ * visualmente el texto, mientras Vue y Laravel lo normalizan a un único párrafo.
+ */
+.employee-bio-field {
+    display: grid;
+    gap: 7px;
+}
+
+.employee-bio-textarea {
+    min-height: 112px;
+    resize: vertical;
+}
+
+.employee-bio-counter {
+    color: #7f8b97;
+    font-size: 0.76rem;
+    font-weight: 800;
+    justify-self: end;
+    margin: 0;
+}
+
+/* Ayuda visible cuando la biografía no corresponde al rol Administrador. */
+.employee-bio-disabled-note {
+    color: #7f8b97;
+    font-size: 0.76rem;
+    font-weight: 700;
+    justify-self: start;
+    margin: 0;
+}
+
+.employee-bio-textarea:disabled {
+    cursor: not-allowed;
+    opacity: 0.68;
+}
+
+/*
+ * Compacta únicamente el modal de alta de empleado para que sus campos
+ * adicionales entren completos sin necesitar scroll en escritorio.
+ */
+.employee-create-modal {
+    gap: 14px;
+}
+
+/*
+ * Ajusta la tarjeta de estado a la altura del bloque de fotografía.
+ */
+.employee-create-active-card {
+    height: 100%;
+    margin: 0;
+}
+
+/*
+ * Reduce solamente la biografía del alta de empleado sin modificar el modal
+ * de edición, que mantiene su altura actual.
+ */
+.employee-create-modal .employee-bio-textarea {
+    min-height: 96px;
+}
+
+/* El error de una confirmación permanece dentro de la propia modal. */
+.employee-create-submit-button {
+    justify-content: center;
+    white-space: nowrap;
+    width: 146px;
+}
+
+.confirm-action-modal-error {
+    margin: 0;
+}
+
+@media (max-width: 1180px) {
+    .users-list-toolbar {
+        overflow-x: auto;
+    }
+
+    .users-search-form {
+        flex: 0 0 430px;
+        min-width: 430px;
+    }
+
+    .users-create-button {
+        margin-left: 0;
+    }
+}
+
+/* ============================================================================
+ * FORMULARIO Y TABLA DE EMPLEADOS
+ * ============================================================================ */
+
+/*
+ * El administrador escribe únicamente la parte local del correo. El dominio
+ * fijo se presenta como parte del mismo control sin permitir su edición.
+ */
+.employee-email-field {
+    align-items: stretch;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+    min-width: 0;
+}
+
+.employee-email-field > input {
+    border-radius: 7px 0 0 7px !important;
+    min-width: 0;
+}
+
+.employee-email-field__domain {
+    align-items: center;
+    background: #111820;
+    border: 1px solid #3a4652;
+    border-left: 0;
+    border-radius: 0 7px 7px 0;
+    color: #aeb7c0;
+    display: inline-flex;
+    font-size: 0.86rem;
+    font-weight: 800;
+    padding: 0 12px;
+    white-space: nowrap;
+}
+
+.employee-email-field:focus-within .employee-email-field__domain {
+    border-color: rgba(224, 169, 58, 0.65);
+}
+
+/*
+ * La biografía es un único párrafo de hasta 300 caracteres; el textarea permite
+ * que el navegador envuelva el texto visualmente, pero no necesita redimensionado
+ * manual porque los saltos introducidos por el usuario se normalizan en Vue/Laravel.
+ */
+.employee-bio-textarea {
+    resize: none;
+}
+
+/*
+ * Empleados ahora incluye siete columnas: Empleado, Rol, Noticias, Estado,
+ * Último acceso, Alta y Acciones. Los anchos estabilizan la grilla y evitan que
+ * las dos fechas empujen la columna de acciones.
+ */
+.admin-employees-table {
+    min-width: 1180px;
+}
+
+.admin-employees-table th:nth-child(1) { width: 28%; }
+.admin-employees-table th:nth-child(2) { width: 10%; }
+.admin-employees-table th:nth-child(3) { width: 8%; }
+.admin-employees-table th:nth-child(4) { width: 10%; }
+.admin-employees-table th:nth-child(5) { width: 17%; }
+.admin-employees-table th:nth-child(6) { width: 17%; }
+.admin-employees-table th:nth-child(7) { width: 10%; }
+
+/* ============================================================================
+ * FILTROS Y MODAL DE DETALLE DE USUARIOS REGISTRADOS
+ * ============================================================================ */
+
+/*
+ * Los controles de Estado, Revisión y Limpiar forman un único grupo visual, de
+ * forma consistente con la barra compacta de Empleados.
+ */
+.users-list-toolbar {
+    gap: 8px;
+    justify-content: flex-start;
+}
+
+.users-status-filter {
+    flex: 0 0 200px;
+    min-width: 200px;
+    width: 200px;
+}
+
+.users-review-filter {
+    flex: 0 0 212px;
+    min-width: 212px;
+    width: 212px;
+}
+
+.users-status-filter {
+    flex-basis: 200px;
+    min-width: 200px;
+    width: 200px;
+}
+
+.users-list-toolbar .editorial-filter-clear {
+    margin-left: 0;
+}
+
+/*
+ * El detalle conserva deliberadamente el formato largo de fecha solicitado. Se
+ * amplía el espacio de las dos fechas y se impide separar "a. m." / "p. m.".
+ */
+.admin-account-activity > div {
+    grid-template-columns:
+        minmax(72px, 0.65fr)
+        minmax(170px, 1.35fr)
+        minmax(85px, 0.75fr)
+        minmax(180px, 1.4fr);
+}
+
+.reader-detail-date {
+    white-space: nowrap;
+}
+
+/* Todas las filas de cuentas que abren una ficha muestran la interacción. */
+.editorial-table-row--account-clickable {
+    cursor: pointer;
+}
+
+/*
+ * Corrección del orden real de columnas de Empleados:
+ * Empleado | Rol | Noticias | Último acceso | Estado | Alta | Acciones.
+ */
+.admin-employees-table th:nth-child(1) { width: 28%; }
+.admin-employees-table th:nth-child(2) { width: 10%; }
+.admin-employees-table th:nth-child(3) { width: 8%; }
+.admin-employees-table th:nth-child(4) { width: 17%; }
+.admin-employees-table th:nth-child(5) { width: 10%; }
+.admin-employees-table th:nth-child(6) { width: 17%; }
+.admin-employees-table th:nth-child(7) { width: 10%; }
+
+/*
+ * En pantallas angostas el detalle pasa a una sola columna antes de permitir
+ * que una fecha se corte. Así "a. m." / "p. m." permanece siempre completa.
+ */
+@media (max-width: 760px) {
+    .admin-account-activity > div {
+        grid-template-columns: 1fr;
+    }
+
+    .reader-detail-date {
+        white-space: nowrap;
+    }
+}
+
+/* ============================================================================
+ * REVISIONES ADMINISTRATIVAS Y MODAL DE BLOQUEO
+ * ============================================================================ */
+
+/* Estado histórico: la revisión fue atendida y ya no reclama acción. */
+.user-review-resolved-badge {
+    align-items: center;
+    background: rgba(112, 143, 124, 0.08);
+    border: 1px solid rgba(112, 143, 124, 0.3);
+    border-radius: 999px;
+    color: #b8d2c0;
+    display: inline-flex;
+    font-size: 9px;
+    font-weight: 900;
+    line-height: 1;
+    padding: 5px 7px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* El bloqueo de lectores contiene más contexto que un modal común. Mantiene
+ * una lectura vertical única (aviso -> contexto -> decisión), pero nunca puede
+ * tocar los bordes del viewport: si el contenido crece, el scroll queda dentro
+ * de la propia modal. Un poco más de ancho reduce saltos de línea innecesarios. */
+.admin-modal.reader-block-modal {
+    box-sizing: border-box;
+    gap: 14px;
+    max-height: calc(100vh - 72px);
+    max-height: calc(100dvh - 72px);
+    max-width: 760px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 20px 22px;
+    scrollbar-gutter: stable;
+}
+
+.reader-block-modal header {
+    padding-bottom: 14px;
+}
+
+.reader-block-modal .admin-info-box {
+    padding: 12px 13px;
+}
+
+.reader-block-modal .admin-info-box p {
+    line-height: 1.48;
+    margin: 5px 0 7px;
+}
+
+.reader-block-modal .admin-review-context-box {
+    gap: 7px;
+}
+
+.reader-block-modal .admin-review-evidence {
+    padding: 9px 10px;
+}
+
+.reader-block-modal .admin-review-evidence p {
+    max-height: 112px;
+    overflow-y: auto;
+}
+
+.reader-block-modal textarea {
+    min-height: 82px;
+    resize: vertical;
+}
+
+.reader-block-modal .admin-character-counter {
+    justify-self: end;
+    text-align: right;
+}
+
+.reader-block-modal .admin-modal-footer {
+    background: #11151b;
+    bottom: -20px;
+    margin: 0 -22px -20px;
+    padding: 14px 22px 20px;
+    position: sticky;
+    z-index: 10;
+}
+
+/* Resolver revisión es una acción principal del flujo y permanece junto al
+ * resto de acciones del footer, sin empujarse hacia el borde izquierdo. */
+.user-review-resolve-button {
+    margin-right: 0 !important;
+}
+
+/* En pantallas bajas o angostas se conserva margen exterior y se reduce un
+ * poco el padding interno. El scroll sigue perteneciendo a la modal. */
+@media (max-height: 760px), (max-width: 760px) {
+    .admin-modal.reader-block-modal {
+        max-height: calc(100vh - 32px);
+        max-height: calc(100dvh - 32px);
+        max-width: 100%;
+        padding: 18px;
+    }
+}
+
+
+/* ============================================================================
+ * ESTABILIDAD DE LA CELDA EMPLEADO
+ * ============================================================================
+ *
+ * Los textos largos no pueden ensanchar la tabla ni desplazar las columnas.
+ * El nombre, correo y cargo quedan en una sola línea con puntos suspensivos
+ * cuando superan el ancho disponible.
+ * ============================================================================ */
+.admin-employees-table {
+    table-layout: fixed;
+}
+
+.admin-employees-table .admin-person-cell {
+    min-width: 0;
+    width: 100%;
+}
+
+.admin-employees-table .admin-person-cell > span {
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+}
+
+.admin-employees-table .admin-person-cell strong,
+.admin-employees-table .admin-person-cell small {
+    display: block;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*
+ * Si users.avatar conserva una ruta cuyo archivo físico desapareció, la fila
+ * mantiene el avatar genérico para no romper el layout y muestra el problema
+ * de forma explícita hasta que se cargue una nueva foto.
+ */
+.admin-employees-table .admin-person-cell .employee-avatar-missing-label {
+    color: #ff7f8b;
+    font-weight: 800;
+}

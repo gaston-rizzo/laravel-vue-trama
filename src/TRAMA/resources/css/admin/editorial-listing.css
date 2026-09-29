@@ -1,0 +1,1903 @@
+/* ============================================================================
+ * CSS ADMIN · LISTADOS EDITORIALES COMPARTIDOS
+ *
+ * Estilos reutilizados por las pantallas internas: tabs, toolbars, filtros,
+ * selector de fechas, tablas editoriales y paginación administrativa.
+ * ============================================================================ */
+
+/* ==========================================================================
+ * IDENTIDAD, NAVEGACIÓN Y TABS DEL PANEL
+ * ==========================================================================
+ *
+ * Define la marca interna, los rótulos de navegación y las pestañas de estado
+ * que comparten las pantallas editoriales y administrativas.
+ * ========================================================================== */
+
+.admin-logo {
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 950;
+    letter-spacing: 0.08em;
+}
+
+.admin-nav-label {
+    color: #667085;
+    font-size: 10px;
+    font-weight: 950;
+    letter-spacing: 0.16em;
+    margin: 18px 12px 2px;
+    text-transform: uppercase;
+}
+
+.admin-nav a.active {
+    background: rgba(214, 162, 58, 0.12);
+    border-color: rgba(214, 162, 58, 0.42);
+    color: var(--gold);
+}
+
+.workflow-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.workflow-links .warning-link {
+    background: #D8323C;
+    color: #fff;
+}
+
+.article-status-tabs,
+.editor-tabs {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.article-status-tabs .article-status-tab,
+.editor-tabs button {
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 13px;
+    font-weight: 900;
+    gap: 8px;
+    padding: 9px 13px;
+}
+
+/*
+ * Muestra el total real de noticias dentro de cada filtro del panel.
+ *
+ * El número se separa en una cápsula propia para que no parezca parte del texto
+ * del estado y se pueda leer rápido en el trabajo diario del editor.
+ */
+.article-status-tabs .article-status-tab small {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    color: inherit;
+    display: inline-flex;
+    font-size: 11px;
+    font-weight: 950;
+    justify-content: center;
+    line-height: 1;
+    min-width: 24px;
+    padding: 4px 7px;
+}
+
+/*
+ * Muestra el chip seleccionado plano sin cambiar su tamaño.
+ */
+.article-status-tabs .article-status-tab.active,
+.editor-tabs button.active {
+    appearance: none;
+    background: #e8b84a;
+    border-color: #e8b84a;
+    box-shadow: none;
+    color: var(--bg);
+    filter: none;
+    outline: 0;
+}
+
+/*
+ * Mantiene el efecto visual solamente en los chips disponibles.
+ */
+.article-status-tabs a.article-status-tab:hover,
+.editor-tabs button:hover:not(:disabled) {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--bg);
+}
+
+/*
+ * Desactiva la interacción del chip de estado actualmente seleccionado
+ * en el listado de noticias.
+ */
+.article-status-tabs .article-status-tab.active {
+    cursor: default;
+    pointer-events: none;
+}
+
+/*
+ * Mantiene sin interacción el botón de la pestaña que ya está abierta
+ * en el formulario de la noticia.
+ */
+.editor-tabs button:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+/*
+ * La pestaña seleccionada no admite otra interacción.
+ */
+.editor-tabs button:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+.article-status-tabs .article-status-tab.active small,
+.article-status-tabs a.article-status-tab:hover small {
+    background: rgba(5, 6, 7, 0.16);
+    border-color: rgba(5, 6, 7, 0.18);
+}
+
+.article-status-tabs .article-status-tab.disabled {
+    cursor: default;
+    opacity: 0.45;
+}
+
+.article-status-tabs .article-status-tab.disabled:hover {
+    background: var(--surface);
+    border-color: var(--line);
+    color: var(--muted);
+}
+
+.article-status-tabs .article-status-tab.disabled:hover small {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.status-needs_changes {
+    background: #D8323C;
+    color: #fff;
+}
+
+.admin-filter-form.compact {
+    grid-template-columns: auto minmax(260px, 1fr) auto;
+    width: min(720px, 100%);
+}
+
+/* ==========================================================================
+ * LISTADOS EDITORIALES · FILTROS Y TABLA BASE
+ * ==========================================================================
+ *
+ * Define la barra de herramientas, los filtros, la tabla y sus filas para
+ * Noticias. Otras grillas administrativas reutilizan estas clases como base.
+ * ========================================================================== */
+
+.editorial-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+
+    /*
+     * Mantiene los filtros en una sola fila y agrega una separación más clara
+     * entre cada control.
+     */
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 14px;
+    padding: 13px 14px;
+
+    /*
+     * Fondo más oscuro que la tabla para que el bloque de filtros se perciba
+     * como una barra de herramientas independiente.
+     */
+    background: #0c1218;
+    border-color: #34414e;
+
+    /*
+     * Sombra neutra, sin líneas ni adornos inferiores.
+     */
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.48);
+}
+
+/*
+ * Organiza la lupa, la caja de búsqueda y el botón Buscar.
+ *
+ * El formulario puede crecer hasta 470 píxeles para que el texto de búsqueda
+ * tenga más espacio.
+ */
+.editorial-toolbar .editorial-search-form {
+    display: grid;
+    flex: 1 1 420px;
+    gap: 9px;
+    grid-template-columns:
+        auto
+        minmax(280px, 1fr)
+        auto;
+    max-width: 470px;
+    min-width: 400px;
+    width: auto;
+}
+
+/*
+ * Noticias agrega un filtro de Portada sin abandonar la fila única.
+ * Estos anchos compactan solamente esta barra y conservan legibles todos los
+ * textos, incluso en el ancho habitual del panel con la barra lateral visible.
+ */
+.articles-toolbar {
+    gap: 10px;
+}
+
+.articles-toolbar .editorial-search-form {
+    flex: 0 1 355px;
+    grid-template-columns:
+        auto
+        minmax(0, 1fr)
+        auto;
+    max-width: 355px;
+    min-width: 0;
+}
+
+.articles-toolbar .editorial-category-filter {
+    width: 220px;
+}
+
+.articles-toolbar .editorial-homepage-filter {
+    flex-basis: 165px;
+    min-width: 165px;
+    width: 165px;
+}
+
+.articles-toolbar .editorial-author-filter {
+    width: 170px;
+}
+
+/*
+ * Caja del buscador general de noticias.
+ */
+.editorial-search-input {
+    background-color: #070b10;
+    border-color: #34414e;
+    min-width: 0;
+    width: 100%;
+}
+
+/*
+ * Muestra deshabilitado el botón Buscar cuando no existe una búsqueda válida.
+ */
+.editorial-search-form button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+/*
+ * Estilo compartido por el selector de categoría y la caja de autor.
+ */
+.editorial-filter-control {
+    background-color: #070b10;
+    border: 1px solid #34414e;
+    border-radius: 8px;
+    color: var(--text);
+    min-height: 44px;
+    min-width: 0;
+    padding: 10px 12px;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        color 160ms ease;
+}
+
+/*
+ * Hace visible el hover de los campos y del botón de fecha
+ * sin convertirlos en acciones principales.
+ */
+.editorial-search-input:hover,
+.editorial-filter-control:hover {
+    border-color: #53677b;
+}
+
+.editorial-date-button:hover {
+    background-color: #111a23;
+    border-color: #60758a;
+    color: #ffffff;
+}
+/*
+ * Reserva espacio para la flecha personalizada de los selectores.
+ */
+select.editorial-filter-control {
+    appearance: none;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239aa6b2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-position: right 11px center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    padding-right: 34px;
+}
+
+/*
+ * El selector necesita espacio suficiente para mostrar completamente
+ * "Todas las categorías".
+ */
+.editorial-category-filter {
+    cursor: pointer;
+    flex: 0 0 auto;
+    width: 220px;
+}
+
+/* Selector del tratamiento editorial de portada. */
+.editorial-homepage-filter {
+    cursor: pointer;
+    flex: 0 0 175px;
+    min-width: 175px;
+    width: 175px;
+}
+
+/*
+ * La caja de autor permite escribir nombres completos sin quedar comprimida.
+ */
+.editorial-author-filter {
+    flex: 0 0 auto;
+    width: 205px;
+}
+
+/* ============================================================================
+ * FILTRO DE FECHAS DEL LISTADO EDITORIAL
+ * ============================================================================ */
+
+/*
+ * Contenedor utilizado como referencia para posicionar el cuadro flotante.
+ */
+.editorial-date-filter {
+    flex: 0 0 auto;
+    position: relative;
+}
+
+/*
+ * Botón visible dentro de la barra principal de filtros.
+ */
+.editorial-date-button {
+    align-items: center;
+    background:
+        linear-gradient(
+            180deg,
+            #0d141b 0%,
+            #080d12 100%
+        );
+    border: 1px solid #3a4856;
+    border-radius: 9px;
+    color: #dce3ea;
+    cursor: pointer;
+    display: inline-flex;
+    /*
+    * Mantiene siempre el mismo ancho, sin importar si muestra
+    * "Fecha", "Desde 03/06" o "03/06–19/07".
+    */
+    flex: 0 0 125px;
+    min-width: 125px;
+    max-width: 125px;
+    width: 125px;
+
+    font-size: 14px;
+    font-weight: 850;
+    gap: 8px;
+    justify-content: center;
+    min-height: 44px;
+    
+    padding: 0 14px;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        color 160ms ease;
+    white-space: nowrap;
+}
+
+/*
+ * Hover del botón de fecha.
+ */
+.editorial-date-button:hover {
+    background:
+        linear-gradient(
+            180deg,
+            #15212b 0%,
+            #0c131a 100%
+        );
+    border-color: #65788a;
+    color: #ffffff;
+}
+
+/*
+ * Indica visualmente que el filtro se encuentra abierto.
+ */
+.editorial-date-button[aria-expanded="true"] {
+    border-color: #d6a84f;
+    box-shadow:
+        0 0 0 3px rgba(214, 168, 79, 0.12),
+        0 8px 24px rgba(0, 0, 0, 0.28);
+    color: #f0c46a;
+}
+
+/*
+ * Muestra el borde de foco solamente al navegar con teclado.
+ */
+.editorial-date-button:focus-visible {
+    border-color: #d6a84f;
+    box-shadow: 0 0 0 3px rgba(214, 168, 79, 0.14);
+    outline: none;
+}
+
+/*
+ * Ventana flotante completa del filtro de fechas.
+ *
+ * Tiene espacio suficiente para mostrar Fecha desde y Fecha hasta
+ * una al lado de la otra.
+ */
+.editorial-date-popup {
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(214, 168, 79, 0.09),
+            transparent 38%
+        ),
+        linear-gradient(
+            180deg,
+            #0e161e 0%,
+            #090e13 100%
+        );
+    border: 1px solid #40505f;
+    border-radius: 14px;
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.72),
+        0 0 0 1px rgba(255, 255, 255, 0.025);
+    display: grid;
+    gap: 18px;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    width: min(640px, calc(100vw - 40px));
+    z-index: 120;
+}
+
+/*
+ * Línea dorada superior para integrarlo con la identidad de TRAMA.
+ */
+.editorial-date-popup::before {
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d6a84f,
+            transparent
+        );
+    border-radius: 14px 14px 0 0;
+    content: "";
+    height: 2px;
+    left: 18px;
+    opacity: 0.9;
+    position: absolute;
+    right: 18px;
+    top: -1px;
+}
+
+/*
+ * Encabezado del filtro.
+ */
+.editorial-date-popup-header {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*
+ * Agrupa título y descripción.
+ */
+.editorial-date-popup-header > div {
+    display: grid;
+    gap: 5px;
+}
+
+/*
+ * Título principal.
+ */
+.editorial-date-popup-header strong {
+    color: #f3f6f9;
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+}
+
+/*
+ * Explicación debajo del título.
+ */
+.editorial-date-popup-header span {
+    color: #8f9ba7;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+/*
+ * Coloca ambos campos en una misma fila.
+ */
+.editorial-date-fields {
+    align-items: end;
+    display: grid;
+    gap: 14px;
+    grid-template-columns:
+        minmax(0, 1fr)
+        34px
+        minmax(0, 1fr);
+}
+
+/*
+ * Cada etiqueta contiene el título y su selector.
+ */
+.editorial-date-field {
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+}
+
+/*
+ * Texto Fecha desde / Fecha hasta.
+ */
+.editorial-date-field > span {
+    color: #bac4ce;
+    font-size: 12px;
+    font-weight: 850;
+    letter-spacing: 0.02em;
+}
+
+/*
+ * Flecha ubicada entre ambos campos.
+ */
+.editorial-date-range-separator {
+    align-items: center;
+    background: rgba(214, 168, 79, 0.08);
+    border: 1px solid rgba(214, 168, 79, 0.22);
+    border-radius: 50%;
+    color: #dcb55f;
+    display: inline-flex;
+    font-size: 15px;
+    height: 30px;
+    justify-content: center;
+    margin-bottom: 7px;
+    width: 30px;
+}
+
+/*
+ * El componente ocupa todo el ancho disponible.
+ */
+.editorial-date-picker {
+    min-width: 0;
+    width: 100%;
+}
+
+/*
+ * Campo de texto interno de VueDatePicker.
+ *
+ * Se incluyen ambos nombres porque VueDatePicker cambió algunos nombres
+ * internos entre versiones.
+ */
+.editorial-date-picker .dp--input,
+.editorial-date-picker .dp__input {
+    background-color: #060b10;
+    border: 1px solid #364654;
+    border-radius: 9px;
+    box-sizing: border-box;
+    color: #eef2f6;
+    font-size: 14px;
+    font-weight: 750;
+    min-height: 44px;
+    padding-bottom: 9px;
+    padding-top: 9px;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        box-shadow 160ms ease;
+    width: 100%;
+}
+
+/*
+ * Placeholder del campo.
+ */
+.editorial-date-picker .dp--input::placeholder,
+.editorial-date-picker .dp__input::placeholder {
+    color: #71808d;
+    opacity: 1;
+}
+
+/*
+ * Hover del campo.
+ */
+.editorial-date-picker .dp--input:hover,
+.editorial-date-picker .dp__input:hover {
+    background-color: #0a1117;
+    border-color: #5c7082;
+}
+
+/*
+ * Foco del campo.
+ */
+.editorial-date-picker .dp--input:focus,
+.editorial-date-picker .dp__input:focus {
+    border-color: #d6a84f;
+    box-shadow: 0 0 0 3px rgba(214, 168, 79, 0.12);
+    outline: none;
+}
+
+/*
+ * Contenedor interno del menú desplegable de VueDatePicker 14.
+ *
+ * La clase .dp--menu la genera automáticamente el componente
+ * y contiene el calendario, el selector de hora y sus controles.
+ */
+.editorial-date-picker .dp--menu,
+.editorial-date-picker-menu {
+    border-radius: 12px;
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.72),
+        0 0 0 1px rgba(255, 255, 255, 0.03);
+    overflow: hidden;
+    z-index: 1300;
+}
+
+/*
+ * Fila inferior del calendario donde aparecen
+ * las acciones Cancelar y Listo.
+ */
+.dp--action-buttons {
+    align-items: center;
+    border-top: 1px solid rgba(121, 140, 158, 0.2);
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    padding: 10px 12px 12px;
+}
+
+/*
+ * Estilo base compartido por los botones
+ * Cancelar y Listo del calendario.
+ */
+.dp--action-buttons .dp--action-cancel,
+.dp--action-buttons .dp--action-select {
+    align-items: center;
+    border-radius: 7px;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: 850;
+    justify-content: center;
+    min-height: 32px;
+    padding: 0 12px;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        color 160ms ease;
+}
+
+/*
+ * Botón Cancelar.
+ */
+.dp--action-buttons .dp--action-cancel {
+    background: #151d25;
+    border: 1px solid #3a4856;
+    color: #b9c3cc;
+}
+
+.dp--action-buttons .dp--action-cancel:hover {
+    background: #1c2731;
+    border-color: #607385;
+    color: #ffffff;
+}
+
+/*
+ * Botón Listo.
+ *
+ * Utiliza un fondo dorado plano, sin resplandor
+ * ni desplazamiento vertical.
+ */
+.dp--action-buttons .dp--action-select {
+    background: #d7a63f;
+    border: 1px solid #e3b95f;
+    box-shadow: none;
+    color: #11100d;
+    transform: none;
+}
+
+/*
+ * Hover de Listo.
+ *
+ * Solamente aclara el fondo.
+ */
+.dp--action-buttons .dp--action-select:hover {
+    background: #e0b65d;
+    box-shadow: none;
+    transform: none;
+}
+
+/*
+ * Foco de Listo sin resplandor.
+ */
+.dp--action-buttons .dp--action-select:focus-visible {
+    border-color: #f0ca76;
+    box-shadow: none;
+    outline: none;
+}
+
+/*
+ * Evita cualquier desplazamiento al presionarlo.
+ */
+.dp--action-buttons .dp--action-select:active {
+    box-shadow: none;
+    transform: none;
+}
+
+/*
+ * Separa el título del campo del selector de fecha y hora.
+ */
+.schedule-date-field {
+    display: grid;
+    gap: 9px;
+}
+
+/*
+ * Menú del selector de fecha y hora utilizado
+ * para programar o reprogramar una noticia.
+ *
+ * El menú se teletransporta fuera del modal para impedir
+ * que el overflow vertical recorte el calendario.
+ */
+.schedule-date-picker-menu {
+    border-radius: 12px;
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.72),
+        0 0 0 1px rgba(255, 255, 255, 0.03);
+    overflow: hidden;
+    z-index: 1100;
+}
+
+/*
+ * Texto informativo debajo de las fechas.
+ */
+.editorial-date-help {
+    background: rgba(255, 255, 255, 0.025);
+    border-left: 2px solid rgba(214, 168, 79, 0.55);
+    border-radius: 0 7px 7px 0;
+    color: #8794a0;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 0;
+    padding: 8px 10px;
+}
+
+/*
+ * Zona inferior de acciones.
+ */
+.editorial-date-actions {
+    align-items: center;
+    border-top: 1px solid rgba(121, 140, 158, 0.2);
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    padding-top: 16px;
+}
+
+/*
+ * Estilo base de ambos botones.
+ */
+.editorial-date-actions button {
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 13px;
+    font-weight: 900;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 15px;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        color 160ms ease,
+        transform 160ms ease;
+}
+
+/*
+ * Botón Limpiar fecha.
+ */
+.editorial-date-clear {
+    background: transparent;
+    border-color: #3a4856 !important;
+    color: #aeb9c4;
+}
+
+/*
+ * Hover solamente cuando el botón está habilitado.
+ */
+.editorial-date-clear:not(:disabled):hover {
+    background-color: #141d25;
+    border-color: #607385 !important;
+    color: #ffffff;
+}
+
+/*
+ * Estado deshabilitado cuando todavía no hay
+ * ningún filtro de fechas aplicado.
+ */
+.editorial-date-clear:disabled {
+    background: transparent;
+    border-color: #27313a !important;
+    color: #56616c;
+    cursor: not-allowed;
+    opacity: 0.62;
+    pointer-events: none;
+}
+
+/*
+ * Botón Aplicar.
+ *
+ * Es una acción secundaria del filtro, por lo que utiliza
+ * el mismo estilo oscuro de Limpiar fecha y no el dorado
+ * reservado para las acciones principales del panel.
+ */
+.editorial-date-actions button[type="submit"] {
+    background: transparent;
+    border-color: #3a4856;
+    box-shadow: none;
+    color: #d7dee6;
+    min-width: 92px;
+    transform: none;
+}
+
+/*
+ * Hover y foco de Aplicar.
+ *
+ * El dorado aparece solamente como acento en el borde
+ * y el texto. No agrega brillo ni desplaza el botón.
+ */
+.editorial-date-actions button[type="submit"]:hover,
+.editorial-date-actions button[type="submit"]:focus-visible {
+    background: #141d25;
+    border-color: #9c7938;
+    box-shadow: none;
+    color: #efc66e;
+    outline: none;
+    transform: none;
+}
+
+/*
+ * Estado presionado de Aplicar.
+ */
+.editorial-date-actions button[type="submit"]:active {
+    background: #10171e;
+    border-color: #7f622f;
+    box-shadow: none;
+    color: #d9ad57;
+    transform: none;
+}
+
+/*
+ * Foco de los botones inferiores.
+ */
+.editorial-date-actions button:focus-visible {
+    box-shadow: 0 0 0 3px rgba(214, 168, 79, 0.16);
+    outline: none;
+}
+
+/* ============================================================================
+ * TEMA OSCURO TRAMA PARA VUEDATEPICKER 14
+ * ============================================================================ */
+
+/*
+ * VueDatePicker 14 utiliza nombres con guiones:
+ *
+ * dp--theme-dark
+ *
+ * Las versiones anteriores utilizaban:
+ *
+ * dp__theme_dark
+ */
+body .dp--theme-dark {
+    /* Fondo general del campo y del calendario. */
+    --dp-background-color: #070d12;
+
+    /* Texto principal. */
+    --dp-text-color: #edf2f6;
+
+    /* Hover de días y controles. */
+    --dp-hover-color: #16242e;
+    --dp-hover-text-color: #ffffff;
+    --dp-hover-icon-color: #efc66e;
+
+    /* Día seleccionado. */
+    --dp-primary-color: #d7a63f;
+    --dp-primary-disabled-color: #76613a;
+    --dp-primary-text-color: #080b0d;
+
+    /* Textos secundarios. */
+    --dp-secondary-color: #84919c;
+
+    /* Bordes. */
+    --dp-border-color: #30414e;
+    --dp-menu-border-color: #435563;
+    --dp-border-color-hover: #d7a63f;
+    --dp-border-color-focus: #d7a63f;
+
+    /* Días deshabilitados. */
+    --dp-disabled-color: #0b1217;
+    --dp-disabled-color-text: #46535d;
+
+    /* Iconos. */
+    --dp-icon-color: #aab5bf;
+
+    /* Scroll interno. */
+    --dp-scroll-bar-background: #091016;
+    --dp-scroll-bar-color: #354752;
+
+    /* Estados. */
+    --dp-success-color: #29c7ac;
+    --dp-success-color-disabled: #176f62;
+    --dp-danger-color: #dc4650;
+    --dp-marker-color: #d7a63f;
+    --dp-tooltip-color: #101920;
+
+    /* Fecha destacada. */
+    --dp-highlight-color: rgba(215, 166, 63, 0.17);
+
+    /* Rango de fechas. */
+    --dp-range-between-dates-background-color:
+        rgba(215, 166, 63, 0.13);
+
+    --dp-range-between-dates-text-color:
+        #f3d99f;
+
+    --dp-range-between-border-color:
+        rgba(215, 166, 63, 0.25);
+
+    /* Tamaños y forma. */
+    --dp-font-family: inherit;
+    --dp-font-size: 0.875rem;
+    --dp-border-radius: 10px;
+    --dp-cell-border-radius: 7px;
+    --dp-menu-min-width: 292px;
+    --dp-cell-size: 36px;
+    --dp-menu-padding: 10px;
+}
+
+/*
+ * Menú desplegable completo.
+ */
+body .dp--menu {
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(215, 166, 63, 0.08),
+            transparent 42%
+        ),
+        linear-gradient(
+            180deg,
+            #0b141b 0%,
+            #050a0e 100%
+        ) !important;
+
+    border: 1px solid #435563 !important;
+    border-radius: 12px !important;
+
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.76),
+        0 0 0 1px rgba(255, 255, 255, 0.025) !important;
+
+    overflow: hidden;
+}
+
+/*
+ * Cabecera con los nombres de los días:
+ *
+ * lu, ma, mi, ju, vi, sá, do
+ */
+body .dp--calendar-header-cell {
+    color: #aeb9c3 !important;
+    font-size: 12px;
+    font-weight: 850;
+}
+
+/*
+ * Día seleccionado.
+ *
+ * En VueDatePicker 14 la clase es dp--active.
+ * Utiliza un dorado plano, sin brillo ni sombra.
+ */
+body .dp--active {
+    background: #d7a63f !important;
+    box-shadow: none !important;
+    color: #080b0d !important;
+    font-weight: 950 !important;
+}
+
+/*
+ * Día bajo el cursor.
+ */
+body .dp--calendar-item:hover .dp--cell-inner {
+    background-color: #172630 !important;
+    color: #ffffff !important;
+}
+
+/*
+ * Mes, año y flechas del encabezado.
+ */
+body .dp--month-year-select,
+body .dp--inner-nav {
+    color: #edf2f6 !important;
+}
+
+/*
+ * Hover del mes, año y flechas.
+ */
+body .dp--month-year-select:hover,
+body .dp--inner-nav:hover {
+    background-color: #172630 !important;
+    color: #efc66e !important;
+}
+
+/* ============================================================================ */
+
+/*
+ * Botón que elimina solamente el rango de fechas.
+ */
+.editorial-date-clear {
+    background: transparent;
+    color: var(--muted);
+}
+
+/*
+ * Botón que elimina todos los filtros aplicados.
+ *
+ * Utiliza un fondo ligeramente distinto para que parezca una acción completa
+ * y no solamente un texto encerrado dentro de un borde.
+ */
+.editorial-filter-clear {
+    align-items: center;
+    background: color-mix(
+        in srgb,
+        var(--surface-2) 72%,
+        transparent
+    );
+    border: 1px solid #3b4856;
+    border-radius: 8px;
+    color: #d7dee6;
+    cursor: pointer;
+    display: inline-flex;
+    flex: 0 0 auto;
+    font-weight: 850;
+    gap: 7px;
+    justify-content: center;
+    min-height: 44px;
+    min-width: 104px;
+    padding: 0 13px;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        color 160ms ease,
+        transform 160ms ease;
+}
+
+/*
+ * El botón Limpiar permanece visible, pero inactivo cuando no existe
+ * ningún filtro aplicado.
+ */
+.editorial-filter-clear:disabled {
+    background: #0b1015;
+    border-color: #27313a;
+    color: #56616c;
+    cursor: not-allowed;
+    opacity: 0.62;
+    pointer-events: none;
+}
+
+/*
+ * Mantiene apagado también el icono.
+ */
+.editorial-filter-clear:disabled svg {
+    color: #56616c;
+}
+
+/*
+ * Resalta las acciones Buscar y Limpiar con un hover secundario,
+ * sin hacerlas competir visualmente con Nueva noticia.
+ */
+.editorial-filter-clear:hover,
+.editorial-filter-clear:focus-visible,
+.editorial-search-form button:not(:disabled):hover,
+.editorial-search-form button:not(:disabled):focus-visible {
+    background: color-mix(
+        in srgb,
+        var(--gold) 10%,
+        #0c1218
+    );
+    border-color: color-mix(
+        in srgb,
+        var(--gold) 62%,
+        #34414e
+    );
+    color: var(--gold);
+    /* elimina el contorno que el navegador muestra alrededor de un elemento cuando recibe foco, */
+    outline: none;    
+}
+
+/*
+ * Mantiene Nueva noticia en el extremo derecho de la barra.
+ */
+.editorial-toolbar-actions {
+    flex: 0 0 auto;
+    margin-left: auto;
+}
+
+.editorial-toolbar-actions,
+.per-page-control {
+    align-items: center;
+    display: flex;
+}
+
+.editorial-toolbar-actions {
+    gap: 12px;
+}
+
+.per-page-control {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 800;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.per-page-control select {
+    background-color: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--text);
+    padding: 9px 30px 9px 10px;
+}
+
+/*
+ * Panel que contiene la tabla del listado de noticias.
+ *
+ * El margen inferior reserva espacio para la paginación fija y evita que
+ * la última fila quede tapada cuando el usuario llega al final del listado.
+ */
+.editorial-table-panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    margin-top: 18px;
+    /*
+     * Reserva aproximadamente la altura de la paginación fija.
+     *
+     * Permite que la última fila pueda quedar completamente por encima
+     * de la barra al llegar al final del listado, sin dejar un hueco
+     * excesivo entre la tabla y la paginación.
+     */
+    margin-bottom: 64px;
+}
+
+.editorial-table-scroll {
+    /*
+     * En escritorio no debe crear un contenedor de scroll propio porque
+     * el encabezado tiene que adherirse al scroll de la ventana.
+     */
+    overflow: visible;
+}
+
+/*
+ * Tabla principal del listado de noticias.
+ *
+ * Mantiene separadas las celdas para controlar correctamente sus bordes,
+ * ocupa todo el ancho disponible y conserva un ancho mínimo para evitar que
+ * las columnas se compriman demasiado en pantallas angostas.
+ *
+ * table-layout: fixed mantiene estable el ancho de las columnas y evita que
+ * textos largos modifiquen la distribución general de la tabla.
+ */
+.editorial-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 980px;
+    table-layout: fixed;
+    width: 100%;
+}
+
+/* La columna Portada necesita espacio para mostrar chips y su acción editorial. */
+.editorial-articles-table {
+    min-width: 1180px;
+}
+
+/*
+ * Estilos compartidos por las celdas del encabezado y del contenido
+ * de la tabla.
+ */
+.editorial-table th,
+.editorial-table td {
+    border-bottom: 1px solid var(--line);
+    padding: 13px 14px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/*
+ * Mantiene fijo el encabezado de la tabla debajo de la barra de filtros.
+ */
+.editorial-table th {
+    /*
+     * Fondo sólido del encabezado, diferenciado de las filas.
+     */
+    background: #0c1218;
+    color: #dce3ea;
+
+    /*
+     * Líneas horizontales del encabezado.
+     * No se utiliza box-shadow porque aplicado individualmente a cada th
+     * genera separaciones verticales visibles entre las columnas.
+     */
+    border-top: 1px solid rgba(214, 162, 58, 0.4);
+    border-bottom: 2px solid var(--gold);
+    box-shadow: none;
+
+    font-size: 12px;
+    font-weight: 950;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+
+    /*
+     * Mantiene el encabezado inmediatamente debajo de la barra de filtros
+     * mientras ambos permanecen visibles durante el desplazamiento.
+     */
+    position: sticky;
+    top: 72px;
+    z-index: 50;
+}
+
+/*
+ * Noticias del editor: Noticia | Estado | Portada | Categoría | Autor |
+ * Vistas | Última edición | Acciones.
+ */
+.editorial-table th:nth-child(1) { width: 25%; }
+.editorial-table th:nth-child(2) { width: 10%; }
+.editorial-table th:nth-child(3) { width: 15%; }
+.editorial-table th:nth-child(4) { width: 10%; }
+.editorial-table th:nth-child(5) { width: 11%; }
+.editorial-table th:nth-child(6) { width: 7%; }
+.editorial-table th:nth-child(7) { width: 13%; }
+.editorial-table th:nth-child(8) { width: 9%; }
+
+.editorial-sort-button {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    font: inherit;
+    gap: 7px;
+    letter-spacing: inherit;
+    padding: 0;
+    text-transform: inherit;
+}
+
+.editorial-sort-button:hover,
+.editorial-sort-button:focus-visible {
+    color: var(--gold);
+}
+
+.sort-indicator {
+    font-size: 10px;
+    line-height: 1;
+}
+
+/* Estado derivado de las marcas Urgente y Destacada. */
+.homepage-state-cell {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.homepage-state-badge {
+    border: 1px solid transparent;
+    border-radius: 999px;
+    display: inline-flex;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    padding: 6px 8px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.homepage-state-normal {
+    background: #202832;
+    border-color: #394654;
+    color: #b8c2cc;
+}
+
+.homepage-state-featured {
+    background: rgba(214, 162, 58, 0.16);
+    border-color: rgba(214, 162, 58, 0.55);
+    color: #e8bd62;
+}
+
+.homepage-state-breaking {
+    background: rgba(216, 50, 60, 0.15);
+    border-color: rgba(216, 50, 60, 0.55);
+    color: #ef626b;
+}
+
+/* Modal independiente para administrar portada sin editar el contenido. */
+.article-homepage-modal {
+    max-width: 600px;
+}
+
+.article-homepage-modal-title {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 850;
+    margin: 0;
+}
+
+.article-homepage-modal-help {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.article-homepage-flags {
+    margin: 0;
+}
+
+.article-homepage-feature-error,
+.homepage-feature-error-block {
+    align-items: flex-start;
+    background: rgba(65, 18, 24, 0.72);
+    border: 1px solid rgba(216, 50, 60, 0.5);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 2px;
+    padding: 10px 12px;
+}
+
+.article-homepage-feature-error .form-error,
+.homepage-feature-error-block .form-error {
+    margin: 0;
+}
+
+.homepage-featured-filter-link,
+.homepage-featured-link {
+    background: transparent;
+    border: 0;
+    color: var(--gold);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 850;
+    padding: 0;
+    text-decoration: underline;
+}
+
+.editorial-table-row {
+    cursor: pointer;
+    transition: background 0.18s ease;
+}
+
+.editorial-table-row:hover,
+.editorial-table-row:focus-visible {
+    background: var(--surface-2);
+    outline: none;
+}
+
+.editorial-table-row:last-child td {
+    border-bottom: 0;
+}
+
+.editorial-table td {
+    color: var(--text);
+    font-size: 14px;
+}
+
+.editorial-table .numeric {
+    text-align: right;
+}
+
+/*
+ * En el listado del periodista, acerca Vistas a Categoría
+ * y separa su contenido de Última edición.
+ */
+.editorial-table--journalist .numeric {
+    text-align: left;
+}
+
+/* Mantiene la fecha y el encabezado de Última edición en una sola línea. */
+.editorial-table--journalist th:nth-child(5) .editorial-sort-button,
+.editorial-table--journalist td:nth-child(5) {
+    white-space: nowrap;
+}
+
+.editorial-table .actions {
+    color: var(--gold);
+    font-weight: 950;
+    text-align: right;
+}
+
+/*
+ * En Noticias, Acciones se identifica como columna operativa:
+ * el encabezado queda centrado y los botones se agrupan debajo.
+ */
+.editorial-articles-table th.actions {
+    color: var(--gold);
+    padding-right: 24px;
+    text-align: center;
+}
+
+.editorial-articles-table td.actions {
+    padding-right: 24px;
+    text-align: center;
+}
+
+.editorial-articles-table td.actions .article-row-actions {
+    justify-content: center;
+}
+
+.editorial-title-cell {
+    align-items: center;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 88px minmax(0, 1fr);
+}
+
+.editorial-title-cell img {
+    aspect-ratio: 16 / 10;
+    border-radius: 6px;
+    height: 55px;
+    object-fit: cover;
+    width: 88px;
+}
+
+/*
+ * Mantiene el título en una sola línea y agrega puntos suspensivos
+ * cuando supera el ancho disponible.
+ */
+.editorial-title-cell strong {
+    display: block;
+    font-size: 14px;
+    line-height: 1.35;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Agrupa el título y un posible aviso de integridad sin ensanchar la columna. */
+.editorial-title-copy {
+    display: grid;
+    gap: 3px;
+    min-width: 0;
+}
+
+/* Aviso mostrado cuando cover_image existe en BD pero el archivo físico falta. */
+.editorial-title-copy .editorial-missing-cover {
+    color: #ff7f8b;
+    font-size: 11px;
+    font-weight: 800;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.editorial-empty-state {
+    padding: 34px !important;
+    text-align: center !important;
+}
+
+@media (max-width: 1280px) {
+    .editorial-table-scroll {
+        overflow-x: auto;
+    }
+
+    /*
+     * Cuando la tabla necesita desplazamiento horizontal, el encabezado vuelve
+     * a su posición normal para evitar conflictos entre ambos desplazamientos.
+     */
+    .editorial-table th {
+        position: static;
+    }
+}
+
+@media (max-width: 920px) {
+    .editorial-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+        /*
+         * En pantallas pequeñas la barra se organiza verticalmente y ocuparía
+         * demasiado espacio si permaneciera adherida.
+         */
+        position: static;
+        box-shadow: none;
+    }
+
+    /*
+     * En pantallas pequeñas, la lupa, la caja y Buscar permanecen juntos.
+     */
+    .editorial-toolbar .editorial-search-form {
+        grid-template-columns:
+            auto
+            minmax(0, 1fr)
+            auto;
+        max-width: none;
+        min-width: 0;
+        width: 100%;
+    }
+
+    /*
+     * Los filtros ocupan todo el ancho disponible.
+     */
+    .editorial-search-input,
+    .editorial-filter-control,
+    .editorial-date-filter,
+    .editorial-date-button,
+    .editorial-filter-clear {
+        width: 100%;
+    }
+
+   /*
+    * En pantallas medianas el cuadro se alinea con el borde izquierdo
+    * del botón y nunca supera el ancho de la ventana.
+    */
+    .editorial-date-popup {
+        left: 0;
+        right: auto;
+        width: min(640px, calc(100vw - 40px));
+    }
+
+    /*
+     * Nueva noticia deja de necesitar el margen automático de escritorio.
+     */
+    .editorial-toolbar-actions {
+        margin-left: 0;
+    }
+
+    .editorial-pagination {
+        left: 20px;
+        right: 20px;
+        bottom: 0;
+    }
+
+    .editorial-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .editorial-toolbar-actions {
+        justify-content: space-between;
+    }
+}
+
+/*
+ * En celulares las fechas se muestran una debajo de la otra.
+ */
+@media (max-width: 680px) {
+    .editorial-date-popup {
+        gap: 16px;
+        padding: 17px;
+        width: calc(100vw - 32px);
+    }
+
+    .editorial-date-fields {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .editorial-date-range-separator {
+        display: none;
+    }
+
+    .editorial-date-actions {
+        align-items: stretch;
+        flex-direction: column-reverse;
+    }
+
+    .editorial-date-actions button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 560px) {
+    .editorial-toolbar-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .per-page-control {
+        justify-content: space-between;
+    }
+}
+
+/* ==========================================================================
+ * PAGINACIÓN DEL LISTADO EDITORIAL
+ * ==========================================================================
+ *
+ * Estilos de resources/js/Components/Admin/AdminPagination.vue y
+ * resources/js/Components/Admin/ArticlePagination.vue.
+ *
+ * El prefijo editorial-pagination evita conflictos con otras paginaciones.
+ * ========================================================================== */
+
+.editorial-pagination {
+    /*
+     * Barra fija al borde inferior de la ventana.
+     *
+     * Como position: fixed toma como referencia la ventana completa y no el
+     * panel de la tabla, left debe contemplar:
+     *
+     * - el ancho del sidebar;
+     * - el margen izquierdo con el que empieza el contenido principal.
+     *
+     * box-sizing: border-box evita que padding y border hagan que la barra
+     * sobresalga del ancho calculado.
+     */
+    position: fixed;
+    /*
+     * Deja espacio para el menú lateral y el margen interno del contenido principal.
+     *
+     * Este valor fue ajustado al ancho real del layout para que la barra de
+     * paginación comience exactamente alineada con el borde izquierdo de la tabla.
+     */
+    left: 303px;
+    right: 24px;
+    bottom: 0;
+    z-index: 100;
+    box-sizing: border-box;
+
+   /*
+    * Divide la barra en tres columnas iguales.
+    *
+    * El resumen ocupa la columna izquierda, los controles quedan centrados
+    * respecto de toda la pantalla y la tercera columna equilibra el espacio.
+    */
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;    
+    gap: 24px;
+
+    padding: 16px 18px;
+
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px 10px 0 0;
+
+    box-shadow:
+        0 10px 26px rgba(0, 0, 0, 0.32),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.editorial-pagination__summary {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.editorial-pagination__summary strong {
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    font-weight: 900;
+}
+
+.editorial-pagination__controls {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+/*
+ * Alinea el selector de cantidad por página contra el extremo derecho
+ * de la barra de paginación.
+ */
+.editorial-pagination__per-page {
+    justify-self: end;
+}
+
+/*
+ * Contenedor utilizado para colocar la flecha dentro del selector.
+ */
+.editorial-pagination__select-wrapper {
+    align-items: center;
+    display: inline-flex;
+    position: relative;
+}
+
+/*
+ * Elimina la flecha global dibujada mediante background-image porque este
+ * selector utiliza un ícono propio, correctamente centrado.
+ */
+.editorial-pagination__select-wrapper select {
+    background-image: none;
+    padding-right: 34px;
+}
+
+/*
+ * Mantiene el borde original cuando el selector recibe el foco.
+ *
+ * Evita el contorno blanco agregado por los estilos generales del formulario
+ * o por el navegador al abrir el combo.
+ */
+.editorial-pagination__select-wrapper select:focus,
+.editorial-pagination__select-wrapper select:focus-visible {
+    border-color: var(--line);
+    box-shadow: none;
+    outline: none;
+}
+
+/*
+ * Centra la flecha verticalmente junto al número seleccionado.
+ */
+.editorial-pagination__select-icon {
+    color: var(--muted);
+    pointer-events: none;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 160ms ease;
+}
+
+/*
+ * Cuando el selector está abierto, gira la flecha para que apunte hacia arriba.
+ */
+.editorial-pagination__select-wrapper--open
+.editorial-pagination__select-icon {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.editorial-pagination__pages {
+    align-items: center;
+    display: flex;
+    gap: 6px;
+}
+
+.editorial-pagination__direction,
+.editorial-pagination__page {
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--muted);
+    display: inline-flex;
+    justify-content: center;
+    min-height: 38px;
+    text-decoration: none;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        color 160ms ease,
+        transform 160ms ease;
+}
+
+.editorial-pagination__direction {
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 900;
+    gap: 7px;
+    padding: 0 13px;
+    transition: none;
+    white-space: nowrap;
+}
+
+.editorial-pagination__page {
+    border-radius: 8px;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    font-weight: 900;
+    min-width: 38px;
+    padding: 0 9px;
+}
+
+a.editorial-pagination__direction:hover,
+a.editorial-pagination__direction:focus-visible,
+a.editorial-pagination__page:hover,
+a.editorial-pagination__page:focus-visible {
+    background: color-mix(in srgb, var(--gold) 10%, var(--surface));
+    border-color: color-mix(in srgb, var(--gold) 62%, var(--line));
+    color: var(--gold);
+    outline: none;    
+}
+
+.editorial-pagination__page--active {
+    background: var(--gold);
+    border-color: var(--gold);
+    box-shadow:
+        0 0 0 1px color-mix(in srgb, var(--gold) 30%, transparent),
+        0 8px 22px rgba(0, 0, 0, 0.28);
+    color: var(--bg);
+    cursor: default;
+    pointer-events: none;
+}
+
+.editorial-pagination__direction--next {
+    background: color-mix(in srgb, var(--gold) 8%, var(--surface));
+    border-color: color-mix(in srgb, var(--gold) 36%, var(--line));
+    color: var(--gold);
+}
+
+.editorial-pagination__direction--disabled {
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    border-color: color-mix(in srgb, var(--line) 68%, transparent);
+    color: color-mix(in srgb, var(--muted) 42%, transparent);
+    cursor: default;
+    opacity: 0.65;
+}
+
+.editorial-pagination__ellipsis {
+    align-items: center;
+    color: var(--muted);
+    display: inline-flex;
+    font-size: 14px;
+    justify-content: center;
+    min-width: 28px;
+}
+
+@media (max-width: 850px) {
+    .editorial-pagination {
+        gap: 14px;
+        grid-template-columns: 1fr;
+    }
+
+    .editorial-pagination__summary {
+        text-align: center;
+    }
+
+    .editorial-pagination__controls {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 560px) {
+    .editorial-pagination {
+        padding: 14px 12px;
+    }
+
+    .editorial-pagination__controls {
+        gap: 6px;
+    }
+
+    .editorial-pagination__pages {
+        gap: 5px;
+    }
+
+    .editorial-pagination__direction span {
+        display: none;
+    }
+
+    .editorial-pagination__direction {
+        min-width: 38px;
+        padding: 0;
+        width: 38px;
+    }
+
+    .editorial-pagination__page {
+        min-width: 36px;
+        padding-inline: 7px;
+    }
+}

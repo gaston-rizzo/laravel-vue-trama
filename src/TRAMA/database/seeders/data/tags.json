@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "IA",
+    "slug": "ia",
+    "description": "Inteligencia artificial, automatización y nuevos modelos de uso.",
+    "is_active": true,
+    "merged_into_id": null,
+    "created_at": "2026-06-06 08:00:00",
+    "updated_at": "2026-06-06 08:00:00"
+  },
+  {
+    "id": 2,
+    "name": "Mercados",
+    "slug": "mercados",
+    "description": "Mercados financieros, precios y expectativas económicas.",
+    "is_active": true,
+    "merged_into_id": null,
+    "created_at": "2026-06-06 08:00:00",
+    "updated_at": "2026-06-06 08:00:00"
+  },
+  {
+    "id": 3,
+    "name": "Congreso",
+    "slug": "congreso",
+    "description": "Actividad parlamentaria, proyectos y negociación legislativa.",
+    "is_active": true,
+    "merged_into_id": null,
+    "created_at": "2026-06-06 08:00:00",
+    "updated_at": "2026-06-06 08:00:00"
+  },
+  {
+    "id": 4,
+    "name": "Startups",
+    "slug": "startups",
+    "description": "Emprendimientos tecnológicos, inversión y crecimiento.",
+    "is_active": true,
+    "merged_into_id": null,
+    "created_at": "2026-06-06 08:00:00",
+    "updated_at": "2026-06-06 08:00:00"
+  },
+  {
+    "id": 5,
+    "name": "Energía",
+    "slug": "energia",
+    "description": "Energía, infraestructura, recursos y transición productiva.",
+    "is_active": true,
+    "merged_into_id": null,
+    "created_at": "2026-06-06 08:00:00",
+    "updated_at": "2026-06-06 08:00:00"
+  },
+  {
+    "id": 6,
+    "name": "Fútbol",
+    "slug": "futbol",
+    "description": "Competencia, clubes, selecciones y negocio del fútbol.",
+    "is_active": true,
+    "merged_into_id": null,
+    "created_at": "2026-06-06 08:00:00",
+    "updated_at": "2026-06-06 08:00:00"
+  },
+  {
+    "id": 7,
+    "name": "Streaming",
+    "slug": "streaming",
+    "description": "Plataformas, consumo digital y distribución de contenidos.",
+    "is_active": true,
+    "merged_into_id": null,
+    "created_at": "2026-06-06 08:00:00",
+    "updated_at": "2026-06-06 08:00:00"
+  },
+  {
+    "id": 8,
+    "name": "Geopolítica",
+    "slug": "geopolitica",
+    "description": "Relaciones internacionales, alianzas y tensiones globales.",
+    "is_active": true,
+    "merged_into_id": null,
+    "created_at": "2026-06-06 08:00:00",
+    "updated_at": "2026-06-06 08:00:00"
+  },
+  {
+    "id": 9,
+    "name": "Cine",
+    "slug": "cine",
+    "description": "Industria audiovisual, estrenos, festivales y producción.",
+    "is_active": true,
+    "merged_into_id": null,
+    "created_at": "2026-06-06 08:00:00",
+    "updated_at": "2026-06-06 08:00:00"
+  },
+  {
+    "id": 10,
+    "name": "Datos",
+    "slug": "datos",
+    "description": "Estadísticas, analítica, información pública y evidencia.",
+    "is_active": true,
+    "merged_into_id": null,
+    "created_at": "2026-06-06 08:00:00",
+    "updated_at": "2026-06-06 08:00:00"
+  },
+  {
+    "id": 11,
+    "name": "Seguridad",
+    "slug": "seguridad",
+    "description": "Ciberseguridad, prevención, identidad y gestión de riesgos.",
+    "is_active": true,
+    "merged_into_id": null,
+    "created_at": "2026-06-06 08:00:00",
+    "updated_at": "2026-06-06 08:00:00"
+  },
+  {
+    "id": 12,
+    "name": "Inversión",
+    "slug": "inversion",
+    "description": "Capital, financiamiento, proyectos y decisiones de inversión.",
+    "is_active": true,
+    "merged_into_id": null,
+    "created_at": "2026-06-06 08:00:00",
+    "updated_at": "2026-06-06 08:00:00"
+  }
+]

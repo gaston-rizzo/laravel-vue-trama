@@ -1,0 +1,1227 @@
+/* ============================================================================
+ * CSS ADMIN · FORMULARIO DE NOTICIAS
+ *
+ * Estilos específicos de crear/editar noticia: pestañas, barra fija de
+ * acciones, revisión editorial, historial, editor enriquecido y previsualización.
+ * ============================================================================ */
+
+/* ============================================================================
+ * DEVOLUCIÓN EDITORIAL Y OBSERVACIONES
+ * ============================================================================
+ *
+ * Muestra al periodista las observaciones de una noticia devuelta sin romper el
+ * formulario principal ni hacer crecer indefinidamente el modal de consulta.
+ * ============================================================================ */
+
+/* Aviso compacto mostrado cuando una noticia fue devuelta al periodista. */
+.editor-feedback-banner {
+    background: rgba(216, 50, 60, 0.1);
+    border: 1px solid rgba(216, 50, 60, 0.45);
+    border-radius: 10px;    
+    padding: 16px;
+}
+
+/* Distribuye el texto del aviso y el botón para consultar las observaciones. */
+.editor-feedback-summary {
+    align-items: center;
+    display: flex;
+    gap: 18px;
+    justify-content: space-between;
+}
+
+/* Título principal del aviso de devolución. */
+.editor-feedback-banner h2 {
+    margin: 2px 0 0;
+}
+
+/* Explicación breve mostrada sin incluir el contenido de las observaciones. */
+.editor-feedback-description {
+    color: var(--muted);
+    line-height: 1.5;
+    margin: 7px 0 0;
+}
+
+/*
+ * Identifica al periodista autor dentro del aviso de revisión.
+ */
+.workflow-person {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 7px !important;
+}
+
+/*
+ * Resalta solamente el nombre de la persona involucrada
+ * en el movimiento editorial.
+ */
+.workflow-person strong,
+.editor-feedback-description strong {
+    color: var(--text);
+    font-weight: 900;
+}
+
+/* Modal donde el periodista consulta las observaciones completas. */
+.observations-modal {
+    max-width: 720px;
+}
+
+/*
+ * Limita la altura de la lista para que una observación extensa
+ * no haga crecer indefinidamente el modal. 
+ * Cuando supera el límite, solamente esta zona tiene scroll.
+ */
+.observations-list {
+    display: grid;
+    gap: 12px;
+    max-height: min(360px, 45vh);
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+/*
+ * Corta textos excesivamente largos aunque no tengan espacios,
+ * evitando que rompan el ancho del modal.
+ */
+.observations-message {
+    overflow-wrap: anywhere;
+}
+
+/* Cada devolución muestra por separado el editor, la fecha y el mensaje. */
+.observations-item {
+    background: rgba(0, 0, 0, 0.24);
+    border-left: 3px solid var(--red);
+    border-radius: 6px;
+    padding: 14px;
+}
+
+/* Mantiene separada la identificación del editor respecto del mensaje. */
+.observations-item > strong {
+    display: block;
+}
+
+/* Conserva los saltos de línea permitidos y corta textos largos
+   aunque no contengan espacios. */
+.observations-message {
+    color: var(--text);
+    line-height: 1.55;
+    margin: 8px 0 0;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* Alinea el botón de cierre en el extremo derecho del modal. */
+.observations-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media (max-width: 640px) {
+    .editor-feedback-summary {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .editor-feedback-summary > button {
+        width: 100%;
+    }
+}
+
+/* ============================================================================
+ * PESTAÑAS Y CONTENEDORES DEL FORMULARIO
+ * ============================================================================
+ *
+ * Organiza las secciones Contenido, Configuración e Historial, y reserva el
+ * espacio necesario para que la barra fija no tape los últimos controles.
+ * ============================================================================ */
+
+.editor-tabs {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.autosave-status {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 850;
+    margin-left: auto;
+}
+
+.autosave-status.saving,
+.autosave-status.pending {
+    color: var(--gold);
+}
+
+.autosave-status.saved {
+    color: var(--cyan);
+}
+
+.autosave-status.error {
+    color: var(--red);
+}
+
+/*
+ * Organiza el contenido de cada pestaña del formulario editorial
+ */
+.editor-tab-panel {
+    display: grid;
+    gap: 16px;
+    margin-top: 14px;       
+    /* No agrega espacio inferior en Configuración para evitar scroll artificial. */
+    padding-bottom: 0px; 
+}
+
+/*
+ * Contenido sí reserva espacio porque el editor es largo y la barra
+ * fija no debe tapar la parte final.
+ */
+.editor-tab-panel--content {
+    padding-bottom: 78px;
+}
+
+/*
+ * Reserva espacio debajo de Configuración para que la barra fija
+ * de acciones no tape los últimos controles.
+ *
+ * Si el contenido supera la altura disponible, por ejemplo cuando
+ * aparecen cambios solicitados por la edición, la página puede
+ * desplazarse normalmente hasta mostrar todos los controles.
+ */
+.editor-tab-panel--settings {
+    padding-bottom: 78px;
+}
+
+.editor-content-panel {
+    min-height: 630px;
+}
+
+.editor-settings-grid {
+    align-items: start;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: minmax(0, 1fr) 360px;
+}
+
+/*
+ * Selector de categoría del formulario.
+ * Usa el mismo ChevronDown SVG que los buscadores de etiquetas para evitar
+ * diferencias de renderizado con la flecha nativa dibujada por CSS.
+ */
+.article-category-select-control {
+    display: block;
+    position: relative;
+}
+
+.article-category-select-control .article-category-select:not([multiple]) {
+    background-image: none;
+    cursor: pointer;
+    padding-right: 46px;
+}
+
+.article-category-select-control > svg {
+    border-radius: 6px;
+    color: #aab4c0;
+    box-sizing: content-box;
+    height: 16px;
+    padding: 7px;
+    pointer-events: none;
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    z-index: 2;
+}
+
+.article-category-select-control:hover > svg {
+    color: var(--gold);
+}
+
+.article-category-select-control .article-category-select:disabled {
+    cursor: not-allowed;
+}
+
+.article-category-select-control:has(.article-category-select:disabled):hover > svg {
+    color: #aab4c0;
+    opacity: 0.45;
+}
+
+/* ============================================================================
+ * BARRA FIJA DE ACCIONES DEL FORMULARIO
+ * ============================================================================
+ *
+ * Mantiene visibles los botones  mientras se edita una noticia
+ * extensa, incluso cuando el cuerpo o la configuración tienen scroll.
+ * ============================================================================ */
+/*
+ * Barra fija con los botones de creación y edición.
+ *
+ * Su posición base ocupa el ancho general disponible del formulario:
+ *
+ * - comienza después del menú lateral;
+ * - mantiene un pequeño margen respecto del borde derecho;
+ * - permanece visible aunque el usuario haga scroll.
+ *
+ * Esta geometría base se conserva para Configuración.
+ * La pestaña Contenido aplica después un ajuste propio porque sus campos
+ * están contenidos dentro de .editor-main, que posee 18 px de padding.
+ */
+.editor-save-bar {
+    align-items: center;
+    background: #0d1117;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    box-sizing: border-box;
+    bottom: 12px;
+    box-shadow:
+        0 -8px 22px rgba(0, 0, 0, 0.32),
+        0 10px 26px rgba(0, 0, 0, 0.34),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+    left: 303px;
+    padding: 13px 15px;
+    position: fixed;
+    right: 24px;
+    z-index: 100;
+}
+
+/*
+ * Ajuste exclusivo para la pestaña Contenido.
+ *
+ * .editor-main tiene 18 px de padding horizontal. Por eso los inputs,
+ * el resumen y el RichTextEditor comienzan y terminan 18 px más adentro
+ * que el borde exterior del panel.
+ *
+ * La barra base coincide con el ancho exterior del panel. Al sumar esos
+ * mismos 18 px a izquierda y derecha hacemos que, solamente en Contenido,
+ * sus costados sigan la misma guía vertical que los campos internos.
+ *
+ * Base:
+ *
+ *     left: 303px
+ *     right: 24px
+ *
+ * Contenido:
+ *
+ *     303 + 18 = 321px
+ *      24 + 18 =  42px
+ *
+ * Configuración no recibe esta clase y conserva el ancho original.
+ */
+.editor-save-bar--content {
+    left: 321px;
+    right: 42px;
+}
+
+/*
+ * Separa la eliminación definitiva del resto de las acciones.
+ *
+ * El margen automático ocupa todo el espacio disponible a la derecha
+ * del botón y empuja las acciones normales hacia el extremo derecho.
+ */
+.article-delete-button {
+    margin-right: auto;
+}
+
+/*
+ * Ajusta la barra cuando desaparece el menú lateral fijo.
+ */
+@media (max-width: 920px) {
+    .editor-save-bar {
+        bottom: 12px;
+        left: 20px;
+        right: 20px;
+    }
+}
+
+/*
+ * Ajusta los botones en celulares.
+ */
+@media (max-width: 640px) {
+    .editor-save-bar {
+        padding: 10px;
+    }
+
+    .editor-save-bar > button {
+        flex: 1 1 auto;
+    }
+
+    .editor-tab-panel--content {
+        padding-bottom: 150px;
+    }
+
+    .editor-tab-panel--settings {
+        padding-bottom: 150px;
+    }
+
+    .article-delete-button {
+        margin-right: 0;
+    }
+}
+
+/* Botón Guardar noticia: hover visible, sin movimiento. */
+.editor-save-bar .admin-primary-action {
+    font-size: 14px;
+    min-height: 46px;
+    padding: 10px 14px;
+
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+/* mantener ancho del botón fijo */
+.article-save-button {
+    width: 160px;
+    justify-content: center;
+}
+
+/* Estado deshabilitado del botón principal del formulario. */
+.admin-primary-action:disabled {
+    background: #2a3038;
+    border-color: #3a424d;
+    color: #7d8794;
+
+    cursor: not-allowed;
+    opacity: 1;
+    pointer-events: none;
+}
+
+/* Hover de Guardar noticia: amarillo más limpio y borde acorde. */
+.editor-save-bar .admin-primary-action:hover,
+.editor-save-bar .admin-primary-action:focus-visible {
+    background: #f4c542;
+    border-color: #c99a24;
+    color: #111318;
+    box-shadow: none;
+}
+
+.editor-save-bar .admin-primary-action:active {
+    background: #d9a92f;
+    border-color: #b8891f;
+    color: #111318;
+    box-shadow: none;
+}
+
+.editor-save-bar > div:first-child {
+    display: grid;
+    gap: 3px;
+}
+
+.editor-save-bar span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.editor-action-group {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    justify-content: flex-end;
+}
+
+.secondary-admin-link,
+.danger-outline-button,
+.preview-button {
+    align-items: center;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--text);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 14px;
+    font-weight: 900;
+    gap: 7px;
+    justify-content: center;
+    min-height: 46px;
+    padding: 10px 14px;
+}
+
+/* Hover de los botones secundarios, como Volver. */
+.secondary-admin-link:hover,
+.secondary-admin-link:focus-visible {
+    background: #17212c;
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.danger-outline-button {
+    background: rgba(216, 50, 60, 0.09);
+    border-color: rgba(216, 50, 60, 0.55);
+    color: #ff8f96;
+}
+
+.danger-outline-button:hover:not(:disabled),
+.danger-outline-button:focus-visible:not(:disabled) {
+    background: rgba(216, 50, 60, 0.18);
+    border-color: rgba(255, 143, 150, 0.82);
+    color: #ffd1d4;
+}
+
+.danger-outline-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.editor-status-info {
+    background: #101720;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    display: grid;
+    gap: 5px;
+    padding: 15px;
+}
+
+.editor-status-info span {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.editor-status-info strong {
+    color: var(--text);
+    font-size: 18px;
+}
+
+.editor-status-info small {
+    color: var(--muted);
+    line-height: 1.45;
+}
+
+.preview-button {
+    width: 100%;
+}
+
+/* ============================================================================
+ * EDITOR ENRIQUECIDO DEL CUERPO
+ * ============================================================================
+ *
+ * Define la toolbar, el área editable y la presentación base del contenido
+ * enriquecido que luego se reutiliza en previews e historial.
+ * ============================================================================ */
+
+/* Separa visualmente el editor de su contador inferior. */
+.rich-editor-wrapper {
+    display: grid;
+    gap: 7px;
+}
+
+.rich-editor-shell {
+    background: #0d1117;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    overflow: hidden;
+}
+
+.rich-editor-toolbar {
+    align-items: center;
+    background: #161c24;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 8px;
+}
+
+.rich-editor-toolbar button {
+    align-items: center;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: var(--muted);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 13px;
+    font-weight: 950;
+    height: 34px;
+    justify-content: center;
+    min-width: 34px;
+    padding: 0 8px;
+}
+
+.rich-editor-toolbar button:hover:not(:disabled) {
+    background: var(--surface-2);
+    border-color: var(--line);
+    color: var(--gold);
+}
+
+.toolbar-separator {
+    background: var(--line);
+    height: 24px;
+    margin: 0 3px;
+    width: 1px;
+}
+
+.rich-editor-file-input {
+    display: none;
+}
+
+.rich-editor-content {
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.72;
+
+    /* Mantiene fija la altura del cuerpo de la noticia. */
+    height: 480px;
+    min-height: 480px;
+    max-height: 480px;
+
+    /* Cuando el contenido supera la altura, aparece scroll vertical. */
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    outline: 0;
+    padding: 22px;
+}
+
+.rich-editor-content:empty::before {
+    color: #67707e;
+    content: attr(data-placeholder);
+    pointer-events: none;
+}
+
+.rich-editor-content h2,
+.rich-editor-content h3,
+.article-rich-body h2,
+.article-rich-body h3,
+.revision-body-preview h2,
+.revision-body-preview h3 {
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.15;
+}
+
+.rich-editor-content blockquote,
+.article-rich-body blockquote,
+.revision-body-preview blockquote {
+    border-left: 4px solid var(--gold);
+    color: #d7dbe2;
+    font-size: 1.08em;
+    margin: 22px 0;
+    padding: 5px 18px;
+}
+
+.rich-editor-content img,
+.article-rich-body img,
+.revision-body-preview img {
+    border-radius: 8px;
+    display: block;
+    height: auto;
+    margin: 22px auto;
+    max-width: 100%;
+}
+
+.rich-editor-content a,
+.article-rich-body a,
+.revision-body-preview a {
+    color: var(--gold);
+    text-decoration: underline;
+}
+
+.rich-editor-content hr,
+.article-rich-body hr,
+.revision-body-preview hr {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: 28px 0;
+}
+
+/* ============================================================================
+ * HISTORIAL Y COMPARACIÓN DE REVISIONES
+ * ============================================================================
+ *
+ * Presenta las versiones anteriores de la noticia y permite comparar campos,
+ * portada y cuerpo sin cambiar la estructura del formulario actual.
+ * ============================================================================ */
+
+.revision-layout {
+    align-items: start;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 310px minmax(0, 1fr);
+    margin-top: 14px;
+}
+
+.revision-list,
+.revision-detail {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px;
+}
+
+.revision-list {
+    display: grid;
+    gap: 8px;
+    max-height: calc(100vh - 190px);
+    overflow-y: auto;
+    position: sticky;
+    top: 18px;
+}
+
+.revision-list-heading {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    padding: 5px 4px 11px;
+}
+
+.revision-list-heading div {
+    display: grid;
+}
+
+.revision-list-heading span,
+.revision-list-item span,
+.revision-list-item small,
+.revision-detail-heading span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.revision-list-item {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--text);
+    cursor: pointer;
+    display: grid;
+    gap: 4px;
+    padding: 11px;
+    text-align: left;
+}
+
+.revision-list-item.active {
+    border-color: var(--gold);
+    box-shadow: inset 3px 0 0 var(--gold);
+}
+
+.revision-detail {
+    display: grid;
+    gap: 16px;
+}
+
+.revision-detail-heading {
+    align-items: flex-start;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+}
+
+.revision-detail-heading h2 {
+    margin: 0 0 5px;
+}
+
+.revision-changed-fields {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.revision-changed-fields span {
+    background: rgba(214, 162, 58, 0.12);
+    border: 1px solid rgba(214, 162, 58, 0.36);
+    border-radius: 999px;
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 850;
+    padding: 6px 9px;
+}
+
+.revision-comparison-grid {
+    display: grid;
+    gap: 13px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.revision-comparison-grid > section {
+    background: #0d1117;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    min-width: 0;
+    padding: 16px;
+}
+
+.revision-body-preview {
+    color: #d6d9df;
+    line-height: 1.6;
+    max-height: 520px;
+    overflow: auto;
+}
+
+/*
+ * Organiza las filas utilizadas para comparar los valores
+ * de la revisión seleccionada con los de la versión actual.
+ */
+.revision-field-table {
+    display: grid;
+    gap: 6px;
+}
+
+.revision-field-table > div {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 170px repeat(2, minmax(0, 1fr));
+    padding: 10px;
+}
+
+/*
+ * La fila del campo "Cuerpo" compara dos cajas grandes de texto.
+ *
+ * Cuando una versión no tiene contenido, la caja vacía debe ocupar el mismo
+ * alto que la caja con texto para que "Sin contenido" quede centrado respecto
+ * de toda la comparación, no solamente respecto de una altura mínima.
+ */
+.revision-field-table > .revision-body-row {
+    align-items: stretch;
+}
+
+.revision-field-table span {
+    color: var(--muted);
+    max-height: 120px;
+    overflow: auto;
+    overflow-wrap: anywhere;
+}
+
+/*
+ * Presenta una cabecera claramente diferenciada de las filas
+ * utilizadas para comparar las revisiones.
+ */
+.revision-field-table-heading {
+    border: 1px solid rgba(215, 164, 62, 0.55);
+    border-bottom: 3px solid var(--accent);
+    border-radius: 9px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.24);
+    display: grid;
+    grid-template-columns: 170px repeat(2, minmax(0, 1fr));
+    overflow: hidden;
+}
+
+/*
+ * Aplica a las tres columnas un fondo dorado oscuro,
+ * diferente del fondo utilizado por las filas de valores.
+ */
+.revision-field-heading-cell {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(202, 148, 45, 0.22),
+            rgba(202, 148, 45, 0.11)
+        );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 74px;
+    min-width: 0;
+    padding: 14px 16px;
+}
+
+/*
+ * Refuerza la separación entre las columnas de la cabecera.
+ */
+.revision-field-heading-cell + .revision-field-heading-cell {
+    border-left: 1px solid rgba(215, 164, 62, 0.4);
+}
+
+/*
+ * Destaca el nombre de la columna correspondiente
+ * al campo que fue modificado.
+ */
+.revision-field-heading-cell span {
+    color: var(--accent);
+    font-size: 16px;
+    font-weight: 850;
+    letter-spacing: 0.01em;
+    line-height: 1.25;
+}
+
+/*
+ * Destaca los nombres de las versiones comparadas
+ * utilizando el color principal del panel editorial.
+ */
+.revision-field-heading-cell strong {
+    color: var(--accent);
+    font-size: 16px;
+    font-weight: 850;
+    line-height: 1.25;
+}
+
+/*
+ * Identifica el momento anterior y posterior con una etiqueta
+ * secundaria, pero todavía claramente visible.
+ */
+.revision-field-heading-cell small {
+    color: rgba(240, 197, 111, 0.85);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+/*
+ * Presenta la portada histórica o actual junto con el nombre
+ * del archivo almacenado.
+ */
+.revision-cover {
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+}
+
+/*
+ * Mantiene todas las portadas con la proporción utilizada
+ * por las noticias de TRAMA.
+ */
+.revision-cover-image {
+    aspect-ratio: 16 / 9;
+    background: #0d1117;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    display: block;
+    object-fit: cover;
+    width: 100%;
+}
+
+/*
+ * Muestra únicamente el nombre del archivo y permite dividir
+ * nombres largos como borrador-{UUID}.webp.
+ */
+.revision-cover-name {
+    font-size: 12px;
+    line-height: 1.45;
+    max-height: none;
+    overflow: visible;
+    overflow-wrap: anywhere;
+}
+
+/*
+ * Mantiene el espacio de una portada aunque la revisión
+ * todavía no tenga una imagen asociada.
+ */
+.revision-field-table .revision-cover-empty {
+    align-items: center;
+    aspect-ratio: 16 / 9;
+    background: #0d1117;
+    border: 1px dashed var(--line);
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    max-height: none;
+    min-height: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+/*
+ * Presenta el cuerpo de cada revisión dentro de un área amplia
+ * y desplazable, sin mostrar las etiquetas HTML como texto.
+ */
+.revision-body-value {
+    background: #0d1117;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    height: 320px;
+    max-height: 320px;
+    min-height: 180px;
+    min-width: 0;
+    overflow: auto;
+    padding: 16px;
+}
+
+/*
+ * Conserva la estructura visual generada por el editor:
+ * párrafos, títulos, listas, negritas y otros formatos permitidos.
+ */
+.revision-body-content {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+    width: 100%;
+}
+
+/*
+ * Evita espacios sobrantes al comienzo y al final
+ * del contenido histórico.
+ */
+.revision-body-content > :first-child {
+    margin-top: 0;
+}
+
+.revision-body-content > :last-child {
+    margin-bottom: 0;
+}
+
+/*
+ * Separa claramente los párrafos del cuerpo de la noticia.
+ */
+.revision-body-content p {
+    margin: 0 0 16px;
+}
+
+/*
+ * Mantiene una presentación legible para títulos internos.
+ */
+.revision-body-content h2,
+.revision-body-content h3 {
+    color: var(--text);
+    line-height: 1.35;
+    margin: 20px 0 10px;
+}
+
+/*
+ * Conserva la sangría de las listas creadas desde el editor.
+ */
+.revision-body-content ul,
+.revision-body-content ol {
+    margin: 12px 0;
+    padding-left: 24px;
+}
+
+/*
+ * Informa cuando una de las revisiones todavía no tenía cuerpo.
+ */
+.revision-field-table .revision-body-empty {
+    align-items: center;
+    color: var(--muted);
+    display: flex;
+    flex: 1;
+    height: auto;
+    justify-content: center;
+    max-height: none;
+    min-height: 0;
+    overflow: visible;
+    width: 100%;
+}
+
+/* ============================================================================
+ * PREVISUALIZACIÓN DE LA NOTICIA
+ * ============================================================================
+ *
+ * Muestra una aproximación del artículo público desde el formulario interno,
+ * incluyendo portada, título, bajada y cuerpo enriquecido.
+ * ============================================================================ */
+
+.preview-backdrop {
+    align-items: flex-start;
+    overflow-y: auto;
+}
+
+.article-preview-modal {
+    background: #f6f1e8;
+    border-radius: 12px;
+    color: #151515;
+    margin: 20px auto;
+    max-width: 900px;
+    min-height: 80vh;
+    padding: clamp(28px, 6vw, 70px);
+    position: relative;
+    width: 100%;
+}
+
+.article-preview-modal h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(42px, 6vw, 76px);
+    line-height: 0.98;
+    margin: 12px 0;
+}
+
+.article-preview-modal .preview-subtitle {
+    color: #505050;
+    font-size: 21px;
+    line-height: 1.45;
+}
+
+.article-preview-modal > img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    width: 100%;
+}
+
+.article-preview-modal .article-body {
+    color: #242424;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 19px;
+    line-height: 1.75;
+    margin: 38px auto 0;
+    max-width: 720px;
+}
+
+/* Impide que textos largos sin espacios salgan de la previsualización. */
+.article-preview-modal h1,
+.article-preview-modal .preview-subtitle,
+.article-preview-modal .article-body,
+.article-preview-modal .article-body * {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.article-preview-modal .article-body a {
+    color: #7f5d12;
+}
+
+.preview-close {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+}
+
+.article-rich-body {
+    display: grid;
+    gap: 4px;
+}
+
+.article-rich-body p,
+.article-rich-body li {
+    line-height: 1.8;
+}
+
+.article-rich-body ul,
+.article-rich-body ol {
+    padding-left: 25px;
+}
+
+@media (max-width: 1180px) {
+    .advertisement-report-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .category-columns,
+    .tag-columns,
+    .user-columns,
+    .advertisement-columns {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .management-table-head {
+        display: none;
+    }
+
+    .editor-settings-grid,
+    .revision-layout,
+    .revision-comparison-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .revision-list {
+        max-height: none;
+        position: static;
+    }
+}
+
+@media (max-width: 760px) {
+    .advertisement-report-grid,
+    .advertisement-filter-form {
+        grid-template-columns: 1fr;
+    }
+
+    .category-columns,
+    .tag-columns,
+    .user-columns,
+    .advertisement-columns,
+    .form-two-columns,
+    .revision-field-table > div {
+        grid-template-columns: 1fr;
+    }
+
+    /*
+     * En pantallas pequeñas los valores se muestran apilados,
+     * por lo que la cabecera horizontal deja de corresponderse
+     * con la distribución de las columnas.
+     */
+    .revision-field-table-heading {
+        display: none;
+    }
+
+    .editor-save-bar,
+    .revision-detail-heading {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .editor-action-group {
+        justify-content: stretch;
+    }
+
+    .editor-action-group > * {
+        flex: 1 1 100%;
+    }
+
+    .autosave-status {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+/* ============================================================================
+ * MODO DE CONSULTA HISTÓRICA
+ * ============================================================================
+ *
+ * Señala que la noticia se está viendo en modo solo lectura y conserva el
+ * editor con apariencia editorial aunque su contenido no sea modificable.
+ * ============================================================================ */
+.read-only-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(214, 162, 58, 0.35);
+    border-radius: 16px;
+    background: rgba(214, 162, 58, 0.08);
+}
+
+.read-only-banner h2,
+.read-only-banner p {
+    margin: 0;
+}
+
+.read-only-banner > p {
+    max-width: 620px;
+    color: var(--muted-text, #667085);
+}
+
+.rich-editor-shell:has(.rich-editor-content[contenteditable="false"]) {
+    opacity: 0.92;
+}
+
+.rich-editor-content[contenteditable="false"] {
+    cursor: default;
+    background: rgba(148, 163, 184, 0.08);
+}
+
+.rich-editor-toolbar button:disabled {
+    cursor: not-allowed;
+    opacity: 0.42;
+}
+
+@media (max-width: 760px) {
+    .read-only-banner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

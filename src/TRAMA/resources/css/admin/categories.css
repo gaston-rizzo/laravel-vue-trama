@@ -1,0 +1,360 @@
+/* ============================================================================
+ * CSS ADMIN · CATEGORÍAS
+ *
+ * Ajustes propios del listado y de los modales de categorías. La grilla,
+ * filtros y paginación reutilizan editorial-listing.css para conservar el mismo
+ * patrón visual que el resto de la administración.
+ * ============================================================================ */
+
+/* ============================================================================
+ * BARRA DE FILTROS Y ACCIONES
+ * ============================================================================ */
+
+.categories-toolbar {
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.categories-search-form {
+    flex: 1 1 430px;
+    max-width: 540px;
+    min-width: 390px;
+}
+
+.categories-status-filter {
+    cursor: pointer;
+    flex: 0 0 200px;
+    min-width: 200px;
+    width: 200px;
+}
+
+.categories-filter-clear {
+    flex: 0 0 auto;
+    min-width: 96px;
+}
+
+.categories-active-counter {
+    flex: 0 0 auto;
+    margin-left: auto;
+}
+
+.categories-create-button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+/* ============================================================================
+ * TABLA DE CATEGORÍAS
+ * ============================================================================ */
+
+/* Deja espacio para la paginación fija al pie de la ventana. */
+.categories-table-panel {
+    margin-bottom: 88px;
+}
+
+.admin-categories-table {
+    min-width: 1040px;
+    table-layout: fixed;
+    width: 100%;
+}
+
+/*
+ * Orden editorial | Categoría | Descripción | Noticias | Estado | Acciones.
+ *
+ * El orden editorial es un dato persistido de la sección y no un control para
+ * reordenar visualmente la grilla, por eso su encabezado no lleva flechas.
+ */
+.admin-categories-table th:nth-child(1),
+.admin-categories-table td:nth-child(1) {
+    width: 10%;
+}
+
+.admin-categories-table th:nth-child(2),
+.admin-categories-table td:nth-child(2) {
+    width: 25%;
+}
+
+.admin-categories-table th:nth-child(3),
+.admin-categories-table td:nth-child(3) {
+    width: 33%;
+}
+
+.admin-categories-table th:nth-child(4),
+.admin-categories-table td:nth-child(4) {
+    width: 8%;
+}
+
+.admin-categories-table th:nth-child(5),
+.admin-categories-table td:nth-child(5) {
+    width: 10%;
+}
+
+.admin-categories-table th:nth-child(6),
+.admin-categories-table td:nth-child(6) {
+    width: 14%;
+}
+
+.admin-category-table-row {
+    cursor: pointer;
+}
+
+.admin-category-table-row:focus-visible {
+    outline: none;
+}
+
+.category-order-cell {
+    display: block;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.admin-category-name-cell {
+    min-width: 0;
+}
+
+.admin-category-name-copy {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.admin-category-name-text,
+.admin-category-slug-text,
+.admin-category-description-text {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.admin-category-slug-text {
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+.admin-category-description-text {
+    color: var(--muted);
+}
+
+/*
+ * Mantiene el mismo tamaño para la imagen y para el bloque que se muestra
+ * cuando una categoría no tiene imagen, evitando desalineaciones entre filas.
+ */
+.admin-categories-table .category-admin-thumb,
+.admin-categories-table .category-color {
+    flex: 0 0 46px;
+    height: 34px;
+    width: 46px;
+}
+
+.admin-categories-table .category-admin-thumb {
+    border-radius: 5px;
+}
+
+.admin-categories-table .category-color {
+    border-radius: 5px;
+}
+
+.admin-categories-table th:nth-child(4),
+.admin-categories-table td:nth-child(4) {
+    text-align: center;
+}
+
+.admin-categories-table th.actions,
+.admin-categories-table td.actions {
+    text-align: right;
+}
+
+/* ============================================================================
+ * MODALES DE ALTA Y EDICIÓN
+ * ============================================================================ */
+
+/*
+ * Categorías reutiliza la estructura del modal de alta de empleados. El modal
+ * mantiene un ancho cómodo y reduce solamente los espacios necesarios para que
+ * el contenido entre completo en una pantalla de escritorio normal.
+ */
+.category-admin-modal {
+    gap: 14px;
+    max-width: 780px;
+}
+
+.category-admin-modal .admin-modal-footer {
+    padding-top: 14px;
+}
+
+/*
+ * Reutiliza el mismo recuadro de carga de imagen del alta de empleados y cambia
+ * únicamente la previsualización circular por una miniatura horizontal 16:9.
+ */
+.category-cover-upload {
+    min-width: 0;
+}
+
+.category-cover-upload-preview {
+    align-items: center;
+    background: #0b1015;
+    border: 1px solid #3b4753;
+    border-radius: 7px;
+    color: #7f8b97;
+    display: flex;
+    flex: 0 0 112px;
+    height: 63px;
+    justify-content: center;
+    overflow: hidden;
+    width: 112px;
+}
+
+.category-cover-upload-preview img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.category-cover-upload-preview svg {
+    flex: 0 0 auto;
+}
+
+/* Nombre y orden editorial conservan la misma distribución de dos columnas. */
+.category-main-fields {
+    align-items: start;
+}
+
+/* La descripción se mantiene compacta y no admite redimensionado manual. */
+.category-description-field textarea {
+    min-height: 96px;
+    resize: none;
+}
+
+.category-description-meta {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+/* La indicación de formato se lee como ayuda real y no como metadato residual. */
+.category-description-meta small:not(.category-description-counter) {
+    color: #87939f;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+.category-description-counter {
+    font-variant-numeric: tabular-nums;
+    margin-left: auto !important;
+    text-align: right;
+    white-space: nowrap;
+}
+
+/*
+ * El selector de color ocupa solamente el espacio necesario y deja el resto
+ * de la fila disponible para la información asociada a la categoría.
+ */
+.category-bottom-fields {
+    align-items: end;
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 120px minmax(0, 1fr);
+}
+
+.category-bottom-fields--edit {
+    grid-template-columns: 120px;
+}
+
+.category-color-field {
+    min-width: 0;
+    width: 120px;
+}
+
+.category-color-field input[type="color"] {
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 43px;
+    min-height: 43px;
+    padding: 3px;
+    width: 120px;
+}
+
+.category-create-state-note {
+    align-self: center;
+    line-height: 1.45;
+    margin: 0;
+}
+
+/*
+ * En escritorio el contenido cabe completo y no necesita una barra interna.
+ * En pantallas bajas se conserva el overflow de seguridad definido por
+ * .admin-modal.
+ */
+@media (min-width: 761px) and (min-height: 720px) {
+    .category-admin-modal {
+        overflow-y: visible;
+    }
+}
+
+/* ============================================================================
+ * ADAPTACIÓN PARA ANCHOS MENORES
+ * ============================================================================ */
+
+@media (max-width: 1180px) {
+    .categories-toolbar {
+        flex-wrap: wrap;
+    }
+
+    .categories-search-form {
+        flex: 1 1 100%;
+        max-width: none;
+        min-width: 0;
+    }
+
+    .categories-active-counter {
+        margin-left: 0;
+    }
+
+    .categories-create-button {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 760px) {
+    .category-bottom-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .category-color-field {
+        width: 120px;
+    }
+
+    .category-admin-modal {
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 560px) {
+    .category-description-meta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .category-description-counter {
+        margin-left: 0 !important;
+        text-align: left;
+    }
+
+    .category-cover-upload {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .category-cover-upload-preview {
+        aspect-ratio: 16 / 9;
+        flex-basis: auto;
+        height: auto;
+        width: 140px;
+    }
+}

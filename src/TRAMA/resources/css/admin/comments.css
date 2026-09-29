@@ -1,0 +1,1429 @@
+/* ============================================================================
+ * CSS ADMIN · MODERACIÓN DE COMENTARIOS
+ *
+ * Estilos específicos del panel de moderación: resumen, filtros, grilla,
+ * acciones rápidas, modal de revisión y solicitud de revisión de usuario.
+ * ============================================================================ */
+
+/* ============================================================================
+ * BASE DEL LISTADO DE MODERACIÓN
+ * ============================================================================
+ *
+ * Define los elementos de la moderación de comentarios: resumen, pestañas,
+ * filtros, tabla, acciones de fila y modal de revisión.
+ * 
+ *
+ * La tabla reutiliza clases generales ya existentes:
+ *
+ * - editorial-toolbar;
+ * - editorial-search-form;
+ * - editorial-filter-control;
+ * - editorial-date-*;
+ * - editorial-table-*;
+ * - editorial-pagination-*.
+ *
+ * Acá solamente se agregan los ajustes que no pertenecen a otros listados.
+ * ============================================================================ */
+
+/* ==========================================================================
+ * CABECERA DE MODERACIÓN Y MÉTRICAS RÁPIDAS
+ * ========================================================================== */
+
+/*
+ * Bloque que resume el estado actual de los comentarios.
+ */
+.comment-moderation-overview {
+    align-items: center;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(214, 162, 58, 0.11),
+            rgba(12, 18, 24, 0.94) 34%,
+            rgba(10, 15, 20, 0.98)
+        );
+    border: 1px solid rgba(214, 162, 58, 0.34);
+    border-radius: 10px;
+    display: grid;
+    gap: 14px;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    margin-top: 18px;
+    min-height: 74px;
+    padding: 13px 16px;
+}
+
+/*
+ * Icono que identifica el bloque de moderación de comentarios.
+ */
+.comment-moderation-overview__icon {
+    align-items: center;
+    background: rgba(214, 162, 58, 0.12);
+    border: 1px solid rgba(214, 162, 58, 0.34);
+    border-radius: 9px;
+    color: var(--gold);
+    display: flex;
+    height: 42px;
+    justify-content: center;
+    width: 42px;
+}
+
+/*
+ * Título y descripción del resumen.
+ */
+.comment-moderation-overview__copy {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+}
+
+.comment-moderation-overview__copy strong {
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.2;
+}
+
+.comment-moderation-overview__copy span {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+/*
+ * Métricas rápidas del lado derecho.
+ */
+.comment-moderation-overview__metrics {
+    align-items: stretch;
+    display: flex;
+    gap: 8px;
+}
+
+.comment-moderation-overview__metric {
+    align-content: center;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    display: grid;
+    gap: 2px;
+    min-width: 102px;
+    padding: 8px 11px;
+    text-align: center;
+}
+
+.comment-moderation-overview__metric strong {
+    color: #e9eef4;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.comment-moderation-overview__metric span {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+/*
+ * Las métricas del resumen funcionan como accesos directos a los grupos
+ * principales de comentarios mostrados en la grilla.
+ */
+a.comment-moderation-overview__metric {
+    cursor: pointer;
+    text-decoration: none;
+    transition:
+        background-color 150ms ease,
+        border-color 150ms ease,
+        transform 150ms ease;
+}
+
+a.comment-moderation-overview__metric:hover,
+a.comment-moderation-overview__metric:focus-visible {
+    background: rgba(214, 162, 58, 0.1);
+    border-color: rgba(214, 162, 58, 0.5);    
+}
+
+/*
+ * Identifica la métrica cuyo grupo se encuentra actualmente aplicado.
+ */
+.comment-moderation-overview__metric.active {
+    background: rgba(214, 162, 58, 0.12);
+    border-color: var(--gold);
+}
+
+/*
+ * Una métrica sin resultados permanece visible pero no puede utilizarse
+ * como acceso a la grilla.
+ */
+.comment-moderation-overview__metric.disabled {
+    opacity: 0.45;
+}
+
+/*
+ * La métrica principal utiliza el dorado editorial para indicar trabajo
+ * pendiente sin recurrir a un rojo de error.
+ */
+.comment-moderation-overview__metric--attention {
+    background: rgba(214, 162, 58, 0.11);
+    border-color: rgba(214, 162, 58, 0.32);
+}
+
+.comment-moderation-overview__metric--attention strong,
+.comment-moderation-overview__metric--attention span {
+    color: var(--gold);
+}
+
+/*
+ * Estado + origen automático dentro de la grilla.
+ * El segundo renglón sólo aparece para rechazos generados por el pipeline.
+ */
+.comment-moderation-status-cell {
+    align-items: flex-start;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.comment-moderation-source-label {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 0.04em;
+    /* Alinea "Automatico" con el texto interno del badge Rechazado. */
+    padding-left: 10px;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+ * FILTROS DE MODERACIÓN DE COMENTARIOS
+ * ========================================================================== */
+
+.comment-moderation-tabs {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.comment-moderation-tab {
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 13px;
+    font-weight: 900;
+    gap: 7px;
+    min-height: 38px;
+    padding: 8px 12px;
+    transition:
+        background-color 150ms ease,
+        border-color 150ms ease,
+        color 150ms ease;
+}
+
+/*
+ * Número de elementos dentro de cada pestaña.
+ */
+.comment-moderation-tab small {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    color: inherit;
+    display: inline-flex;
+    font-size: 11px;
+    font-weight: 950;
+    justify-content: center;
+    line-height: 1;
+    min-width: 24px;
+    padding: 4px 7px;
+}
+
+.comment-moderation-tab.active {
+    background: #e8b84a;
+    border-color: #e8b84a;
+    color: var(--bg);
+    cursor: default;
+    pointer-events: none;
+}
+
+.comment-moderation-tab.active small,
+.comment-moderation-tab:hover small {
+    background: rgba(5, 6, 7, 0.16);
+    border-color: rgba(5, 6, 7, 0.18);
+}
+
+.comment-moderation-tabs a.comment-moderation-tab:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--bg);
+}
+
+/*
+ * La pestaña Reportados resalta su icono para identificar rápidamente los
+ * comentarios señalados por los lectores.
+ */
+.comment-moderation-tab.reported:not(.active) svg {
+    color: #ff7f87;
+}
+
+/*
+ * Una pestaña sin resultados permanece visible pero no navegable.
+ */
+.comment-moderation-tab.disabled {
+    cursor: default;
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+ * BUSCADOR Y FILTROS DEL LISTADO DE COMENTARIOS
+ * ========================================================================== */
+
+/*
+ * Distribuye los filtros de moderación dando más espacio al buscador,
+ * al autor, al título de la noticia y al selector de tipo.
+ *
+ * El z-index mantiene el filtro de fecha y su calendario por encima
+ * de la paginación fija cuando ambos se superponen.
+ */
+.comment-moderation-toolbar-v2 {
+    justify-content: flex-start;
+    z-index: 130;
+}
+
+.comment-moderation-toolbar-v2 .editorial-search-form {
+    flex: 1 1 420px;
+    max-width: 470px;
+    min-width: 390px;
+}
+
+.comment-moderation-author-filter {
+    flex: 0 0 auto;
+    width: 210px;
+}
+
+.comment-moderation-article-filter {
+    flex: 0 0 auto;
+    width: 230px;
+}
+
+.comment-moderation-type-filter {
+    cursor: pointer;
+    flex: 0 0 auto;
+    width: 175px;
+}
+
+/* ==========================================================================
+ * TABLA DE COMENTARIOS MODERABLES
+ * ========================================================================== */
+
+/*
+ * La grilla necesita más ancho que Noticias porque muestra tipo y reportes.
+ * En resoluciones menores el contenedor editorial-table-scroll habilita el
+ * desplazamiento horizontal definido por los estilos generales.
+ */
+.comment-moderation-table {
+    min-width: 1380px;
+}
+
+/*
+ * Cada fila abre el detalle completo dentro del modal de moderación.
+ */
+.comment-moderation-table-row {
+    cursor: pointer;
+}
+
+.comment-moderation-table-row:focus-visible {
+    outline: 2px solid rgba(214, 162, 58, 0.6);
+    outline-offset: -2px;
+}
+
+/*
+ * Señal lateral muy discreta para comentarios con reportes abiertos.
+ */
+.comment-moderation-table-row--reported td:first-child {
+    box-shadow: inset 3px 0 0 #d84a54;
+}
+
+/*
+ * Mantiene un hover de lectura sin insinuar que toda la fila sea clickeable.
+ */
+.comment-moderation-table-row:hover {
+    background: color-mix(
+        in srgb,
+        var(--surface-2) 88%,
+        rgba(214, 162, 58, 0.04)
+    );
+}
+
+/*
+ * Fragmento del comentario limitado a dos líneas.
+ */
+.comment-moderation-text-cell {
+    min-width: 0;
+}
+
+.comment-moderation-text-cell p {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    color: #e7edf3;
+    display: -webkit-box;
+    line-height: 1.45;
+    margin: 0;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+}
+
+/*
+ * Autor + correo + contexto interno.
+ */
+.comment-moderation-author-cell {
+    display: grid;
+    gap: 3px;
+    min-width: 0;
+}
+
+.comment-moderation-author-cell strong,
+.comment-moderation-author-cell small {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.comment-moderation-author-cell strong {
+    color: var(--text);
+    font-size: 13px;
+}
+
+.comment-moderation-author-cell small {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+/*
+ * Identifica participaciones internas sin confundirlas con lectores comunes.
+ */
+.comment-moderation-author-context {
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 950;
+    letter-spacing: 0.05em;
+    margin-top: 2px;
+    text-transform: uppercase;
+}
+
+/*
+ * Enlace hacia la noticia relacionada.
+ */
+.comment-moderation-article-link {
+    color: var(--gold);
+    display: -webkit-box;
+    font-size: 13px;
+    font-weight: 850;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    line-height: 1.35;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+}
+
+.comment-moderation-article-link:hover,
+.comment-moderation-article-link:focus-visible {
+    color: #f4ce78;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.comment-moderation-muted {
+    color: var(--muted);
+}
+
+/*
+ * Chip que diferencia comentarios principales de respuestas.
+ */
+.comment-moderation-type {
+    align-items: center;
+    border: 1px solid #34414e;
+    border-radius: 999px;
+    color: #c8d1da;
+    display: inline-flex;
+    font-size: 10px;
+    font-weight: 900;
+    gap: 5px;
+    padding: 5px 8px;
+    white-space: nowrap;
+}
+
+.comment-moderation-type--comment {
+    background: rgba(98, 182, 255, 0.08);
+    border-color: rgba(98, 182, 255, 0.28);
+    color: #9fd2ff;
+}
+
+.comment-moderation-type--reply {
+    background: rgba(214, 162, 58, 0.09);
+    border-color: rgba(214, 162, 58, 0.3);
+    color: #efc66e;
+}
+
+/*
+ * Reportes abiertos. El rojo se reserva para filas que realmente requieren
+ * revisión, mientras el cero se representa con un guion neutral.
+ */
+.comment-moderation-report-count {
+    align-items: center;
+    background: rgba(216, 50, 60, 0.12);
+    border: 1px solid rgba(216, 50, 60, 0.4);
+    border-radius: 999px;
+    color: #ff8a92;
+    display: inline-flex;
+    gap: 5px;
+    justify-content: center;
+    min-width: 44px;
+    padding: 5px 8px;
+}
+
+.comment-moderation-report-count strong {
+    font-size: 12px;
+    line-height: 1;
+}
+
+.comment-moderation-report-empty {
+    color: #65717d;
+}
+
+/*
+ * Fecha estable en una sola línea.
+ */
+.comment-moderation-table td:nth-child(7) {
+    color: #b9c3cd;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+ * BOTONES DE ACCIÓN EN CADA COMENTARIO
+ * ========================================================================== */
+
+/*
+ * El encabezado identifica una columna operativa y se centra sobre el espacio
+ * ocupado por las acciones, sin alterar la distribución de los botones.
+ */
+.comment-moderation-table th.actions {
+    color: var(--gold);
+    text-align: center;
+}
+
+.comment-moderation-actions {
+    align-items: center;
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+}
+
+.comment-moderation-action {
+    align-items: center;
+    background: #111922;
+    border: 1px solid #34414e;
+    border-radius: 7px;
+    color: #dce3ea;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 11px;
+    font-weight: 900;
+    gap: 5px;
+    justify-content: center;
+    min-height: 34px;
+    padding: 6px 9px;
+    transition:
+        background-color 150ms ease,
+        border-color 150ms ease,
+        color 150ms ease;
+    white-space: nowrap;
+}
+
+/*
+ * Aprobar y Mantener son acciones positivas: una publica un pendiente y la
+ * otra conserva publicado un comentario después de revisar sus reportes.
+ */
+.comment-moderation-action--approve:hover:not(:disabled),
+.comment-moderation-action--approve:focus-visible:not(:disabled),
+.comment-moderation-action--maintain:hover:not(:disabled),
+.comment-moderation-action--maintain:focus-visible:not(:disabled) {
+    background: rgba(41, 196, 169, 0.12);
+    border-color: rgba(41, 196, 169, 0.54);
+    color: #63dfc9;
+}
+
+.comment-moderation-action--reject:hover:not(:disabled),
+.comment-moderation-action--reject:focus-visible:not(:disabled) {
+    background: rgba(216, 50, 60, 0.12);
+    border-color: rgba(216, 50, 60, 0.52);
+    color: #ff8a92;
+}
+
+.comment-moderation-action:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+/*
+ * Las acciones rápidas de la tabla se mantienen compactas. Durante el envío no
+ * cambian a un texto largo, así que no necesitan reservar espacio adicional.
+ */
+.comment-moderation-action--maintain,
+.comment-moderation-action--approve,
+.comment-moderation-action--reject {
+    width: 88px;
+}
+
+/* ==========================================================================
+ * MODAL PARA REVISAR UN COMENTARIO
+ * ========================================================================== */
+
+/*
+ * Mantiene el modal por encima de la barra fija y de la tabla editorial.
+ */
+.comment-moderation-modal-backdrop {
+    z-index: 1300;
+}
+
+/*
+ * Contenedor principal del detalle de moderación.
+ */
+.comment-moderation-modal {
+    background: #0f151c;
+    border: 1px solid rgba(214, 162, 58, 0.28);
+    border-radius: 12px;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.62);
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    max-height: calc(100vh - 44px);
+    max-width: 900px;
+    overflow: hidden;
+    width: min(900px, 100%);
+}
+
+/*
+ * Encabezado del modal con título y cierre.
+ */
+.comment-moderation-modal__header {
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    padding: 17px 19px;
+}
+
+.comment-moderation-modal__header h2 {
+    color: var(--text);
+    font-size: 20px;
+    margin: 3px 0 0;
+}
+
+.comment-moderation-modal__close {
+    align-items: center;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--text);
+    cursor: pointer;
+    display: inline-flex;
+    height: 38px;
+    justify-content: center;
+    width: 38px;
+}
+
+.comment-moderation-modal__close:hover:not(:disabled),
+.comment-moderation-modal__close:focus-visible:not(:disabled) {
+    border-color: rgba(214, 162, 58, 0.55);
+    color: var(--gold);
+}
+
+.comment-moderation-modal__close:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+/*
+ * Área desplazable que contiene el detalle completo.
+ */
+.comment-moderation-modal__scroll {
+    display: grid;
+    gap: 13px;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 17px 19px 19px;
+}
+
+/*
+ * Mensaje mostrado mientras se obtiene el detalle desde Laravel.
+ */
+.comment-moderation-modal__loading {
+    color: var(--muted);
+    min-height: 240px;
+    padding: 36px 20px;
+    text-align: center;
+}
+
+/*
+ * Error de carga del detalle con opción de reintento.
+ */
+.comment-moderation-modal__error {
+    align-items: flex-start;
+    color: #ff9aa0;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    min-height: 180px;
+    padding: 28px 20px;
+}
+
+.comment-moderation-modal__error div {
+    display: grid;
+    gap: 5px;
+}
+
+.comment-moderation-modal__error span {
+    color: var(--muted);
+    line-height: 1.45;
+}
+
+.comment-moderation-modal__error button {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 850;
+    padding: 8px 11px;
+}
+
+/*
+ * Resumen de estado, tipo, fecha y reportes abiertos.
+ */
+.comment-moderation-modal__meta {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.comment-moderation-modal__meta > div {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    gap: 6px;
+    min-width: 0;
+    padding: 10px 11px;
+}
+
+.comment-moderation-modal__meta > div > span,
+.comment-moderation-modal__label,
+.comment-moderation-modal__section-heading > div > span {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+}
+
+.comment-moderation-modal__meta > div > strong {
+    color: #e8edf2;
+    font-size: 12px;
+}
+
+/*
+ * Subetiqueta del estado dentro del modal. Sólo aparece cuando el comentario
+ * fue rechazado por el pipeline automático, igual que en la grilla.
+ */
+.comment-moderation-modal__status-origin {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    /* Mantiene el mismo desplazamiento visual que la grilla. */
+    padding-left: 10px;
+    text-transform: uppercase;
+}
+
+.comment-moderation-modal__type {
+    align-items: center;
+    display: inline-flex;
+    gap: 6px;
+}
+
+/*
+ * Bloques de información del comentario.
+ */
+.comment-moderation-modal__section {
+    background: rgba(255, 255, 255, 0.018);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    display: grid;
+    gap: 8px;
+    padding: 13px 14px;
+}
+
+.comment-moderation-modal__section-heading {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.comment-moderation-modal__section-heading > div {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+}
+
+.comment-moderation-modal__section-heading strong {
+    color: var(--text);
+    overflow-wrap: anywhere;
+}
+
+.comment-moderation-modal__section-heading small,
+.comment-moderation-modal__secondary {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.comment-moderation-modal__secondary {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+/*
+ * Indica que la cuenta ya fue derivada manualmente al administrador.
+ */
+.comment-moderation-modal__referred {
+    align-items: center;
+    background: rgba(214, 162, 58, 0.1);
+    border: 1px solid rgba(214, 162, 58, 0.34);
+    border-radius: 999px;
+    color: var(--gold);
+    display: inline-flex;
+    font-size: 10px;
+    font-weight: 900;
+    gap: 5px;
+    padding: 5px 8px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.comment-moderation-review-context {
+    background: rgba(214, 162, 58, 0.07);
+    border: 1px solid rgba(214, 162, 58, 0.28);
+    border-radius: 8px;
+    display: grid;
+    gap: 5px;
+    padding: 10px 11px;
+}
+
+.comment-moderation-review-context strong {
+    color: #f0c354;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.comment-moderation-review-context span,
+.comment-moderation-review-context p {
+    color: #c5cdd6;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.45;
+    margin: 0;
+}
+
+/*
+ * Enlace a la noticia pública asociada al comentario.
+ */
+.comment-moderation-modal__article-link {
+    align-items: center;
+    color: var(--gold);
+    display: flex;
+    font-weight: 850;
+    gap: 7px;
+    justify-content: space-between;
+    line-height: 1.4;
+}
+
+.comment-moderation-modal__article-link:hover,
+.comment-moderation-modal__article-link:focus-visible {
+    color: #f4ce78;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/*
+ * El comentario padre se diferencia visualmente del contenido que se está
+ * moderando para evitar confundir ambos textos.
+ */
+.comment-moderation-modal__parent {
+    background: rgba(98, 182, 255, 0.035);
+    border-color: rgba(98, 182, 255, 0.16);
+}
+
+.comment-moderation-modal__current {
+    background: rgba(214, 162, 58, 0.045);
+    border-color: rgba(214, 162, 58, 0.22);
+}
+
+.comment-moderation-modal__body {
+    color: #e7edf3;
+    line-height: 1.6;
+    margin: 0;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+/*
+ * Reportes abiertos asociados al comentario.
+ */
+.comment-moderation-modal__reports {
+    border-color: rgba(216, 50, 60, 0.28);
+}
+
+.comment-moderation-modal__reports-title {
+    align-items: center;
+    color: #ff8a92;
+    display: flex;
+    gap: 7px;
+}
+
+.comment-moderation-modal__reports-title span {
+    align-items: center;
+    background: rgba(216, 50, 60, 0.12);
+    border: 1px solid rgba(216, 50, 60, 0.35);
+    border-radius: 999px;
+    display: inline-flex;
+    font-size: 10px;
+    font-weight: 900;
+    justify-content: center;
+    min-width: 24px;
+    padding: 3px 6px;
+}
+
+.comment-moderation-modal__report {
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.comment-moderation-modal__report > div {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+}
+
+.comment-moderation-modal__report strong {
+    color: #f0f3f6;
+    font-size: 12px;
+}
+
+.comment-moderation-modal__report small,
+.comment-moderation-modal__report time {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.comment-moderation-modal__report time {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+/*
+ * Error producido por una acción editorial sin cerrar el modal.
+ */
+.comment-moderation-modal__action-error {
+    align-items: center;
+    background: rgba(216, 50, 60, 0.08);
+    border: 1px solid rgba(216, 50, 60, 0.3);
+    border-radius: 8px;
+    color: #ff9aa0;
+    display: flex;
+    gap: 8px;
+    padding: 9px 11px;
+}
+
+/*
+ * Confirmación de eliminación mostrada dentro del mismo modal.
+ */
+.comment-moderation-modal__delete-confirmation {
+    align-items: center;
+    background: rgba(216, 50, 60, 0.08);
+    border: 1px solid rgba(216, 50, 60, 0.35);
+    border-radius: 9px;
+    display: flex;
+    gap: 14px;
+    justify-content: space-between;
+    padding: 12px 13px;
+}
+
+.comment-moderation-modal__delete-confirmation > div:first-child {
+    display: grid;
+    gap: 4px;
+}
+
+.comment-moderation-modal__delete-confirmation strong {
+    color: #ff9aa0;
+}
+
+.comment-moderation-modal__delete-confirmation p {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.45;
+    margin: 0;
+}
+
+.comment-moderation-modal__delete-confirmation > div:last-child {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 7px;
+}
+
+.comment-moderation-modal__delete-confirmation button {
+    background: #151d26;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 900;
+    padding: 8px 10px;
+}
+
+.comment-moderation-modal__delete-confirmation button.danger {
+    border-color: rgba(216, 50, 60, 0.45);
+    color: #ff8a92;
+}
+
+/*
+ * Pie fijo con acciones sobre el comentario y su autor.
+ */
+.comment-moderation-modal__actions {
+    align-items: center;
+    background: #0d1319;
+    border-top: 1px solid var(--line);
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    padding: 13px 19px;
+}
+
+.comment-moderation-modal__actions-secondary,
+.comment-moderation-modal__actions-primary {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.comment-moderation-modal__actions-primary {
+    justify-content: flex-end;
+}
+
+.comment-moderation-review-request {
+    display: grid;
+    gap: 10px;
+    width: 100%;
+}
+
+.comment-moderation-review-request > div:first-child {
+    display: grid;
+    gap: 3px;
+}
+
+.comment-moderation-review-request strong {
+    color: #f0c354;
+    font-size: 13px;
+}
+
+.comment-moderation-review-request p {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.45;
+    margin: 0;
+}
+
+.comment-moderation-review-request label {
+    color: #aeb8c4;
+    display: grid;
+    font-size: 11px;
+    font-weight: 900;
+    gap: 6px;
+}
+
+.comment-moderation-review-request select,
+.comment-moderation-review-request textarea {
+    background-color: #0d1117;
+    border: 1px solid #34414e;
+    border-radius: 7px;
+    color: var(--text);
+    font: inherit;
+    padding: 9px 10px;
+}
+
+.comment-moderation-review-request__select {
+    appearance: none;
+    background-image:
+        linear-gradient(45deg, transparent 50%, #aeb8c4 50%),
+        linear-gradient(135deg, #aeb8c4 50%, transparent 50%);
+    background-position:
+        calc(100% - 19px) calc(50% - 1px),
+        calc(100% - 13px) calc(50% - 1px);
+    background-repeat: no-repeat;
+    background-size: 6px 6px;
+    max-width: 360px;
+    padding-right: 42px;
+    width: 100%;
+}
+
+.comment-moderation-review-request textarea {
+    min-height: 78px;
+    resize: vertical;
+}
+
+.comment-moderation-review-request small {
+    color: #7f8b97;
+    justify-self: end;
+}
+
+.comment-moderation-review-request__actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.comment-moderation-modal__action {
+    align-items: center;
+    background: #131c25;
+    border: 1px solid #34414e;
+    border-radius: 7px;
+    color: #dce3ea;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 11px;
+    font-weight: 900;
+    gap: 6px;
+    justify-content: center;
+    min-height: 36px;
+    padding: 7px 10px;
+    transition:
+        background-color 150ms ease,
+        border-color 150ms ease,
+        color 150ms ease;
+    white-space: nowrap;
+}
+
+.comment-moderation-modal__action--approve:hover:not(:disabled),
+.comment-moderation-modal__action--maintain:hover:not(:disabled) {
+    background: rgba(41, 196, 169, 0.12);
+    border-color: rgba(41, 196, 169, 0.54);
+    color: #63dfc9;
+}
+
+.comment-moderation-modal__action--reject:hover:not(:disabled),
+.comment-moderation-modal__action--delete:hover:not(:disabled) {
+    background: rgba(216, 50, 60, 0.12);
+    border-color: rgba(216, 50, 60, 0.52);
+    color: #ff8a92;
+}
+
+.comment-moderation-modal__action--refer:hover:not(:disabled) {
+    background: rgba(214, 162, 58, 0.1);
+    border-color: rgba(214, 162, 58, 0.45);
+    color: var(--gold);
+}
+
+/*
+ * Resalta las acciones de cancelación del modal sin darles carácter destructivo.
+ */
+.comment-moderation-modal__action--cancel:hover:not(:disabled) {
+    background: #1d2935;
+    border-color: #657586;
+    color: #ffffff;
+}
+
+.comment-moderation-modal__action--delete-confirm {
+    background: rgba(216, 50, 60, 0.08);
+    border-color: rgba(216, 50, 60, 0.72);
+    color: #ff9da5;
+}
+
+.comment-moderation-modal__action--delete-confirm:hover:not(:disabled) {
+    background: rgba(216, 50, 60, 0.16);
+    border-color: rgba(216, 50, 60, 0.9);
+    color: #ffc0c5;
+}
+
+.comment-moderation-modal__action:disabled,
+.comment-moderation-modal__delete-confirmation button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+/* ==========================================================================
+ * AJUSTES RESPONSIVE DE MODERACIÓN
+ * ========================================================================== */
+
+/*
+ * Cuando el ancho útil disminuye, la barra puede usar dos filas en vez de
+ * comprimir los filtros hasta volverlos incómodos.
+ */
+@media (max-width: 1500px) {
+    .comment-moderation-toolbar-v2 {
+        flex-wrap: wrap;
+    }
+
+    .comment-moderation-toolbar-v2 .editorial-search-form {
+        max-width: none;
+    }
+
+    /*
+     * Cuando los filtros ocupan más de una fila, el encabezado deja de
+     * permanecer fijo para evitar que se superponga con la barra.
+     */
+    .comment-moderation-table th {
+        position: static;
+    }
+}
+
+@media (max-width: 980px) {
+    .comment-moderation-modal__meta {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .comment-moderation-overview {
+        align-items: stretch;
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .comment-moderation-overview__metrics {
+        grid-column: 1 / -1;
+    }
+
+    .comment-moderation-overview__metric {
+        flex: 1 1 0;
+    }
+
+    .comment-moderation-type-filter,
+    .comment-moderation-author-filter,
+    .comment-moderation-article-filter {
+        width: 100%;
+    }
+}
+
+@media (max-width: 620px) {
+    .comment-moderation-modal-backdrop {
+        align-items: stretch;
+        padding: 10px;
+    }
+
+    .comment-moderation-modal {
+        max-height: calc(100vh - 20px);
+    }
+
+    .comment-moderation-modal__meta {
+        grid-template-columns: 1fr;
+    }
+
+    .comment-moderation-modal__section-heading,
+    .comment-moderation-modal__report,
+    .comment-moderation-modal__delete-confirmation,
+    .comment-moderation-modal__actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .comment-moderation-modal__delete-confirmation > div:last-child,
+    .comment-moderation-modal__actions-secondary,
+    .comment-moderation-modal__actions-primary {
+        width: 100%;
+    }
+
+    .comment-moderation-modal__action {
+        flex: 1 1 auto;
+    }
+
+    .comment-moderation-overview__metrics {
+        flex-direction: column;
+    }
+
+    .comment-moderation-tabs {
+        align-items: stretch;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .comment-moderation-tab {
+        justify-content: space-between;
+    }
+}
+
+/* ============================================================================
+ * CONFIRMACIÓN DE BORRADO DENTRO DEL MODAL DE REVISIÓN
+ * ============================================================================ */
+
+/*
+ * La advertencia destructiva reemplaza completamente las acciones normales del
+ * footer. Al estar fuera del body con scroll permanece visible aun con hilos largos.
+ */
+.comment-moderation-modal__delete-confirmation--footer {
+    align-items: center;
+    background: rgba(182, 60, 69, 0.08);
+    border: 1px solid rgba(195, 74, 84, 0.4);
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    margin: 0;
+    padding: 12px 14px;
+    width: 100%;
+}
+
+.comment-moderation-modal__delete-confirmation--footer > div:first-child {
+    min-width: 0;
+}
+
+.comment-moderation-modal__delete-confirmation-actions {
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    gap: 9px;
+}
+
+.comment-moderation-modal__delete-confirmation-actions button {
+    min-width: 82px;
+}
+
+.comment-moderation-modal__delete-confirmation-actions button:last-child {
+    justify-content: center;
+    white-space: nowrap;
+    width: auto;
+}
+
+/*
+ * Moderación también conserva el ancho de sus acciones mientras cambia el texto
+ * de estado. Así "Aprobar" → "Aprobando…" o "Retirar" → "Retirando…" no mueve
+ * el resto de botones del footer.
+ */
+.comment-moderation-modal__action--refer {
+    width: 158px;
+}
+
+.comment-moderation-modal__action--review-submit {
+    width: 154px;
+}
+
+.comment-moderation-modal__action--maintain,
+.comment-moderation-modal__action--approve,
+.comment-moderation-modal__action--reject {
+    width: 96px;
+}
+
+@media (max-width: 620px) {
+    .comment-moderation-modal__action--refer,
+    .comment-moderation-modal__action--maintain,
+    .comment-moderation-modal__action--approve,
+    .comment-moderation-modal__action--reject,
+    .comment-moderation-modal__delete-confirmation-actions button:last-child {
+        width: 100%;
+    }
+}
+
+.comment-moderation-modal select,
+.comment-moderation-modal textarea,
+.comment-moderation-modal select:hover,
+.comment-moderation-modal textarea:hover,
+.comment-moderation-modal select:focus,
+.comment-moderation-modal select:focus-visible,
+.comment-moderation-modal textarea:focus,
+.comment-moderation-modal textarea:focus-visible {
+    border: 1px solid #34414e !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.comment-moderation-modal .comment-moderation-review-request__select,
+.comment-moderation-modal .comment-moderation-review-request__select:hover,
+.comment-moderation-modal .comment-moderation-review-request__select:focus,
+.comment-moderation-modal .comment-moderation-review-request__select:focus-visible {
+    cursor: pointer;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    background-image:
+        linear-gradient(45deg, transparent 50%, #aeb8c4 50%),
+        linear-gradient(135deg, #aeb8c4 50%, transparent 50%) !important;
+    background-position:
+        calc(100% - 19px) calc(50% + 1px),
+        calc(100% - 13px) calc(50% + 1px) !important;
+    background-repeat: no-repeat !important;
+    background-size: 6px 6px !important;
+}
+
+/* Los selects deshabilitados de Moderación no sugieren interacción. */
+.comment-moderation-modal .comment-moderation-review-request__select:disabled {
+    cursor: not-allowed;
+}
+
+/* ============================================================================
+ * ESTADOS ADMINISTRATIVOS DEL AUTOR
+ * ============================================================================ */
+
+/* Señal compacta en la grilla cuando administración ya bloqueó la cuenta. */
+.comment-moderation-author-blocked-badge {
+    background: rgba(202, 76, 76, 0.08);
+    border: 1px solid rgba(202, 76, 76, 0.32);
+    border-radius: 999px;
+    color: #e7a8ad;
+    display: inline-flex;
+    font-size: 9px;
+    font-weight: 950;
+    justify-self: start;
+    letter-spacing: 0.04em;
+    margin-top: 2px;
+    padding: 4px 7px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Badge del modal para una cuenta bloqueada; mantiene la misma escala del
+ * indicador de revisión, pero usa semántica visual de bloqueo. */
+.comment-moderation-modal__blocked-badge {
+    align-items: center;
+    background: rgba(202, 76, 76, 0.08);
+    border: 1px solid rgba(202, 76, 76, 0.32);
+    border-radius: 999px;
+    color: #e7a8ad;
+    display: inline-flex;
+    font-size: 10px;
+    font-weight: 900;
+    gap: 5px;
+    padding: 5px 8px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Una revisión cerrada sin sanción es histórica, no una alerta pendiente. */
+.comment-moderation-review-context--resolved {
+    background: rgba(112, 143, 124, 0.07);
+    border-color: rgba(112, 143, 124, 0.28);
+}
+
+.comment-moderation-review-context--resolved strong {
+    color: #b8d2c0;
+}

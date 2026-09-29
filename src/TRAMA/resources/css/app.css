@@ -1,0 +1,6485 @@
+/* ============================================================================
+ * CSS: app.css
+ * ============================================================================
+ *
+ * Hoja de estilos principal de TRAMA.
+ *
+ * Contiene los estilos generales y compartidos de todo el proyecto,
+ * incluyendo el sitio público, las pantallas de autenticación y el panel
+ * editorial.
+ *
+ * Incluye:
+ *
+ *      - Colores y variables generales;
+ *      - Estilos base;
+ *      - Componentes del sitio público;
+ *      - Formularios y pantallas de autenticación;
+ *      - Paneles, tablas y herramientas editoriales;
+ *      - Modales, mensajes y estados visuales;
+ *      - Adaptaciones para distintos tamaños de pantalla.
+ * ============================================================================ */
+
+@import '@vuepic/vue-datepicker/dist/main.css';
+
+:root {
+    color-scheme: dark;
+    --bg: #080a0d;
+    --surface: #11161c;
+    --surface-2: #18212a;
+    --surface-3: #202b35;
+    --text: #f5f1e8;
+    --muted: #aeb7c2;
+    --line: #2a3440;
+    --gold: #d6a23a;
+    --red: #d8323c;
+    --cyan: #29c7ac;
+    --blue: #4a8dff;
+    --violet: #8a6dff;
+    --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.site-shell {
+    min-height: 100vh;
+}
+
+.public-header,
+.public-footer,
+.news-ticker,
+.hero-grid,
+.content-band,
+.split-band,
+.category-showcase,
+.article-page,
+.comments-panel,
+.section-hero,
+.search-hero {
+    margin-inline: auto;
+    max-width: 1480px;
+    width: calc(100% - 40px);
+}
+
+.public-header {
+    border-bottom: 1px solid var(--line);
+    padding: 8px 0 0;
+}
+
+.brand-row {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.brand-mark,
+.admin-logo {
+    align-items: center;
+    color: var(--text);
+    display: inline-flex;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(34px, 4vw, 66px);
+    font-weight: 900;
+    gap: 12px;
+    letter-spacing: 0;
+}
+
+.brand-mark-current {
+    cursor: default;
+}
+
+.icon-action-current {
+    cursor: default;
+}
+
+.user-menu summary.icon-action-current {
+    cursor: pointer;
+}
+
+.user-menu {
+    position: relative;
+}
+
+.user-menu summary {
+    list-style: none;
+    max-width: min(240px, 34vw);
+    min-width: 0;
+}
+
+.user-menu summary::-webkit-details-marker {
+    display: none;
+}
+
+.user-menu summary svg {
+    flex: 0 0 auto;
+}
+
+.user-menu-name {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-menu-panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    display: grid;
+    gap: 4px;
+    min-width: 210px;
+    padding: 8px;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    z-index: 50;
+}
+
+.user-menu-panel a,
+.user-menu-panel button {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    border-radius: 8px;
+    color: var(--muted);
+    cursor: pointer;
+    display: flex;
+    font: inherit;
+    font-weight: 850;
+    gap: 8px;
+    padding: 10px;
+    text-align: left;
+    width: 100%;
+}
+
+.user-menu-panel a.active,
+.user-menu-panel a:hover,
+.user-menu-panel button:hover {
+    background: rgba(74, 141, 255, 0.14);
+    color: var(--blue);
+}
+
+.brand-icon {
+    aspect-ratio: 1;
+    display: block;
+    height: clamp(42px, 5vw, 72px);
+    object-fit: cover;
+    width: auto;
+}
+
+.header-ad {
+    align-self: center;
+    background: transparent;
+    display: block;
+    flex: 1 1 520px;
+    margin-inline: clamp(12px, 3vw, 48px);
+    max-width: 728px;
+    overflow: hidden;
+}
+
+.header-ad img {
+    aspect-ratio: 728 / 90;
+    display: block;
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+}
+
+.admin-logo span {
+    color: var(--gold);
+}
+
+.header-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.secondary-admin-link:disabled {
+    background: #1c232c !important;
+    border-color: #3a424d !important;
+    color: #7d8794 !important;
+    opacity: 1;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.icon-action,
+.admin-primary-action,
+.secondary-admin-link,
+.danger-outline-button,
+.comment-login-link,
+.comment-register-link,
+.auth-form button,
+.comment-form button,
+.search-form button,
+.editor-primary-actions button,
+.editor-side button,
+.admin-filter-form button {
+    align-items: center;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--text);
+    cursor: pointer;
+    display: inline-flex;
+    font-weight: 900;
+    gap: 8px;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 14px;
+    text-decoration: none;
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease,
+        opacity 0.18s ease;
+}
+
+.icon-action:hover,
+.icon-action:focus-visible,
+.comment-login-link:hover,
+.comment-login-link:focus-visible,
+.search-form button:hover,
+.search-form button:focus-visible,
+.admin-filter-form button:hover,
+.admin-filter-form button:focus-visible {
+    background: #17212c;
+    border-color: rgba(74, 141, 255, 0.42);
+    color: var(--text);
+}
+
+.icon-action.icon-action-current {
+    cursor: default;
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+.icon-action.accent,
+.admin-primary-action,
+.comment-register-link,
+.auth-form button,
+.comment-form button,
+.search-form button,
+.editor-primary-actions button,
+.editor-side button {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #080a0d;
+}
+
+/*
+ * Aplica el hover dorado solamente a acciones habilitadas.
+ * Los botones bloqueados conservan su estado visual correspondiente.
+ */
+.icon-action.accent:hover:not(:disabled),
+.icon-action.accent:focus-visible:not(:disabled),
+.admin-primary-action:hover:not(:disabled),
+.admin-primary-action:focus-visible:not(:disabled),
+.comment-register-link:hover,
+.comment-register-link:focus-visible,
+.auth-form button:hover:not(:disabled),
+.auth-form button:focus-visible:not(:disabled),
+.comment-form button:hover:not(:disabled),
+.comment-form button:focus-visible:not(:disabled),
+.editor-primary-actions button:hover:not(:disabled),
+.editor-primary-actions button:focus-visible:not(:disabled),
+.editor-side button:hover:not(:disabled),
+.editor-side button:focus-visible:not(:disabled) {
+    background: #f0c354;
+    border-color: #f0c354;
+    color: #050607;
+}
+
+.auth-form button:disabled,
+.comment-form button:disabled,
+.search-form button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;    
+}
+
+/*
+ * Un botón que está procesando permanece bloqueado para evitar dobles envíos,
+ * pero conserva exactamente su apariencia normal.
+ */
+button.is-processing:disabled {
+    cursor: default !important;
+    opacity: 1 !important;
+}
+
+/*
+ * El botón de comentarios mantiene exactamente sus colores cuando está
+ * deshabilitado. El hover solamente cambia el cursor a prohibido.
+ */
+.comment-form button:disabled:hover,
+.comment-form button:disabled:focus-visible {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #080a0d;
+}
+
+.category-nav {
+    border-top: 1px solid var(--line);
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.category-nav a,
+.category-nav .nav-current {
+    border: 1px solid transparent;
+    border-radius: 999px;
+    color: var(--muted);
+    display: inline-flex;
+    font-size: 13px;
+    font-weight: 900;
+    padding: 9px 13px;
+    white-space: nowrap;
+}
+
+.category-nav a:hover {
+    border-color: var(--accent, var(--gold));
+    color: var(--text);
+}
+
+.category-nav .nav-current {
+    border-color: var(--accent, var(--gold));
+    color: var(--text);
+    cursor: default;
+}
+
+.news-ticker {
+    align-items: center;
+    background: linear-gradient(90deg, rgba(216, 50, 60, 0.22), rgba(214, 162, 58, 0.08));
+    border: 1px solid rgba(216, 50, 60, 0.45);
+    border-radius: 8px;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: max-content minmax(0, 1fr);
+    margin-top: 18px;
+    min-height: 54px;
+    overflow: hidden;
+    padding: 8px 14px;
+}
+
+.news-ticker > div:first-child {
+    align-items: center;
+    color: var(--red);
+    display: inline-flex;
+    gap: 8px;
+    text-transform: uppercase;
+}
+
+.ticker-track {
+    display: flex;
+    gap: 0;
+    overflow: hidden;
+    width: max-content;
+    animation: ticker 80s linear infinite;
+    white-space: nowrap;
+}
+
+.ticker-track:hover {
+    animation-play-state: paused;
+}
+
+.ticker-item {
+    align-items: center;
+    color: var(--text);
+    display: inline-flex;
+    flex-shrink: 0;
+    font-weight: 800;
+    gap: 7px;
+    transition: color 0.18s ease;
+}
+
+.ticker-item:hover {
+    color: var(--blue);
+}
+
+.ticker-item span {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 950;
+    text-transform: uppercase;
+}
+
+.ticker-item strong {
+    font: inherit;
+}
+
+.ticker-item::after {
+    color: rgba(245, 241, 232, 0.55);
+    content: "·";
+    flex-shrink: 0;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1;
+    margin: 0 18px;
+}
+
+.hero-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: minmax(0, 1.85fr) minmax(320px, 0.75fr);
+    margin-top: 16px;
+}
+
+.hero-story,
+.live-brief,
+.ranking-panel,
+.admin-panel,
+.admin-hero-panel,
+.comments-panel,
+.auth-panel,
+.auth-editorial,
+.section-hero,
+.search-hero {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.hero-story {
+    min-height: 560px;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-story-selectable {
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.hero-story-selectable:hover,
+.hero-story-selectable:focus-visible {
+    border-color: var(--line);
+}
+
+.hero-story-selectable:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--text) 28%, transparent);
+    outline-offset: 3px;
+}
+
+.hero-story img {
+    height: 100%;
+    filter: brightness(0.98) contrast(1);
+    object-fit: cover;
+    opacity: 0.86;
+    position: absolute;
+    transition: filter 0.2s ease, opacity 0.2s ease;
+    width: 100%;
+}
+
+.hero-story-selectable:hover img {
+    filter: brightness(1.06) saturate(1.08);
+    opacity: 0.92;
+}
+
+.hero-overlay {
+    background: linear-gradient(90deg, rgba(8, 10, 13, 0.94), rgba(8, 10, 13, 0.42), rgba(8, 10, 13, 0.08));
+    display: grid;
+    inset: 0;
+    max-width: 760px;
+    padding: clamp(24px, 5vw, 62px);
+    place-content: end start;
+    position: absolute;
+}
+
+.hero-overlay h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(40px, 5vw, 78px);
+    line-height: 0.94;
+    margin: 8px 0 16px;
+    max-width: 760px;
+}
+
+.hero-overlay p,
+.section-head p,
+.auth-copy {
+    color: var(--muted);
+    line-height: 1.65;
+}
+
+.category-label,
+.eyebrow {
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 950;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.read-link {
+    align-items: center;
+    color: var(--gold);
+    display: inline-flex;
+    font-weight: 950;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.live-brief {
+    display: grid;
+    gap: 12px;
+    padding: 20px;
+}
+
+.live-brief h2,
+.ranking-panel h2,
+.section-head h2,
+.article-hero h1,
+.section-hero h1,
+.search-hero h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    letter-spacing: 0;
+    margin: 0;
+}
+
+/*
+ * Estructura base compartida por:
+ * - las noticias de "Redacción en vivo";
+ * - las filas de rankings;
+ * - los listados internos del panel editorial.
+ *
+ * Cada fila distribuye sus elementos en dos columnas.
+ */
+.brief-item,
+.ranking-row,
+.admin-list-row {
+    border-top: 1px solid var(--line);
+    display: grid;
+    gap: 10px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-width: 0;
+    padding: 12px 0;
+}
+
+/*
+ * Alinea el número y el título de cada noticia de "Redacción en vivo".
+ *
+ * El número ocupa una columna fija y el título utiliza todo el espacio
+ * restante, comenzando siempre a la misma distancia.
+ */
+.brief-item {
+    grid-template-columns: 32px minmax(0, 1fr);
+}
+
+.brief-item > span {
+    align-self: start;
+}
+
+.brief-item > a {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    text-align: left;
+}
+
+/* Contenido principal de la fila, como el autor, la acción
+   y el título de la noticia. */
+.admin-list-row > span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* Estado editorial mostrado en la columna derecha. */
+.admin-list-row > strong {
+    /* Mantiene el estado alineado con la parte superior de la fila. */
+    align-self: start;
+    /* Evita que el estado editorial se divida en varias líneas. */
+    white-space: nowrap;
+}
+
+/* Filas con click de los paneles "Pendientes de revisión" y "Más leídas". */
+a.admin-list-row {
+    transition: color 160ms ease;
+}
+
+/* Usa el mismo celeste de las tarjetas de noticias y comentarios. */
+a.admin-list-row:hover,
+a.admin-list-row:focus-visible {
+    color: #62b6ff;
+}
+
+.brief-item span,
+.ranking-row strong {
+    color: var(--gold);
+    font-weight: 950;
+}
+
+.brief-item a {
+    transition: color 0.18s ease;
+}
+
+.brief-item a:hover {
+    color: var(--blue);
+}
+
+.content-band,
+.split-band,
+.category-showcase,
+.article-page,
+.comments-panel,
+.section-hero,
+.search-hero {
+    margin-top: 26px;
+}
+
+.comments-panel {
+    padding: 22px;
+}
+
+.section-head {
+    align-items: end;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.section-head h2 {
+    font-size: clamp(28px, 3vw, 48px);
+}
+
+.section-head > p {
+    max-width: 440px;
+}
+
+.featured-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.article-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.article-card-link {
+    color: inherit;
+    cursor: pointer;
+}
+
+.article-card-selectable {
+    cursor: pointer;
+}
+
+.article-card-placeholder {
+    min-height: 525px;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.article-card:hover,
+.article-card:focus-visible {
+    background: var(--surface);
+    border-color: var(--line);
+}
+
+.article-card:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--text) 28%, transparent);
+    outline-offset: 3px;
+}
+
+.card-media {
+    aspect-ratio: 16 / 10;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-media img {
+    height: 100%;
+    filter: brightness(0.98) contrast(1);
+    object-fit: cover;
+    transition: filter 0.18s ease;
+    width: 100%;
+}
+
+.breaking-pill,
+.status-badge {
+    background: var(--red);
+    border-radius: 999px;
+    color: var(--text);
+    font-size: 11px;
+    font-weight: 950;
+    padding: 6px 9px;
+    text-transform: uppercase;
+}
+
+.breaking-pill {
+    left: 12px;
+    position: absolute;
+    top: 12px;
+}
+
+/*
+ * La noticia principal reutiliza el mismo badge urgente de las tarjetas.
+ * El z-index lo mantiene visible por encima del overlay del hero.
+ */
+.hero-breaking-pill {
+    z-index: 3;
+}
+
+.card-copy {
+    display: grid;
+    gap: 8px;
+    padding: 16px;
+}
+
+.card-copy h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 24px;
+    line-height: 1.06;
+    margin: 0;
+}
+
+.card-copy h3 a,
+.card-copy h3 span,
+.ranking-row span {
+    transition: color 0.18s ease;
+}
+
+.article-card:hover .card-media img {
+    filter: brightness(1.06) saturate(1.08);
+}
+
+.card-copy p,
+.card-copy footer,
+.article-meta,
+.tag-row,
+.public-footer {
+    color: var(--muted);
+}
+
+.card-copy footer,
+.article-meta,
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 13px;
+    gap: 12px;
+}
+
+.card-copy footer.card-meta {
+    align-items: center;
+    color: var(--muted);
+    font-size: 13.5px;
+    gap: 7px;
+}
+
+.card-meta-author {
+    color: color-mix(in srgb, var(--text) 84%, var(--muted));
+    font-weight: 500;
+    text-underline-offset: 3px;
+    transition: color 0.18s ease, text-decoration-color 0.18s ease;
+}
+
+.card-meta-author:hover {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--text) 42%, transparent);
+}
+
+.card-meta-separator {
+    color: color-mix(in srgb, var(--muted) 72%, transparent);
+}
+
+.card-meta-time {
+    color: color-mix(in srgb, var(--muted) 72%, transparent);
+}
+
+.article-card.compact {
+    display: grid;
+    grid-template-columns: 142px 1fr;
+}
+
+.article-card.compact .card-media {
+    aspect-ratio: auto;
+    min-height: 144px;
+}
+
+.article-card.compact .card-copy h3 {
+    font-size: 19px;
+}
+
+.article-card.compact .card-copy p {
+    display: none;
+}
+
+/*
+ * Organiza la sección de últimas noticias en dos columnas.
+ *
+ * El encabezado ocupa la parte superior izquierda. Debajo quedan alineados
+ * el listado de noticias y el ranking editorial.
+ */
+.split-band {
+    align-items: start;
+    display: grid;
+    gap: 16px;
+    grid-template-areas:
+        "heading empty"
+        "latest ranking";
+    grid-template-columns: minmax(0, 1fr) 360px;
+}
+
+.latest-section-head {
+    grid-area: heading;
+    margin-bottom: 0;
+}
+
+.latest-list {
+    grid-area: latest;
+}
+
+.ranking-panel {
+    grid-area: ranking;
+}
+
+.latest-list {
+    display: grid;
+    gap: 12px;
+}
+
+.ranking-panel {
+    padding: 20px;
+    position: sticky;
+    top: 18px;
+}
+
+.ranking-row {
+    grid-template-columns: 42px 1fr;
+}
+
+.ranking-row:hover span {
+    color: var(--blue);
+}
+
+.ranking-row:hover strong {
+    color: var(--blue);
+}
+
+.category-block {
+    border-top: 1px solid var(--line);
+    display: grid;
+    gap: 16px;
+    padding: 20px 0;
+}
+
+.category-block-head {
+    align-items: stretch;
+    background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+    border: 1px solid color-mix(in srgb, var(--accent) 46%, var(--line));
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    overflow: hidden;
+}
+
+.category-block-head img,
+.section-hero img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.category-block-head div {
+    display: grid;
+    gap: 12px;
+    padding: 26px;
+    place-content: center start;
+}
+
+.category-block-head a {
+    color: var(--gold);
+    font-weight: 950;
+}
+
+.mini-grid {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+
+.search-form,
+.admin-filter-form {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr auto;
+}
+
+.search-form input,
+.search-form select,
+.admin-filter-form input,
+.admin-filter-form select,
+.auth-form input,
+.editor-form input,
+.editor-form textarea,
+.editor-form select,
+.editor-tab-panel input,
+.editor-tab-panel textarea,
+.editor-tab-panel select,
+.comment-form input,
+.comment-form textarea {
+    background: #0d1117;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--text);
+    min-height: 44px;
+    padding: 10px 12px;
+    width: 100%;
+}
+
+/*
+ * Elimina el contorno blanco nativo de los campos del formulario editorial.
+ */
+.editor-form input:focus,
+.editor-form input:focus-visible,
+.editor-form textarea:focus,
+.editor-form textarea:focus-visible,
+.editor-form select:focus,
+.editor-form select:focus-visible,
+.editor-tab-panel input:focus,
+.editor-tab-panel input:focus-visible,
+.editor-tab-panel textarea:focus,
+.editor-tab-panel textarea:focus-visible,
+.editor-tab-panel select:focus,
+.editor-tab-panel select:focus-visible {
+    border-color: var(--line);
+    box-shadow: none;
+    outline: none;
+}
+
+.auth-form input:focus,
+.auth-form input:focus-visible {
+    border-color: var(--line);
+    box-shadow: none;
+    outline: none;
+}
+
+.auth-password-mask {
+    -webkit-text-security: disc;
+}
+
+select:not([multiple]) {
+    appearance: none;
+    background-image:
+        linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+        linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+    background-position:
+        calc(100% - 20px) calc(50% - 3px),
+        calc(100% - 14px) calc(50% - 3px);
+    background-repeat: no-repeat;
+    background-size: 6px 6px;
+    padding-right: 46px;
+}
+
+.public-footer {
+    border-top: 1px solid var(--line);
+    display: grid;
+    gap: 22px;
+    grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+    margin-top: 40px;
+    padding: 28px 0 34px;
+}
+
+.footer-brand {
+    display: grid;
+    gap: 10px;
+}
+
+.footer-brand .brand-mark {
+    font-size: clamp(32px, 4vw, 48px);
+}
+
+.footer-brand .brand-icon {
+    height: clamp(38px, 4vw, 52px);
+}
+
+.footer-brand p {
+    color: var(--muted);
+    line-height: 1.55;
+    margin: 0;
+    max-width: 420px;
+}
+
+.footer-columns {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.footer-columns > div {
+    display: grid;
+    gap: 9px;
+}
+
+.footer-columns strong {
+    color: var(--text);
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.footer-columns a,
+.footer-columns span,
+.footer-bottom {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.footer-columns a,
+.footer-columns span {
+    align-items: center;
+    display: inline-flex;
+    gap: 7px;
+}
+
+.footer-columns a:hover {
+    color: var(--gold);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--line);
+    display: flex;
+    gap: 14px;
+    grid-column: 1 / -1;
+    justify-content: space-between;
+    padding-top: 16px;
+}
+
+.article-hero {
+    max-width: 980px;
+    padding: 28px 0 8px;
+}
+
+.article-hero h1 {
+    font-size: clamp(42px, 6vw, 88px);
+    line-height: 0.96;
+}
+
+.article-hero > p {
+    color: var(--muted);
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.article-cover {
+    margin: 18px 0 0;
+}
+
+.article-cover img {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    max-height: 680px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.article-cover figcaption {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.article-cover figcaption a {
+    border-bottom: 1px solid color-mix(in srgb, var(--muted), transparent 45%);
+}
+
+.article-meta-author {
+    color: var(--text);
+    transition: color 0.18s ease;
+}
+
+.article-meta-author:hover {
+    color: var(--blue);
+}
+
+.article-layout {
+    align-items: start;
+    display: grid;
+    gap: 26px;
+    grid-template-columns: 280px minmax(0, 760px) 300px;
+    margin-top: 24px;
+}
+
+.author-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.author-card {
+    display: grid;
+    gap: 10px;
+    position: sticky;
+    top: 18px;
+}
+
+.author-card-profile {
+    display: grid;
+    gap: 10px;
+}
+
+.author-card-profile strong,
+.author-card-profile span {
+    transition: color 0.18s ease;
+}
+
+.author-card-profile:hover strong {
+    color: var(--blue);
+}
+
+.author-card-profile:hover span {
+    color: color-mix(in srgb, var(--blue) 70%, var(--muted));
+}
+
+.author-card img {
+    border-radius: 50%;
+    height: 72px;
+    object-fit: cover;
+    width: 72px;
+}
+
+/* Da formato al cuerpo de la noticia y evita que textos largos desborden la columna. */
+.article-body {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 21px;
+    line-height: 1.78;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* Aplica la protección contra desbordes a los elementos internos del cuerpo. */
+.article-body * {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.article-ad-rail {
+    align-content: start;
+    align-self: stretch;
+    display: grid;
+    gap: 18px;
+}
+
+.article-ad {
+    background: transparent;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.article-ad img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.article-ad-short {
+    aspect-ratio: 300 / 250;
+}
+
+.article-ad-tall {
+    align-self: start;
+    aspect-ratio: 300 / 600;
+    height: 600px;
+    min-height: 600px;
+    position: sticky;
+    top: 24px;
+    z-index: 1;
+}
+
+.tag-row span {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 7px 10px;
+}
+
+.comment-list,
+.featured-grid,
+.stats-grid,
+.admin-columns,
+.admin-table {
+    display: grid;
+    gap: 14px;
+}
+
+.comment-gate {
+    align-items: center;
+    background: color-mix(in srgb, var(--surface), white 3%);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1fr auto;
+    margin-top: 18px;
+    padding: 22px;
+}
+
+.comment-gate-copy {
+    display: grid;
+    gap: 8px;
+}
+
+.subscriber-pill {
+    align-items: center;
+    color: var(--gold);
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: 950;
+    gap: 7px;
+    text-transform: uppercase;
+}
+
+.comment-gate h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 30px;
+    line-height: 1.05;
+    margin: 0;
+}
+
+.comment-gate p {
+    color: var(--muted);
+    margin: 0;
+}
+
+.comment-gate-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.comment-login-link {
+    background: transparent;
+}
+
+.comment-form {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+    max-width: 1040px;
+    padding: 16px;
+}
+
+/*
+ * Explica cómo puede participar una cuenta interna dentro de los comentarios
+ * públicos sin mostrarle el formulario reservado para lectores.
+ */
+.comment-role-note {
+    align-items: flex-start;
+    background: rgba(41, 199, 172, 0.08);
+    border: 1px solid rgba(41, 199, 172, 0.28);
+    border-radius: 8px;
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+    max-width: 1040px;
+    padding: 16px;
+}
+
+.comment-role-note svg {
+    color: var(--cyan);
+    flex: 0 0 auto;
+}
+
+.comment-role-note p {
+    color: var(--muted);
+    line-height: 1.55;
+    margin: 4px 0 0;
+}
+
+.comment-pending-note {
+    align-items: flex-start;
+    background: rgba(214, 162, 58, 0.1);
+    border: 1px solid rgba(214, 162, 58, 0.42);
+    border-radius: 8px;
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+    max-width: 1040px;
+    padding: 16px;
+}
+
+.comment-pending-note svg {
+    color: var(--gold);
+    flex: 0 0 auto;
+}
+
+.comment-pending-note p {
+    color: var(--muted);
+    line-height: 1.55;
+    margin: 4px 0 0;
+}
+
+.comment-account {
+    align-items: center;
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+}
+
+/* Mantiene "Comentando como" y el nombre del usuario en dos líneas. */
+.comment-account > div {
+    display: grid;
+    flex: 0 0 auto;
+    gap: 3px;
+}
+
+/* Mensaje utilizado cuando comentarios y respuestas quedan bloqueados
+ * temporalmente por el límite de intentos.
+ */
+.comment-limit-error {
+    color: #ff6b72;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.45;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Separa el aviso global del límite de Me gusta del encabezado
+ * y mantiene el mensaje alineado a la izquierda de la lista.
+ */
+.comment-like-limit-error {
+    margin-top: 12px;
+    text-align: left;
+}
+
+.comment-account .comment-limit-error {
+    margin-left: auto;
+    text-align: right;
+}
+
+.comment-account span {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.comment-textarea-field {
+    display: grid;
+    position: relative;
+}
+
+.comment-form textarea {
+    min-height: 140px;
+    padding-bottom: 38px;
+    resize: vertical;
+}
+
+.comment-counter {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 850;
+    justify-self: end;
+}
+
+/* Coloca el contador del comentario principal dentro del textarea,
+ * manteniéndolo visible en la esquina inferior derecha.
+ */
+.comment-textarea-field .comment-counter {
+    bottom: 12px;
+    pointer-events: none;
+    position: absolute;
+    right: 18px;
+}
+
+.comment-counter.warning {
+    color: var(--gold);
+}
+
+.comment-form-actions {
+    align-items: center;
+    display: flex;
+    gap: 14px;
+    justify-content: space-between;
+}
+
+.comment-form-actions span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.comment-form button {
+    justify-self: end;
+    width: 220px;
+    white-space: nowrap;
+}
+
+.comment-thread-head {
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+    display: flex;
+    font-size: 12px;
+    font-weight: 950;
+    gap: 16px;
+    justify-content: space-between;
+    margin-top: 28px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.comment-sort-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    justify-content: flex-end;
+}
+
+.comment-sort-tabs button,
+.comment-action-button {
+    align-items: center;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: 900;
+    gap: 5px;
+    justify-content: center;
+    min-height: 32px;
+    padding: 6px 10px;
+}
+
+/*
+ * Mantiene exactamente el mismo ancho del botón de "Me gusta"
+ * aunque cambie el contador después de agregar o quitar el voto.
+ */
+.comment-like-button {
+    box-sizing: border-box;
+    flex: 0 0 56px;
+    min-width: 56px;
+    max-width: 56px;
+    width: 56px;
+    font-variant-numeric: tabular-nums;
+}
+
+.comment-sort-tabs button:hover,
+.comment-sort-tabs button.active,
+.comment-action-button:hover,
+.comment-action-button.active {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.comment-action-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.comment-action-button.danger {
+    border-color: rgba(216, 50, 60, 0.46);
+    color: #ff8f96;
+}
+
+.comment-action-button.danger:hover {
+    border-color: var(--red);
+    color: #ffb3b8;
+}
+
+.comment-thread-head strong {
+    background: var(--surface-2);
+    border-radius: 999px;
+    color: var(--text);
+    margin-left: 6px;
+    padding: 2px 7px;
+}
+
+.comment-card {
+    border-radius: 8px;
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 46px minmax(0, 1fr);
+    padding: 18px 0;
+    scroll-margin-block: 34vh;
+    transition:
+        background 0.2s ease,
+        box-shadow 0.2s ease,
+        padding 0.2s ease;
+}
+
+.comment-card-highlighted {
+    background: rgba(74, 141, 255, 0.14);
+    box-shadow: 0 0 0 1px rgba(74, 141, 255, 0.46);
+    padding-inline: 12px;
+}
+
+.comment-card + .comment-card {
+    border-top: 1px solid var(--line);
+}
+
+.comment-avatar {
+    align-items: center;
+    background: var(--avatar-color);
+    border-radius: 50%;
+    color: #080a0d;
+    display: flex;
+    font-size: 13px;
+    font-weight: 950;
+    height: 42px;
+    justify-content: center;
+    text-transform: uppercase;
+    width: 42px;
+}
+
+.comment-content {
+    display: grid;
+    gap: 7px;
+}
+
+.comment-content header,
+.comment-content footer {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.comment-content footer {
+    min-height: 32px;
+}
+
+.comment-content header span,
+.comment-content footer {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 850;
+    text-transform: uppercase;
+}
+
+/*
+ * Estilo de la etiqueta que aparece junto al nombre de un comentario
+ * cuando fue escrito por un integrante de TRAMA.
+ *
+ * Se usa para mostrar identificaciones como "Autor de la nota"
+ * o "Equipo TRAMA" y diferenciarlas visualmente de los comentarios
+ * escritos por lectores comunes.
+ */
+.comment-content header .comment-author-badge {
+    background: rgba(41, 199, 172, 0.12);
+    border: 1px solid rgba(41, 199, 172, 0.42);
+    border-radius: 999px;
+    color: var(--cyan);
+    padding: 3px 7px;
+}
+
+.comment-content header .pending-comment-badge {
+    background: rgba(214, 162, 58, 0.14);
+    border: 1px solid rgba(214, 162, 58, 0.45);
+    border-radius: 999px;
+    color: var(--gold);
+    padding: 3px 7px;
+}
+
+.comment-content p {
+    line-height: 1.55;
+    margin: 0;
+    white-space: pre-line;
+}
+
+.reply-form {
+    background: rgba(13, 17, 23, 0.74);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    gap: 10px;
+    margin-top: 12px;
+    padding: 12px;
+}
+
+.reply-form textarea {
+    background: #0d1117;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--text);
+    min-height: 110px;
+    padding: 10px 12px;
+    resize: vertical;
+    width: 100%;
+}
+
+.reply-form-meta,
+.reply-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.reply-form-meta {
+    min-height: 18px;
+}
+
+/* Mantiene los mensajes de validación y de límite a la izquierda,
+ * mientras el contador de caracteres permanece alineado a la derecha.
+ */
+.reply-form-meta .form-error,
+.reply-form-meta .comment-limit-error {
+    margin-right: auto;
+    text-align: left;
+}
+
+.reply-actions {
+    gap: 8px;
+}
+
+/*
+ * El botón secundario del formulario de respuesta mantiene la estética neutral
+ * de las acciones públicas, pero comparte altura y padding con "Enviar respuesta".
+ */
+.reply-actions .comment-reply-cancel-action {
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #d8e0ea;
+    font-size: inherit;
+    min-height: 38px;
+    padding: 8px 12px;
+}
+
+.reply-actions button[type="submit"] {
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    color: var(--bg);
+    cursor: pointer;
+    font-weight: 900;
+    min-height: 38px;
+    padding: 8px 12px;
+}
+
+.reply-actions button[type="submit"]:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+/*
+ * Acciones del formulario de edicion de comentarios.
+ * Cancelar conserva la estetica secundaria, pero comparte alto y presencia con
+ * Guardar cambios; el ancho fijo evita saltos cuando el texto cambia a
+ * "Guardando...".
+ */
+.comment-edit-actions {
+    align-items: center;
+}
+
+.comment-edit-actions .comment-edit-cancel-action {
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #d8e0ea;
+    min-height: 38px;
+    min-width: 118px;
+    padding: 8px 16px;
+}
+
+.comment-edit-actions .comment-edit-save-action {
+    box-sizing: border-box;
+    min-width: 162px;
+}
+
+/*
+ * Aviso localizado que sustituye visualmente al formulario después de enviar
+ * una respuesta y mientras el pipeline automático todavía la está revisando.
+ */
+.comment-reply-processing-note {
+    margin-top: 12px;
+    max-width: none;
+}
+
+.comment-reply-rejected-note {
+    background: rgba(216, 50, 60, 0.11);
+    border-color: rgba(216, 50, 60, 0.46);
+}
+
+.comment-reply-rejected-note svg {
+    color: #ff8f96;
+}
+
+.comment-replies {    
+    display: grid;
+    gap: 2px;
+    margin-top: 12px;
+    padding-left: 16px;
+}
+
+.comment-like-count {
+    align-items: center;
+    display: inline-flex;
+    gap: 5px;
+}
+
+.reply-load-row {
+    padding-top: 4px;
+}
+
+.load-more-comments {
+    align-items: center;
+    background: rgba(214, 162, 58, 0.1);
+    border: 1px solid rgba(214, 162, 58, 0.36);
+    border-radius: 999px;
+    color: var(--gold);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 13px;
+    font-weight: 950;
+    justify-content: center;
+    justify-self: center;
+    margin-top: 10px;
+    min-height: 38px;
+    padding: 8px 16px;
+}
+
+.load-more-comments:hover {
+    background: rgba(214, 162, 58, 0.16);
+    border-color: var(--gold);
+}
+
+.load-more-comments:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.comment-delete-backdrop {
+    align-items: center;
+    background: rgba(0, 0, 0, 0.72);
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    padding: 22px;
+    position: fixed;
+    z-index: 1200;
+}
+
+.comment-delete-modal {
+    background:
+        radial-gradient(circle at 100% 0%, rgba(216, 50, 60, 0.14), transparent 32%),
+        var(--surface);
+    border: 1px solid rgba(216, 50, 60, 0.34);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    display: grid;
+    gap: 14px;
+    max-width: 620px;
+    padding: 18px 20px;
+    width: 100%;
+}
+
+.comment-delete-modal header {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+}
+
+.comment-delete-modal header svg {
+    color: #ff8f96;
+    flex: 0 0 auto;
+    margin-top: 3px;
+}
+
+.comment-delete-modal h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    line-height: 1.15;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.comment-delete-modal p {
+    color: var(--muted);
+    line-height: 1.55;
+    margin: 6px 0 0;
+}
+
+.comment-delete-modal footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/*
+ * Fondo que bloquea la pantalla mientras el lector elige
+ * por qué quiere reportar un comentario.
+ */
+.comment-report-backdrop {
+    align-items: center;
+    background: rgba(0, 0, 0, 0.72);
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    padding: 22px;
+    position: fixed;
+    z-index: 1200;
+}
+
+/*
+ * Ventana que contiene los motivos disponibles y las acciones
+ * para cancelar o enviar el reporte.
+ */
+.comment-report-modal {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    display: grid;
+    gap: 16px;
+    max-width: 620px;
+    padding: 20px;
+    width: 100%;
+}
+
+.comment-report-modal header {
+    align-items: flex-start;
+    display: flex;
+    gap: 12px;
+}
+
+.comment-report-modal header svg {
+    color: var(--gold);
+    flex: 0 0 auto;
+    margin-top: 3px;
+}
+
+.comment-report-modal h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    line-height: 1.15;
+    margin: 0;
+}
+
+.comment-report-modal header p {
+    color: var(--muted);
+    line-height: 1.5;
+    margin: 6px 0 0;
+}
+
+/*
+ * Lista vertical de motivos para que el lector pueda elegir
+ * solamente una causa por reporte.
+ */
+.comment-report-options {
+    display: grid;
+    gap: 8px;
+}
+
+.comment-report-option {
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    padding: 11px 12px;
+}
+
+.comment-report-option:hover {
+    border-color: var(--gold);
+}
+
+.comment-report-option input {
+    margin: 0;
+}
+
+.comment-report-modal footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/*
+ * Cancelar conserva el tratamiento secundario del modal, pero tiene la misma
+ * altura y respiración que "Enviar reporte" para que ambos formen un par visual.
+ */
+.comment-report-modal .comment-report-cancel-action {
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #d8e0ea;
+    font-size: inherit;
+    min-height: 38px;
+    padding: 8px 14px;
+}
+
+/*
+ * Botón que confirma el reporte después de seleccionar un motivo.
+ */
+.comment-report-submit {
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    color: var(--bg);
+    cursor: pointer;
+    font-weight: 900;
+    min-height: 38px;
+    padding: 8px 14px;
+}
+
+.comment-report-submit:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+/*
+ * Informa que la cuenta ya reportó ese comentario y evita
+ * ofrecer nuevamente la misma acción.
+ */
+.comment-report-state {
+    align-items: center;
+    color: var(--muted);
+    display: inline-flex;
+    font-size: 13px;
+    font-weight: 850;
+    gap: 5px;
+    text-transform: uppercase;
+}
+
+.comment-reply {
+    grid-template-columns: 38px minmax(0, 1fr);
+    padding: 14px 0;
+}
+
+.comment-reply.comment-card-highlighted {
+    padding: 14px 14px;
+}
+
+.comment-reply .comment-avatar {
+    height: 34px;
+    width: 34px;
+}
+
+/* Mantiene visibles y consistentes los errores de validación en todo TRAMA. */
+.form-error {
+    color: #e0525c;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.section-hero,
+.search-hero {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: 360px 1fr;
+    overflow: hidden;
+}
+
+.section-hero div,
+.search-hero {
+    padding: 32px;
+}
+
+.section-hero h1,
+.search-hero h1 {
+    font-size: clamp(42px, 5vw, 82px);
+}
+
+.search-form {
+    gap: 12px;
+    grid-template-columns: minmax(280px, 1fr) minmax(240px, 0.35fr) auto;
+    margin-top: 18px;
+}
+
+.search-hero {
+    grid-template-columns: 1fr;
+}
+
+.search-form input,
+.search-form select,
+.search-form button {
+    min-height: 54px;
+}
+
+.search-form input:focus,
+.search-form input:focus-visible,
+.search-form select:focus,
+.search-form select:focus-visible {
+    border-color: var(--line);
+    box-shadow: none;
+    outline: none;
+}
+
+.journalist-hero {
+    background:
+        radial-gradient(circle at 78% 18%, rgba(74, 141, 255, 0.16), transparent 34%),
+        linear-gradient(135deg, rgba(214, 162, 58, 0.09), transparent 36%),
+        var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    display: grid;
+    gap: 28px;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.45fr);
+    margin: 20px auto 0;
+    max-width: 1480px;
+    padding: clamp(24px, 4vw, 44px);
+    width: calc(100% - 40px);
+}
+
+.journalist-identity {
+    align-items: center;
+    display: grid;
+    gap: 28px;
+    grid-template-columns: 190px minmax(0, 1fr);
+}
+
+.journalist-identity img {
+    aspect-ratio: 1;
+    border: 1px solid color-mix(in srgb, var(--gold) 42%, var(--line));
+    border-radius: 50%;
+    object-fit: cover;
+    width: 190px;
+}
+
+.journalist-identity h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(46px, 5vw, 76px);
+    line-height: 0.98;
+    margin: 8px 0 12px;
+}
+
+.journalist-identity strong {
+    color: var(--gold);
+    display: inline-flex;
+    font-size: 17px;
+    margin-bottom: 18px;
+}
+
+.journalist-identity p:last-child {
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 0;
+    max-width: 760px;
+}
+
+.journalist-stats {
+    align-content: center;
+    display: grid;
+    gap: 12px;
+}
+
+.journalist-stats article {
+    background: rgba(8, 10, 13, 0.34);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    gap: 6px;
+    grid-template-columns: 28px 1fr;
+    padding: 16px;
+}
+
+.journalist-stats svg {
+    color: var(--gold);
+    grid-row: span 2;
+}
+
+.journalist-stats span {
+    color: var(--text);
+    font-size: 22px;
+    font-weight: 950;
+}
+
+.journalist-stats small {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.journalist-sections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px auto 0;
+    max-width: 1480px;
+    width: calc(100% - 40px);
+}
+
+.journalist-section-chip {
+    align-items: center;
+    background: color-mix(in srgb, var(--surface) 88%, var(--accent));
+    border: 1px solid color-mix(in srgb, var(--accent) 36%, var(--line));
+    border-radius: 999px;
+    color: var(--text);
+    cursor: pointer;
+    display: inline-flex;
+    gap: 7px;
+    min-height: 36px;
+    padding: 6px 7px 6px 13px;
+    transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease;
+}
+
+.journalist-section-filter {
+    --accent: var(--gold);
+}
+
+.journalist-section-chip:hover,
+.journalist-section-chip.active {
+    background: color-mix(in srgb, var(--accent) 18%, var(--surface));
+    border-color: var(--accent);
+}
+
+.journalist-section-chip strong {
+    font-size: 13px;
+    font-weight: 950;
+    line-height: 1;
+}
+
+.journalist-section-chip:hover strong {
+    color: var(--blue);
+}
+
+.journalist-section-chip.active strong {
+    color: var(--text);
+}
+
+.journalist-section-chip.active {
+    cursor: default;
+}
+
+.journalist-section-chip > span {
+    color: color-mix(in srgb, var(--accent) 65%, var(--muted));
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.journalist-section-chip small {
+    align-items: center;
+    background: rgba(245, 241, 232, 0.08);
+    border: 1px solid rgba(245, 241, 232, 0.08);
+    border-radius: 999px;
+    color: color-mix(in srgb, var(--text) 78%, var(--muted));
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: 950;
+    justify-content: center;
+    line-height: 1;
+    min-width: 24px;
+    padding: 4px 7px;
+}
+
+.journalist-section-chip.active small {
+    background: color-mix(in srgb, var(--accent) 28%, rgba(245, 241, 232, 0.08));
+    border-color: color-mix(in srgb, var(--accent) 42%, transparent);
+    color: var(--text);
+}
+
+.empty-state {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--muted);
+    padding: 18px;
+}
+
+.my-comments-hero {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr;
+    margin-top: 20px;
+    min-height: auto;
+    padding: 24px 34px 22px;
+}
+
+.my-comments-hero h1 {
+    font-size: clamp(36px, 4vw, 52px);
+    line-height: 1;
+    max-width: 760px;
+}
+
+.my-comments-hero p {
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.55;
+    margin: 0;
+    max-width: none;
+    white-space: nowrap;
+}
+
+.my-comments-panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    gap: 16px;
+    padding: 22px;
+}
+
+.my-comments-grid {
+    display: grid;
+    gap: 10px;
+}
+
+.my-comments-head,
+.my-comments-row {
+    align-items: center;
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 145px minmax(0, 1.25fr) minmax(0, 1fr) 120px 86px 104px;
+}
+
+.my-comments-head {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 950;
+    padding: 0 12px;
+    text-transform: uppercase;
+}
+
+.my-comments-row {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 13px 12px;
+    text-align: left;
+    transition:
+        border-color 0.18s ease,
+        background 0.18s ease,
+        color 0.18s ease;
+    width: 100%;
+}
+
+.my-comments-row > span {
+    min-width: 0;
+}
+
+.my-comments-row:hover {
+    background: rgba(74, 141, 255, 0.08);
+    border-color: rgba(74, 141, 255, 0.46);
+    color: var(--text);
+}
+
+.my-comments-row strong {
+    color: var(--text);
+    display: block;
+    line-height: 1.35;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.my-comments-row:hover strong {
+    color: var(--blue);
+}
+
+.my-comments-row small {
+    color: var(--muted);
+    display: block;
+    margin-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.metric-cell {
+    align-items: center;
+    display: inline-flex;
+    gap: 6px;
+}
+
+.rejected-row {
+    font: inherit;
+}
+
+.rejected-comment-detail {
+    background:
+        radial-gradient(circle at 100% 0%, rgba(216, 50, 60, 0.12), transparent 34%),
+        var(--surface);
+    border: 1px solid rgba(216, 50, 60, 0.34);
+    border-radius: 8px;
+    display: grid;
+    gap: 12px;
+    padding: 18px;
+}
+
+.rejected-comment-detail h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 28px;
+    margin: 10px 0 0;
+}
+
+.rejected-comment-detail p {
+    line-height: 1.6;
+    margin: 0;
+    white-space: pre-line;
+}
+
+.rejected-comment-detail small {
+    color: var(--muted);
+}
+
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    justify-content: center;
+    margin-top: 22px;
+}
+
+.pagination a,
+.pagination span {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    display: inline-flex;
+    font-size: 13px;
+    font-weight: 900;
+    justify-content: center;
+    min-width: 38px;
+    padding: 8px 12px;
+    transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.pagination a:hover {
+    border-color: var(--gold);
+    color: var(--text);
+}
+
+.pagination .active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--bg);
+    cursor: default;
+}
+
+.pagination .disabled {
+    cursor: default;
+    opacity: 0.55;
+}
+
+.auth-shell {
+    display: grid;
+    grid-template-columns: minmax(360px, 0.95fr) minmax(420px, 0.75fr);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.auth-editorial {
+    display: grid;
+    min-height: calc(100vh - 40px);
+    padding: clamp(28px, 5vw, 72px);
+    place-content: space-between;
+}
+
+.auth-editorial h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(42px, 5vw, 82px);
+    line-height: 0.96;
+}
+
+.auth-panel {
+    display: grid;
+    padding: clamp(24px, 4vw, 56px);
+    place-items: center;
+}
+
+.auth-form {
+    display: grid;
+    gap: 14px;
+    max-width: 440px;
+    width: 100%;
+}
+
+.auth-form h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 42px;
+    margin: 0;
+}
+
+.auth-form label,
+.editor-form label,
+.editor-tab-panel label {
+    color: var(--muted);
+    display: grid;
+    font-size: 13px;
+    font-weight: 900;
+    gap: 7px;
+}
+
+.auth-form input,
+.editor-form input,
+.editor-form textarea,
+.editor-form select,
+.editor-tab-panel input,
+.editor-tab-panel textarea,
+.editor-tab-panel select {
+    font-weight: 400;
+}
+
+.editor-field {
+    color: var(--muted);
+    display: grid;
+    font-size: 13px;
+    gap: 7px;
+}
+
+.editor-field-label {
+    font-weight: 900;
+}
+
+/* Contenedor de posicionamiento del tooltip del cuerpo. */
+.body-editor-validation {
+    position: relative;
+}
+
+/*
+ * Tooltip de validación del RichTextEditor.
+ * Imita la estructura general del aviso nativo del navegador,
+ * pero mantiene la estética oscura del panel de TRAMA.
+ */
+.body-validation-tooltip {
+    align-items: center;
+    background: #363636;
+    border: 1px solid #5e5e5e;
+    border-radius: 4px;    
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.42);
+    color: #ffffff;
+    display: flex;
+    font-size: 13px;
+    font-weight: 700;
+    gap: 8px;
+    left: 50%;
+    max-width: calc(100% - 32px);
+    padding: 8px 11px;
+    pointer-events: none;
+    position: absolute;
+
+    /* el tooltip aparece debajo de la caja de texto */
+    top: auto;
+    bottom: -25px;
+
+    transform: translateX(-50%);
+    width: max-content;
+    z-index: 30;
+
+    animation: body-validation-tooltip-in 130ms ease-out;
+    transform-origin: center top;
+}
+
+/* Entrada breve similar al tooltip nativo del navegador. */
+@keyframes body-validation-tooltip-in {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-3px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+/* Flecha superior del tooltip. */
+.body-validation-tooltip::before {
+    background: #363636;
+    border-left: 1px solid #5e5e5e;
+    border-top: 1px solid #5e5e5e;
+    content: "";
+    height: 11px;
+    left: 50%;
+    position: absolute;
+    top: -6px;
+    transform: translateX(-50%) rotate(45deg);
+    width: 11px;
+}
+
+/* Cuadrado naranja con el signo de advertencia. */
+.body-validation-tooltip-icon {
+    align-items: center;
+    background: #e9650b;
+    border-radius: 2px;
+    color: #ffffff;
+    display: inline-flex;
+    flex: 0 0 20px;
+    font-size: 15px;
+    font-weight: 900;
+    height: 20px;
+    justify-content: center;
+    line-height: 1;
+}
+
+.editor-tab-panel textarea {
+    line-height: 1.5;
+    resize: vertical;
+}
+
+.auth-form label span {
+    color: var(--red);
+}
+
+.inline-check {
+    align-items: center;
+    display: flex !important;
+    gap: 8px !important;
+}
+
+.inline-check input {
+    min-height: auto;
+    width: auto;
+}
+
+.auth-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.auth-links a,
+.auth-links button {
+    background: transparent;
+    border: 0;
+    color: var(--gold);
+    cursor: pointer;
+    font-weight: 900;
+    padding: 0;
+    text-decoration: none;
+    text-underline-offset: 4px;
+    transition:
+        color 0.18s ease,
+        opacity 0.18s ease,
+        text-decoration-color 0.18s ease;
+}
+
+.auth-links a:hover,
+.auth-links a:focus-visible,
+.auth-links button:hover,
+.auth-links button:focus-visible {
+    color: #f0c354;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+}
+
+.volver-portada {
+    color: #f4f0e8;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.8;
+    text-decoration: none;
+    text-underline-offset: 4px;
+    transition:
+        color 0.18s ease,
+        opacity 0.18s ease,
+        text-decoration-color 0.18s ease;
+}
+
+.volver-portada:hover,
+.volver-portada:focus-visible {
+    color: var(--gold);
+    opacity: 1;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+}
+
+.admin-shell {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    min-height: 100vh;
+}
+
+.admin-sidebar {
+    background: #07090b;
+    border-right: 1px solid var(--line);
+    padding: 22px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.admin-logo {
+    display: grid;
+    font-size: 34px;
+    line-height: 0.9;
+}
+
+.admin-logo small {
+    color: var(--muted);
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0;
+    margin-top: 8px;
+    text-transform: uppercase;
+}
+
+.admin-nav {
+    display: grid;
+    gap: 8px;
+    margin-top: 34px;
+}
+
+.admin-nav a {
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: var(--muted);
+    display: flex;
+    gap: 10px;
+    padding: 12px;
+}
+
+.admin-nav a:hover {
+    background: var(--surface);
+    border-color: var(--line);
+    color: var(--text);
+}
+
+.admin-main {
+    padding: 22px;
+}
+
+.admin-topbar,
+.admin-toolbar {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+}
+
+.admin-topbar h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(34px, 4vw, 58px);
+    margin: 0;
+}
+
+.admin-topbar-actions {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    margin-right: 34px;
+}
+
+.admin-topbar-link {
+    color: var(--gold);
+    opacity: 0.78;
+    font-size: 14px;
+    font-weight: 850;
+    text-decoration: none;
+    transition: opacity 0.18s ease;
+    white-space: nowrap;
+}
+
+.admin-topbar-link:hover,
+.admin-topbar-link:focus-visible {
+    color: var(--gold);
+    opacity: 1;
+}
+
+.admin-user {
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0 10px;
+    min-width: 220px;
+    padding: 10px;
+}
+
+.admin-user small {
+    color: var(--muted);
+}
+
+.logout-button {
+    align-items: center;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    grid-row: 1 / span 2;
+    height: 38px;
+    justify-content: center;
+    width: 38px;
+}
+
+.flash-message {
+    background: rgba(41, 199, 172, 0.12);
+    border: 1px solid rgba(41, 199, 172, 0.4);
+    border-radius: 8px;
+    color: var(--cyan);
+    margin: 14px 0;
+    padding: 12px 14px;
+}
+
+/*
+ * Muestra errores inesperados recuperables dentro de una pantalla
+ * sin abandonar la interface ni exponer información técnica.
+ *
+ * Se utiliza cuando la vista puede permanecer disponible después del fallo
+ * y necesita informar al usuario mediante un mensaje general de error.
+ */
+.operation-error {
+    background: rgba(216, 50, 60, 0.12);
+    border: 1px solid rgba(255, 138, 146, 0.42);
+    border-radius: 8px;
+    color: #ff9ba2;
+    margin: 14px 0;
+    padding: 12px 14px;
+}
+
+/*
+ * Separa el encabezado del detalle cuando el aviso utiliza strong + span.
+ * Evita que textos como "operación" y el mensaje siguiente queden pegados.
+ */
+.operation-error > strong,
+.operation-error > span {
+    display: block;
+}
+
+.operation-error > span {
+    line-height: 1.5;
+    margin-top: 5px;
+}
+
+/* Elimina los márgenes propios de los párrafos dentro del aviso. */
+.operation-error p {
+    margin: 0;
+}
+
+/* Separa ligeramente el mensaje amigable del encabezado del aviso. */
+.operation-error > p:last-child {
+    line-height: 1.5;
+    margin-top: 5px;
+}
+
+.admin-hero-panel,
+.stats-grid,
+.recent-activity-grid,
+.admin-columns,
+.admin-toolbar,
+.workflow-banner,
+.admin-table,
+.editor-form {
+    margin-top: 18px;
+}
+
+.admin-hero-panel {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 22px;
+}
+
+.admin-hero-panel h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 36px;
+    margin: 0;
+}
+
+.stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+}
+
+.recent-activity-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/*
+ * En el panel del editor ya aparecen dos tarjetas pequeñas:
+ * Últimas publicadas y Comentarios pendientes.
+ *
+ * Pendientes de revisión ocupa las dos columnas restantes
+ * porque contiene tareas que requieren una acción editorial.
+ */
+.pending-review-panel--editor {
+    grid-column: span 2;
+}
+
+/*
+ * El periodista no ve la tarjeta de comentarios.
+ *
+ * Por eso Pendientes de revisión ocupa las tres columnas
+ * restantes y completa toda la fila junto a últimas publicadas.
+ */
+.pending-review-panel--journalist {
+    grid-column: span 3;
+}
+
+/*
+ * Destaca suavemente el bloque operativo principal sin convertirlo
+ * en una tarjeta excesivamente coloreada.
+ */
+.pending-review-panel--editor,
+.pending-review-panel--journalist {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(214, 162, 58, 0.055),
+            transparent 44%
+        ),
+        var(--surface);
+
+    border-color: color-mix(
+        in srgb,
+        var(--gold) 24%,
+        var(--line)
+    );
+}
+
+/*
+ * Los textos repetidos utilizan un blanco suave.
+ */
+.pending-review-panel--editor .admin-list-row > span,
+.pending-review-panel--journalist .admin-list-row > span,
+.most-read-panel .admin-list-row > span,
+.recent-history-panel .admin-list-row > span {
+    color: color-mix(
+        in srgb,
+        var(--text) 76%,
+        var(--muted)
+    );
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+/*
+ * Las acciones pendientes y las cifras del ranking
+ * son los datos principales de sus respectivas filas.
+ */
+.pending-review-panel--editor .admin-list-row > strong,
+.pending-review-panel--journalist .admin-list-row > strong,
+.most-read-panel .admin-list-row > strong {
+    color: var(--gold);
+    font-weight: 900;
+}
+
+/*
+ * Los estados del historial son información secundaria,
+ * por eso se muestran en gris y con menos peso.
+ */
+.recent-history-panel .admin-list-row > strong {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/*
+ * En el panel "Pendientes de revisión", resalta el título de la noticia
+ * al pasar el cursor o navegar con el teclado, sin cambiar el color del estado.
+ */
+.pending-review-panel--editor a.admin-list-row:hover > span,
+.pending-review-panel--editor a.admin-list-row:focus-visible > span,
+.pending-review-panel--journalist a.admin-list-row:hover > span,
+.pending-review-panel--journalist a.admin-list-row:focus-visible > span {
+    color: #62b6ff;
+}
+
+/*
+ * Resalta únicamente el título de la noticia en "Más leídas"
+ * al pasar el cursor o navegar con el teclado.
+ */
+.most-read-panel a.admin-list-row:hover > span,
+.most-read-panel a.admin-list-row:focus-visible > span {
+    color: #62b6ff;
+}
+
+.recent-activity-panel {
+    align-content: start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    gap: 12px;
+    grid-auto-rows: max-content;
+    min-height: 248px;
+    padding: 16px;
+}
+
+.recent-activity-panel > .empty-panel {
+    margin: 0;
+}
+
+.recent-activity-panel header {
+    display: grid;
+    gap: 3px;
+}
+
+.recent-activity-panel h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    line-height: 1.05;
+    margin: 0;
+}
+
+.recent-activity-row {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.055);
+    border-radius: 8px;
+    color: var(--text);
+    display: grid;
+    gap: 5px;
+    padding: 10px 11px;
+    text-decoration: none;
+    transition: border-color 160ms ease, color 160ms ease;
+}
+
+.recent-activity-row:hover {
+    border-color: rgba(98, 182, 255, 0.42);
+    color: #62b6ff;
+}
+
+.recent-activity-row:hover span,
+.recent-activity-row:focus-visible span {
+    color: #62b6ff;
+}
+
+.recent-activity-row span {
+    /*
+     * Usa un blanco más suave para que los elementos repetidos
+     * no compitan con el título principal de la tarjeta.
+     */
+    color: color-mix(
+        in srgb,
+        var(--text) 76%,
+        var(--muted)
+    );
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.recent-activity-row small {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.stat-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.stat-card span {
+    color: var(--muted);
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.stat-card strong {
+    color: var(--gold);
+    display: block;
+    font-size: 30px;
+}
+
+.admin-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.admin-panel {
+    padding: 18px;
+}
+
+.admin-panel h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    line-height: 1.05;
+    margin: 0;
+}
+
+/*
+ * Mantiene la misma estructura visual de los encabezados
+ * utilizados en las tarjetas superiores.
+ */
+.admin-panel-header {
+    display: grid;
+    gap: 3px;
+    margin-bottom: 4px;
+}
+
+.admin-list-row {
+    grid-template-columns: 1fr auto;
+}
+
+/*
+ * Cada movimiento del historial se divide en dos niveles:
+ * título de la noticia y datos secundarios de la acción.
+ */
+.activity-item {
+    border-top: 1px solid var(--line);
+    display: grid;
+    gap: 7px;
+    padding: 13px 0;
+}
+
+/*
+ * El título utiliza un blanco más suave y menos peso
+ * que el encabezado principal del panel.
+ */
+.activity-item-title {
+    color: color-mix(
+        in srgb,
+        var(--text) 78%,
+        var(--muted)
+    );
+    font-size: 14px;
+    font-weight: 650;
+    line-height: 1.35;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+/*
+ * Separa los datos del responsable y la acción
+ * de la fecha mostrada a la derecha.
+ */
+.activity-item-meta {
+    align-items: center;
+    color: var(--muted);
+    display: grid;
+    font-size: 11px;
+    gap: 14px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    line-height: 1.3;
+}
+
+/*
+ * Permite que autor y acción bajen de línea sin empujar
+ * ni deformar la fecha ubicada a la derecha.
+ */
+.activity-item-meta-copy {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-width: 0;
+}
+
+/*
+ * La acción editorial se destaca ligeramente,
+ * sin competir con el título de la noticia.
+ */
+.activity-item-meta-copy strong {
+    color: color-mix(
+        in srgb,
+        var(--gold) 76%,
+        var(--muted)
+    );
+    font-weight: 800;
+}
+
+/*
+ * Mantiene las fechas alineadas y evita que se corten.
+ */
+.activity-item-meta time {
+    color: color-mix(
+        in srgb,
+        var(--muted) 76%,
+        transparent
+    );
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.admin-toolbar {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+/*
+ * Franja informativa que indica el alcance del listado y muestra
+ * accesos rápidos a estados relevantes del flujo de noticias.
+ *
+ * Se mantiene compacta para no competir visualmente con el título
+ * principal ni ocupar espacio innecesario antes de la grilla.
+ */
+.workflow-banner {
+    align-items: center;
+    background: rgba(41, 199, 172, 0.1);
+    border: 1px solid rgba(41, 199, 172, 0.34);
+    border-radius: 8px;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    padding: 9px 12px;
+}
+
+.workflow-banner div {
+    display: grid;
+    gap: 4px;
+}
+
+.workflow-banner span,
+.empty-panel {
+    color: var(--muted);
+}
+
+.workflow-banner a {
+    background: var(--cyan);
+    border-radius: 8px;
+    color: var(--bg);
+    font-weight: 950;
+    padding: 7px 11px;
+    white-space: nowrap;
+}
+
+.admin-filter-form {
+    align-items: center;
+    grid-template-columns: auto minmax(260px, 1fr) minmax(230px, 0.28fr) auto;
+}
+
+.admin-table {
+    grid-template-columns: 1fr;
+}
+
+.article-admin-row,
+.comment-admin-row {
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 138px 1fr auto;
+    padding: 12px;
+}
+
+.article-admin-row {
+    transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.article-admin-row:hover {
+    background: var(--surface-2);
+    border-color: var(--gold);
+    cursor: pointer;
+}
+
+.article-admin-row img {
+    aspect-ratio: 16 / 10;
+    border-radius: 6px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.article-admin-row h3,
+.comment-admin-row h3 {
+    margin: 8px 0 4px;
+}
+
+.article-admin-row p,
+.comment-admin-row p,
+.comment-admin-row small {
+    color: var(--muted);
+}
+
+.article-admin-row .row-action,
+.comment-article-link {
+    color: var(--gold);
+    font-weight: 950;
+}
+
+.status-draft {
+    background: #334155;
+}
+
+.status-review,
+.status-pending {
+    background: var(--gold);
+    color: #080a0d;
+}
+
+/* Comentario recibido y todavía evaluado por el pipeline automático. */
+.status-processing {
+    background: var(--blue);
+    color: #ffffff;
+}
+
+.status-scheduled {
+    background: var(--blue);
+}
+
+.status-published,
+.status-approved {
+    background: var(--cyan);
+    color: #080a0d;
+}
+
+.status-archived,
+.status-rejected {
+    background: var(--red);
+}
+
+.editor-form {
+    align-items: start;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: minmax(0, 1fr) 360px;
+}
+
+.editor-main,
+.editor-side {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    gap: 14px;
+    padding: 18px;
+}
+
+/* Los textos de ayuda deben leerse con claridad sin competir con el campo principal. */
+.field-help {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.field-meta {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.character-counter {
+    color: var(--muted);
+    flex: 0 0 auto;
+    font-size: 12px;
+    font-weight: 850;
+    white-space: nowrap;
+}
+
+.character-counter.warning {
+    color: var(--muted);
+}
+
+.editor-primary-actions {
+    align-items: center;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.editor-primary-actions button {
+    font-size: 16px;
+    min-height: 56px;
+    width: 100%;
+}
+
+.editor-primary-actions .secondary-admin-link {
+    min-height: 56px;
+}
+
+.cover-upload {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    cursor: pointer;
+    display: grid;
+    gap: 10px;
+    padding: 12px;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease;
+}
+
+.cover-upload:hover {
+    background: rgba(224, 169, 58, 0.035);
+    border-color: rgba(224, 169, 58, 0.46);
+}
+
+/* Error específico de la imagen de portada. */
+.cover-upload .form-error {
+    display: block;
+    margin-top: 2px;
+    padding: 10px 12px;
+
+    color: #ffb4b4;
+    background: rgba(220, 38, 38, 0.12);
+    border: 1px solid rgba(248, 113, 113, 0.45);
+    border-radius: 6px;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.cover-upload > span {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.cover-upload input[type="file"] {
+    display: none;
+}
+
+.cover-preview,
+.cover-empty {
+    background: #0d1117;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    gap: 8px;
+    padding: 10px;
+}
+
+.cover-preview img {
+    aspect-ratio: 16 / 10;
+    border-radius: 6px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.cover-preview strong,
+.cover-empty strong {
+    color: var(--text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cover-empty small {
+    color: var(--muted);
+    line-height: 1.45;
+}
+
+/*
+ * Portada registrada en la base cuyo archivo físico ya no está disponible.
+ * Conserva el mismo bloque de previsualización, pero hace visible que la noticia
+ * necesita una nueva imagen antes de completar una acción editorial.
+ */
+.cover-empty--missing {
+    border-color: rgba(248, 113, 113, 0.5);
+}
+
+.cover-empty--missing strong {
+    color: #ff9ca5;
+}
+
+.cover-actions {
+    display: grid;
+    gap: 9px;
+    grid-template-columns: 1fr;
+}
+
+.cover-actions button {
+    font-size: 14px;
+    min-height: 48px;
+    padding-inline: 16px;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.cover-actions .secondary-cover-action {
+    background: var(--surface-2);
+    border-color: var(--line);
+    color: var(--text);
+}
+
+.flag-box {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: grid;
+    gap: 8px;
+    padding: 12px;
+}
+
+.editorial-flag {
+    align-items: start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    cursor: pointer;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: auto minmax(0, 1fr);
+    padding: 11px;
+}
+
+/*
+ * Mantiene el cursor de acción tanto sobre la tarjeta como sobre el checkbox
+ * mientras la opción todavía puede modificarse.
+ */
+.editorial-flag:not(:has(input:disabled)),
+.editorial-flag input:not(:disabled) {
+    cursor: pointer;
+}
+
+/*
+ * Cuando una decisión editorial está bloqueada, elimina el cursor de acción
+ * para dejar claro que el checkbox no puede modificarse.
+ */
+.editorial-flag:has(input:disabled),
+.editorial-flag input:disabled {
+    cursor: default;
+}
+
+.editorial-flag input {
+    margin-top: 3px;
+    min-height: auto;
+    width: auto;
+}
+
+.editorial-flag > span {
+    display: grid;
+    gap: 3px;
+}
+
+.editorial-flag strong {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+/* Da presencia a la explicación de cada decisión editorial. */
+.editorial-flag small {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+.workflow-note {
+    background: rgba(214, 162, 58, 0.1);
+    border: 1px solid rgba(214, 162, 58, 0.34);
+    border-radius: 8px;
+    color: var(--gold);
+    font-size: 13px;
+    font-weight: 850;
+    line-height: 1.45;
+    padding: 12px;
+}
+
+.comment-moderation-toolbar {
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    margin-top: 18px;
+    padding: 14px;
+}
+
+.comment-moderation-toolbar div {
+    display: grid;
+    gap: 4px;
+}
+
+.comment-moderation-toolbar span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.comment-moderation-toolbar nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.comment-moderation-toolbar a {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 900;
+    padding: 8px 11px;
+}
+
+.comment-moderation-toolbar a.active,
+.comment-moderation-toolbar a:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--bg);
+}
+
+.comment-moderation-grid {
+    display: grid;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.comment-grid-head,
+.comment-grid-row {
+    align-items: center;
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 112px minmax(260px, 1.25fr) minmax(220px, 0.8fr) 150px 160px;
+}
+
+.comment-grid-head {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 950;
+    padding: 0 12px;
+    text-transform: uppercase;
+}
+
+.comment-grid-row {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.comment-cell {
+    display: grid;
+    gap: 4px;
+}
+
+.comment-cell small,
+.comment-grid-row > span {
+    color: var(--muted);
+}
+
+.comment-cell p {
+    margin: 4px 0 0;
+}
+
+.moderation-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.moderation-actions button {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--text);
+    cursor: pointer;
+    padding: 9px 11px;
+}
+
+@keyframes ticker {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 1380px) {
+    .article-layout {
+        grid-template-columns: 280px minmax(0, 780px);
+    }
+
+    .article-ad-rail {
+        display: none;
+    }
+}
+
+@media (max-width: 1180px) {
+    .header-ad {
+        display: none;
+    }
+
+    .my-comments-head,
+    .my-comments-row {
+        grid-template-columns: 135px minmax(240px, 1.25fr) minmax(220px, 1fr) 110px 80px 92px;
+    }
+
+    .hero-grid,
+    .split-band,    
+    .article-layout,
+    .section-hero,
+    .search-hero,
+    .journalist-hero,
+    .editor-form,
+    .admin-columns {
+        grid-template-columns: 1fr;
+    }
+
+    /*
+     * En pantallas angostas, el encabezado, las noticias y el ranking
+     * vuelven a mostrarse uno debajo del otro.
+     */
+    .split-band {
+        grid-template-areas:
+            "heading"
+            "latest"
+            "ranking";
+    }
+
+    .featured-grid,
+    .mini-grid,
+    .recent-activity-grid,
+    .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /*
+     * Cuando la grilla baja a dos columnas, la tarjeta de noticias
+     * pendientes ocupa una fila completa.
+     */
+    .pending-review-panel--editor,
+    .pending-review-panel--journalist {
+        grid-column: 1 / -1;
+    }
+
+    .ranking-panel,
+    .author-card {
+        position: static;
+    }
+
+    .category-block-head {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 760px) {
+    .public-header,
+    .public-footer,
+    .news-ticker,
+    .hero-grid,
+    .content-band,
+    .split-band,
+    .category-showcase,    
+    .article-page,
+    .comments-panel,
+    .section-hero,
+    .search-hero,
+    .journalist-hero,
+    .journalist-sections {
+        width: calc(100% - 24px);
+    }
+
+    .brand-row,
+    .section-head,
+    .public-footer,
+    .admin-topbar,
+    .admin-toolbar,
+    .workflow-banner,
+    .admin-hero-panel,
+    .comment-moderation-toolbar,
+    .footer-bottom {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .news-ticker,    
+    .search-form,
+    .admin-filter-form,
+    .comment-gate,
+    .article-admin-row,
+    .comment-admin-row,
+    .auth-shell,
+    .admin-shell,
+    .recent-activity-grid,
+    .public-footer,
+    .footer-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .journalist-hero {
+        padding: 22px;
+    }
+
+    .journalist-identity {
+        align-items: start;
+        grid-template-columns: 92px minmax(0, 1fr);
+    }
+
+    .journalist-identity img {
+        width: 92px;
+    }
+
+    .journalist-identity h1 {
+        font-size: clamp(34px, 10vw, 46px);
+    }
+
+    .comment-grid-head {
+        display: none;
+    }
+
+    .my-comments-head {
+        display: none;
+    }
+
+    .my-comments-row {
+        align-items: stretch;
+        grid-template-columns: 1fr;
+    }
+
+    .my-comments-hero {
+        padding: 22px;
+    }
+
+    .my-comments-hero h1 {
+        font-size: clamp(34px, 10vw, 38px);
+    }
+
+    .my-comments-hero p {
+        white-space: normal;
+    }
+
+    .comment-grid-row {
+        align-items: stretch;
+        grid-template-columns: 1fr;
+    }
+
+    .moderation-actions {
+        justify-content: stretch;
+    }
+
+    .moderation-actions button {
+        flex: 1;
+    }
+
+    .cover-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .field-meta {
+        justify-content: flex-start;
+    }
+
+    .editor-primary-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .comment-form-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .comment-gate-actions {
+        justify-content: stretch;
+    }
+
+    .comment-login-link,
+    .comment-register-link {
+        width: 100%;
+    }
+
+    .comment-form button {
+        justify-self: stretch;
+        width: 100%;
+    }
+
+    .featured-grid,
+    .mini-grid,
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-story {
+        min-height: 520px;
+    }
+
+    .article-card.compact {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-shell,
+    .admin-main {
+        padding: 12px;
+    }
+
+    .auth-editorial {
+        min-height: auto;
+    }
+
+    .admin-sidebar {
+        height: auto;
+        position: static;
+    }
+}
+
+/* ==========================================================================
+ * ADMIN · TABLAS DE GESTIÓN COMPARTIDAS
+ * ==========================================================================
+ *
+ * Estructura base de grillas administrativas que no pertenecen a una pantalla
+ * única: filas, columnas, estados de cuenta y métricas resumidas.
+ * ========================================================================== */
+
+.management-table {
+    display: grid;
+    gap: 9px;
+    margin-top: 18px;
+}
+
+.management-table-head,
+.management-table-row {
+    align-items: center;
+    display: grid;
+    gap: 14px;
+}
+
+.management-table-head {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 950;
+    letter-spacing: 0.06em;
+    padding: 0 14px;
+    text-transform: uppercase;
+}
+
+.management-table-row {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    min-height: 78px;
+    padding: 13px 14px;
+}
+
+.management-table-row p {
+    color: var(--muted);
+    line-height: 1.45;
+    margin: 0;
+}
+
+.management-table-row small {
+    color: var(--muted);
+    display: block;
+    margin-top: 4px;
+}
+
+.category-columns {
+    grid-template-columns: 70px minmax(190px, 0.8fr) minmax(240px, 1.2fr) 90px 100px 150px;
+}
+
+.tag-columns {
+    grid-template-columns: minmax(180px, 0.8fr) minmax(260px, 1.2fr) 90px 110px 190px;
+}
+
+.user-columns {
+    grid-template-columns: minmax(210px, 1fr) minmax(170px, 0.65fr) 175px 160px 190px;
+}
+
+/*
+ * Agrupa el estado de la cuenta y la marca de revisión administrativa.
+ */
+.user-account-status {
+    align-items: flex-start;
+    display: grid;
+    gap: 6px;
+    justify-items: start;
+}
+
+/*
+ * Identifica usuarios registrados que un editor derivó manualmente desde la
+ * moderación de comentarios.
+ */
+.user-review-requested-badge {
+    align-items: center;
+    background: rgba(214, 162, 58, 0.1);
+    border: 1px solid rgba(214, 162, 58, 0.34);
+    border-radius: 999px;
+    color: var(--gold);
+    display: inline-flex;
+    font-size: 9px;
+    font-weight: 900;
+    gap: 4px;
+    line-height: 1;
+    padding: 5px 7px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.advertisement-report-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-bottom: 18px;
+}
+
+.advertisement-report-grid article,
+.advertisement-chart-panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+}
+
+.advertisement-report-grid article {
+    display: grid;
+    gap: 7px;
+    min-height: 106px;
+    padding: 18px;
+}
+
+.advertisement-report-grid span {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.advertisement-report-grid strong {
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 34px;
+    line-height: 1;
+}
+
+.advertisement-filter-toolbar {
+    margin-bottom: 18px;
+}
+
+.advertisement-filter-form {
+    grid-template-columns: auto minmax(210px, 1fr) minmax(190px, 0.8fr) auto;
+    width: min(900px, 100%);
+}
+
+.advertisement-chart-panel {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 20px;
+    padding: 18px;
+}
+
+.advertisement-chart-panel header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.advertisement-chart-panel h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 26px;
+    line-height: 1.05;
+    margin: 3px 0 0;
+}
+
+.advertisement-chart {
+    height: 320px;
+    min-height: 320px;
+}
+
+.advertisement-columns {
+    grid-template-columns: 170px minmax(210px, 1fr) minmax(170px, 0.7fr) minmax(190px, 0.7fr) 105px 90px;
+}
+
+.category-name-cell {
+    align-items: center;
+    display: flex;
+    gap: 11px;
+}
+
+.category-color {
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    height: 26px;
+    width: 26px;
+}
+
+.advertisement-image-cell {
+    display: grid;
+    gap: 7px;
+}
+
+.advertisement-image-cell img {
+    aspect-ratio: 16 / 6;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    display: block;
+    height: 58px;
+    object-fit: contain;
+    padding: 4px;
+    width: 142px;
+}
+
+.advertisement-columns a {
+    align-items: center;
+    color: var(--gold);
+    display: inline-flex;
+    font-size: 12px;
+    gap: 5px;
+    margin-top: 7px;
+    text-decoration: none;
+}
+
+.advertisement-modal-preview {
+    align-items: center;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    display: flex;
+    gap: 14px;
+    padding: 12px;
+}
+
+.advertisement-modal-preview img {
+    background: #fff;
+    border-radius: 7px;
+    height: 76px;
+    object-fit: contain;
+    padding: 5px;
+    width: 160px;
+}
+
+.advertisement-modal-preview small {
+    color: var(--muted);
+    display: block;
+    margin-top: 5px;
+}
+
+.row-actions {
+    display: flex;
+    gap: 7px;
+    justify-content: flex-end;
+}
+
+.row-actions button,
+.admin-modal header > button,
+.preview-close {
+    align-items: center;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--text);
+    cursor: pointer;
+    display: inline-flex;
+    height: 38px;
+    justify-content: center;
+    width: 38px;
+}
+
+.row-actions button:hover:not(:disabled) {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.admin-modal header > button:hover:not(:disabled),
+.admin-modal header > button:focus-visible:not(:disabled),
+.preview-close:hover:not(:disabled),
+.preview-close:focus-visible:not(:disabled) {
+    background: #17212c;
+    border-color: rgba(218, 169, 57, 0.55);
+    color: var(--gold);
+}
+
+.row-actions button:disabled {
+    cursor: not-allowed;
+    opacity: 0.35;
+}
+
+.admin-modal header > button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.admin-modal-backdrop {
+    align-items: center;
+    background: rgba(0, 0, 0, 0.86);
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    overscroll-behavior: contain;
+    padding: 22px;
+    position: fixed;
+    z-index: 1000;
+}
+
+html:has(.admin-modal-backdrop),
+body:has(.admin-modal-backdrop) {
+    overflow: hidden;
+}
+
+.admin-modal {
+    background: #11151b;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+    display: grid;
+    gap: 15px;
+    max-height: calc(100vh - 44px);
+    max-width: 560px;
+    overflow-y: auto;
+    padding: 22px;
+    width: 100%;
+}
+
+.admin-modal.wide {
+    max-width: 780px;
+}
+
+.admin-modal header {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin-modal h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 34px;
+    margin: 0;
+}
+
+.admin-modal label {
+    color: var(--muted);
+    display: grid;
+    font-size: 13px;
+    font-weight: 900;
+    gap: 7px;
+}
+
+.feedback-observation-textarea {
+    box-sizing: border-box;
+    padding: 12px 14px;
+    resize: none;
+}
+
+.admin-modal > button[type="submit"],
+.admin-modal > button:not([type]) {
+    min-height: 52px;
+}
+
+/*
+ * Modal compartido de confirmación y protección de cambios.
+ *
+ * Además de limitar su ancho, evita que nombres, identificadores u otros
+ * textos largos sin espacios ensanchen la ventana y generen scroll horizontal.
+ */
+.unsaved-changes-modal {
+    max-width: 640px;
+    overflow-x: hidden;
+}
+
+/*
+ * El encabezado usa flex. min-width: 0 permite que el bloque de texto
+ * realmente pueda reducirse dentro del ancho disponible del modal.
+ */
+.unsaved-changes-modal header > div {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+/*
+ * Protege todos los textos variables del modal frente a cadenas largas
+ * sin espacios, por ejemplo nombres extensos de etiquetas.
+ */
+.unsaved-changes-modal h2,
+.unsaved-changes-modal .modal-copy,
+.unsaved-changes-modal .unsaved-changes-help,
+.unsaved-changes-modal .confirm-action-modal-error {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* Mensaje mostrado cuando todavía no existe
+   contenido suficiente para guardar un borrador. */
+.unsaved-changes-help {
+    background: rgba(216, 50, 60, 0.09);
+    border: 1px solid rgba(216, 50, 60, 0.4);
+    border-radius: 7px;
+    color: #ff9ca2;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.45;
+    margin: 0;
+    padding: 10px 12px;
+}
+
+/* Acciones del modal. */
+.unsaved-changes-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/* Evita diferencias de altura entre los tres botones. */
+.unsaved-changes-actions > button {
+    min-height: 46px;
+}
+
+.unsaved-changes-actions .secondary-admin-link:hover:not(:disabled),
+.unsaved-changes-actions .secondary-admin-link:focus-visible:not(:disabled) {
+    background: rgba(224, 169, 58, 0.08);
+    border-color: rgba(224, 169, 58, 0.66);
+    color: var(--gold);
+    outline: none;
+}
+
+.unsaved-changes-actions .danger-outline-button {
+    background: rgba(216, 50, 60, 0.1);
+    border: 1px solid rgba(216, 50, 60, 0.58);
+    border-radius: 7px;
+    color: #ff9ca2;
+}
+
+.unsaved-changes-actions .danger-outline-button:hover:not(:disabled),
+.unsaved-changes-actions .danger-outline-button:focus-visible:not(:disabled) {
+    background: rgba(216, 50, 60, 0.2);
+    border-color: rgba(255, 143, 150, 0.85);
+    color: #ffd1d4;
+    outline: none;
+}
+
+@media (max-width: 640px) {
+    .unsaved-changes-actions {
+        display: grid;
+    }
+
+    .unsaved-changes-actions > button {
+        width: 100%;
+    }
+}
+
+.modal-copy {
+    color: var(--muted);
+    line-height: 1.55;
+    margin: 0;
+}
+
+.form-two-columns {
+    display: grid;
+    gap: 13px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* ============================================================================
+ * AJUSTES TRANSVERSALES DE INTERFAZ
+ * ============================================================================
+ *
+ * Reglas compartidas por zonas distintas del sitio: footer público,
+ * autenticación, usuario del panel, focus de campos oscuros y páginas internas.
+ * ============================================================================ */
+
+.edition-date-row {
+    margin: 10px 0 8px;
+    color: var(--muted, #8f9aa6);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-align: right;
+}
+
+/* ============================================================================
+ * FOOTER PÚBLICO
+ * ============================================================================ */
+
+/*
+ * Reduce ligeramente el tamaño de la marca dentro del footer.
+ */
+.public-footer .footer-brand .brand-mark {
+    font-size: 0.9em;
+}
+
+/*
+ * Texto secundario mostrado debajo de la marca.
+ */
+.public-footer .footer-brand small {
+    color: var(--muted, #8f9aa6);
+    display: block;
+    margin-top: 12px;
+}
+
+/*
+ * Separación entre las columnas de navegación.
+ */
+.footer-columns {
+    gap: 42px;
+}
+
+/*
+ * Separación vertical de los enlaces dentro de cada columna.
+ */
+.footer-columns > div {
+    gap: 8px;
+}
+
+/*
+ * Separación entre icono y texto de cada enlace.
+ */
+.footer-columns a {
+    gap: 7px;
+}
+
+/*
+ * Distribuye copyright y ubicación en los extremos del footer.
+ */
+.footer-bottom {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+/* ============================================================================
+ * TICKER DE NOTICIAS
+ * ============================================================================ */
+
+/*
+ * Añade espacio lateral y permite colocar los degradados sobre los extremos.
+ */
+.news-ticker {
+    overflow: hidden;
+    padding-inline: 18px;
+    position: relative;
+}
+
+
+
+/* ============================================================================
+ * AUTENTICACIÓN
+ * ============================================================================ */
+
+/* Deshabilita visual y funcionalmente los enlaces secundarios mientras
+ * se procesa el formulario de autenticación.
+ *
+ * Mantiene exactamente su tamaño, tipografía y posición, pero cambia el texto
+ * a gris para dejar claro que temporalmente no se puede interactuar con ellos.
+ */
+.auth-link-disabled {
+    color: #7f8a95 !important;
+    cursor: default;
+    opacity: 1;
+    pointer-events: none;
+    text-decoration: none;
+}
+
+/*
+ * Mensaje mostrado cuando una cuenta se encuentra bloqueada.
+ */
+.auth-blocked-message {
+    background: rgba(216, 50, 60, 0.08);
+    border: 1px solid rgba(216, 50, 60, 0.45);
+    border-radius: 8px;
+    padding: 12px 14px;
+}
+
+/*
+ * Texto principal del mensaje de bloqueo.
+ */
+.auth-blocked-message p {
+    margin: 0 0 8px;
+}
+
+/*
+ * Enlace disponible dentro del mensaje.
+ */
+.auth-blocked-message a {
+    color: var(--gold, #e0a93a);
+    font-weight: 700;
+}
+
+
+/* ============================================================================
+ * USUARIO DEL PANEL EDITORIAL
+ * ============================================================================ */
+
+/*
+ * Tarjeta completa del usuario autenticado.
+ *
+ * Avatar, identidad y cierre de sesión se distribuyen en una sola fila para
+ * evitar que la acción quede debajo de la fotografía.
+ */
+.admin-user {
+    align-items: center;
+    appearance: none;
+    background: transparent;
+    border: 1px solid rgba(139, 151, 165, 0.22);
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 36px minmax(0, 1fr) 34px;
+    min-height: 66px;
+    min-width: 220px;
+    padding: 10px;
+    text-align: left;
+    transition:
+        background-color 180ms ease,
+        border-color 180ms ease;
+}
+
+/*
+ * La tarjeta conserva una respuesta visual discreta, pero la acción real está
+ * limitada al botón de salida del extremo derecho.
+ */
+.admin-user:hover {
+    background: rgba(255, 255, 255, 0.025);
+    border-color: rgba(139, 151, 165, 0.34);
+}
+
+/*
+ * Avatar mostrado dentro de la tarjeta.
+ */
+.editorial-user-avatar {
+    border-radius: 50%;
+    flex-shrink: 0;
+    height: 36px;
+    object-fit: cover;
+    width: 36px;
+}
+
+/*
+ * Agrupa nombre y datos secundarios.
+ */
+.admin-user-copy {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    min-width: 0;
+}
+
+/*
+ * Nombre del usuario.
+ */
+.admin-user-copy strong {
+    color: inherit;
+    font-size: 0.88rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.admin-user-copy small {
+    margin-top: 2px;
+}
+
+/*
+ * Botón independiente para cerrar sesión.
+ */
+.admin-user-logout-button {
+    align-items: center;
+    appearance: none;
+    background: #111922;
+    border: 1px solid #34414e;
+    border-radius: 7px;
+    color: #cbd3dc;
+    cursor: pointer;
+    display: inline-flex;
+    height: 34px;
+    justify-content: center;
+    padding: 0;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        color 160ms ease;
+    width: 34px;
+}
+
+.admin-user-logout-button:hover,
+.admin-user-logout-button:focus-visible {
+    background: #17212c;
+    border-color: rgba(224, 169, 58, 0.58);
+    color: var(--gold);
+    outline: none;
+}
+
+/*
+ * Icono centrado dentro del botón de salida.
+ */
+.admin-user-logout-icon {
+    display: block;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+
+/* ============================================================================
+ * FOCUS DE CAMPOS OSCUROS
+ * ============================================================================
+ *
+ * Elimina el halo blanco nativo y conserva únicamente el borde dorado
+ * utilizado por TRAMA.
+ * ============================================================================ */
+
+.comment-form textarea:focus,
+.comment-form textarea:focus-visible,
+.reply-form textarea:focus,
+.reply-form textarea:focus-visible,
+.editorial-filters input:focus,
+.editorial-filters input:focus-visible,
+.editorial-filters select:focus,
+.editorial-filters select:focus-visible,
+.feedback-observation-textarea:focus,
+.feedback-observation-textarea:focus-visible,
+.admin-filter-form input:focus,
+.admin-filter-form input:focus-visible,
+.admin-filter-form select:focus,
+.admin-filter-form select:focus-visible {
+    border-color: rgba(224, 169, 58, 0.6) !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/*
+ * Focus de los filtros utilizados por Noticias y las nuevas grillas
+ * administrativas.
+ */
+.editorial-filter-control:focus,
+.editorial-filter-control:focus-visible,
+.editorial-search-input:focus,
+.editorial-search-input:focus-visible {
+    border-color: rgba(224, 169, 58, 0.6) !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/*
+ * Los selectores nativos mantienen el foco aunque se cierre su desplegable.
+ * En filtros de panel se evita que el borde dorado quede pegado después
+ * de plegar el combo.
+ */
+select.editorial-filter-control:focus,
+select.editorial-filter-control:focus-visible,
+.admin-filter-form select:focus,
+.admin-filter-form select:focus-visible {
+    border-color: #34414e !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+
+/* ============================================================================
+ * PÁGINAS DE ERROR Y LANDINGS DE ANUNCIANTES
+ * ============================================================================ */
+
+/*
+ * Estructura central de las páginas especiales.
+ */
+.trama-error-page {
+    background: #090c10;
+    color: #f2f0ea;
+    display: grid;
+    min-height: 100vh;
+    padding: 32px;
+    place-items: center;
+}
+
+/*
+ * Tarjeta central.
+ */
+.trama-error-card {
+    background: #10151b;
+    border: 1px solid #27313c;
+    border-radius: 14px;
+    padding: clamp(28px, 5vw, 56px);
+    width: min(760px, 100%);
+}
+
+/*
+ * Marca visible en páginas de error.
+ */
+.trama-error-brand {
+    color: #f2f0ea;
+    font-family: Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+/*
+ * Código HTTP destacado.
+ */
+.trama-error-code {
+    color: #e0a93a;
+    display: block;
+    font-size: clamp(3rem, 10vw, 6rem);
+    line-height: 1;
+    margin-top: 12px;
+}
+
+/*
+ * Título principal del error.
+ */
+.trama-error-card h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    margin: 12px 0;
+}
+
+/*
+ * Explicación amigable del error.
+ */
+.trama-error-card > p {
+    color: #aab3bd;
+    max-width: 560px;
+}
+
+/*
+ * Acción principal de las páginas especiales.
+ */
+.trama-primary-link,
+.trama-primary-button {
+    align-items: center;
+    background: #e0a93a;
+    border: 0;
+    border-radius: 7px;
+    color: #0b0d10;
+    cursor: pointer;
+    display: inline-flex;
+    font-weight: 800;
+    justify-content: center;
+    margin-top: 18px;
+    padding: 11px 16px;
+    text-decoration: none;
+}
+
+/*
+ * Acción mientras está procesando.
+ */
+.trama-primary-button:disabled {
+    cursor: default;
+    opacity: 0.6;
+}
+
+/* ============================================================================
+ * PÁGINAS
+ * ============================================================================ */
+
+/*
+ * Contenedor general de las páginas informativas y de contacto.
+ */
+.public-info-page,
+.contact-page {
+    max-width: 980px;
+    padding-block: clamp(46px, 7vw, 88px);
+}
+
+/*
+ * Título principal.
+ */
+.public-info-page h1,
+.contact-page h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    margin: 0 0 18px;
+}
+
+/*
+ * Introducción de las páginas informativas y de contacto.
+ */
+.public-info-intro,
+.contact-intro {
+    color: #aeb7c0;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    max-width: 760px;
+}
+
+/*
+ * Bloques interiores.
+ */
+.public-info-content {
+    border-top: 1px solid #27313c;
+    display: grid;
+    gap: 0;
+    margin-top: 42px;
+}
+
+/*
+ * Sección individual.
+ */
+.public-info-content section {
+    border-bottom: 1px solid #27313c;
+    padding: 28px 0;
+}
+
+/*
+ * Títulos secundarios.
+ */
+.public-info-content h2 {
+    font-family: Georgia, serif;
+    margin: 0 0 10px;
+}
+
+/*
+ * Párrafos.
+ */
+.public-info-content p {
+    color: #aeb7c0;
+    line-height: 1.75;
+    margin: 0;
+}
+
+
+/* ============================================================================
+ * CONTACTO
+ * ============================================================================ */
+
+/*
+ * Distribuye información y formulario en dos columnas.
+ */
+.contact-layout {
+    align-items: start;
+    display: grid;
+    gap: clamp(28px, 6vw, 72px);
+    grid-template-columns:
+        minmax(0, 0.8fr)
+        minmax(0, 1.2fr);
+}
+
+/*
+ * Formulario de contacto.
+ */
+.contact-form {
+    background: #10151b;
+    border: 1px solid #27313c;
+    border-radius: 12px;
+    display: grid;
+    gap: 17px;
+    padding: 26px;
+}
+
+/*
+ * Etiquetas del formulario.
+ */
+.contact-form label {
+    color: #d8dde3;
+    display: grid;
+    font-size: 0.86rem;
+    font-weight: 700;
+    gap: 7px;
+}
+
+/*
+ * Campos editables.
+ */
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    background: #0b1015;
+    border: 1px solid #34404c;
+    border-radius: 7px;
+    box-shadow: none;
+    color: #f2f0ea;
+    outline: none;
+    padding: 11px 12px;
+    width: 100%;
+}
+
+.contact-form select:not([multiple]) {
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239aa6b2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    cursor: pointer;
+    padding-right: 40px;
+}
+
+.contact-form select:hover:not(:disabled) {
+    border-color: #53677b;
+}
+
+/*
+ * Estado deshabilitado del formulario de contacto.
+ *
+ * Diferencia visualmente los datos ya enviados de los campos editables
+ * sin alterar la estructura ni reducir la legibilidad.
+ */
+.contact-form input:disabled,
+.contact-form select:disabled,
+.contact-form textarea:disabled {
+    color: #7f8a95;
+    -webkit-text-fill-color: #7f8a95;
+    cursor: default;
+    opacity: 1;
+}
+
+/*
+ * Focus del formulario.
+ */
+.contact-form input:focus,
+.contact-form input:focus-visible,
+.contact-form select:focus,
+.contact-form select:focus-visible,
+.contact-form textarea:focus,
+.contact-form textarea:focus-visible {
+    border-color: #53677b;
+    box-shadow: none;
+    outline: none;
+}
+
+/*
+ * Mensaje de validación.
+ */
+.contact-form label > span {
+    color: #f08a91;
+    font-weight: 500;
+}
+
+/*
+ * Campos dobles.
+ */
+.contact-form-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 1fr 1fr;
+}
+
+/*
+ * Contador del mensaje del formulario de contacto.
+ */
+.contact-character-counter {
+    color: #7f8b97 !important;
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-top: 2px;
+    text-align: right;
+}
+
+/*
+ * Botón de envío del formulario de contacto.
+ *
+ * Mantiene el mismo ancho mientras cambia entre
+ * "Enviar consulta" y "Enviando...".
+ */
+.contact-submit-button {
+    justify-self: end;
+    padding-inline: 8px;
+    white-space: nowrap;
+    width: 155px;
+}
+
+/*
+ * Cuando el formulario todavía no puede enviarse, conserva el estado
+ * visual deshabilitado y muestra el cursor de acción prohibida.
+ */
+.contact-submit-button:disabled {
+    cursor: not-allowed;
+}
+
+/* ============================================================================
+ * MODALES ADMINISTRATIVOS
+ * ============================================================================
+ *
+ * Estilos compartidos para la estructura, controles y estados visuales de los
+ * modales utilizados en los distintos paneles de administración de TRAMA.
+ * ============================================================================ */
+
+/*
+ * Espaciado general.
+ */
+.admin-modal-refined {
+    gap: 18px;
+    padding: 26px;
+}
+
+/*
+ * Encabezado.
+ */
+.admin-modal-refined header {
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(139, 151, 165, 0.18);
+    padding-bottom: 18px;
+}
+
+/*
+ * Texto secundario.
+ */
+.admin-modal-subtitle {
+    color: #8995a1;
+    font-size: 0.86rem;
+    line-height: 1.5;
+    margin: 7px 0 0;
+}
+
+/*
+ * Botón de cierre.
+ */
+.admin-modal-close {
+    background: #0b1015 !important;
+    border: 1px solid #303b46 !important;
+    border-radius: 7px;
+    cursor: pointer;
+    display: grid;
+    height: 36px;
+    padding: 0 !important;
+    place-items: center;
+    transform: none !important;
+    width: 36px;
+}
+
+/*
+ * Hover visible del botón X.
+ */
+.admin-modal-close:hover:not(:disabled),
+.admin-modal-close:focus-visible:not(:disabled) {
+    background: #17212c !important;
+    border-color: rgba(224, 169, 58, 0.58) !important;
+    color: var(--gold);
+    outline: none;
+    transform: none !important;
+}
+
+/*
+ * Separación de labels.
+ */
+.admin-modal-refined label {
+    gap: 7px;
+}
+
+/*
+ * Controles internos.
+ */
+.admin-modal-refined input:not([type="checkbox"]):not([type="color"]),
+.admin-modal-refined select,
+.admin-modal-refined textarea {
+    min-height: 43px;
+    padding: 10px 12px;
+}
+
+/*
+ * Focus de los controles.
+ */
+.admin-modal-refined input:focus,
+.admin-modal-refined input:focus-visible,
+.admin-modal-refined select:focus,
+.admin-modal-refined select:focus-visible,
+.admin-modal-refined textarea:focus,
+.admin-modal-refined textarea:focus-visible {
+    border-color: rgba(224, 169, 58, 0.65);
+    box-shadow: none;
+    outline: none;
+}
+
+/*
+ * Los contadores pequeños conservan su escala compacta. Los avisos de límite
+ * ganan tamaño y peso porque comunican una condición relevante del formulario.
+ */
+.admin-modal-refined label small {
+    color: #7f8b97;
+    font-size: 0.76rem;
+    margin: 0;
+}
+
+.admin-limit-note {
+    color: #87939f;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.45;
+    margin: 0;
+}
+
+
+/* ============================================================================
+ * SWITCH ADMINISTRATIVO
+ * ============================================================================ */
+
+.admin-toggle-card {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.018);
+    border: 1px solid #2c3641;
+    border-radius: 9px;
+    display: flex !important;
+    gap: 18px;
+    justify-content: space-between;
+    padding: 13px 14px;
+}
+
+.admin-toggle-card > span {
+    display: grid;
+    gap: 4px;
+}
+
+/* Las explicaciones de los switches administrativos no deben quedar relegadas. */
+.admin-toggle-card small,
+.admin-avatar-upload small {
+    color: #87939f;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+.admin-toggle-card input[type="checkbox"] {
+    appearance: none;
+    background: #121820;
+    border: 1px solid #3c4855;
+    border-radius: 999px;
+    cursor: pointer;
+    flex: 0 0 auto;
+    height: 23px;
+    position: relative;
+    width: 42px;
+}
+
+.admin-toggle-card input[type="checkbox"]::after {
+    background: #7f8b97;
+    border-radius: 50%;
+    content: "";
+    height: 17px;
+    left: 2px;
+    position: absolute;
+    top: 2px;
+    transition:
+        left 180ms ease,
+        background-color 180ms ease;
+    width: 17px;
+}
+
+.admin-toggle-card input[type="checkbox"]:checked {
+    background: rgba(224, 169, 58, 0.18);
+    border-color: #e0a93a;
+}
+
+.admin-toggle-card input[type="checkbox"]:checked::after {
+    background: #e0a93a;
+    left: 21px;
+}
+
+
+/* ============================================================================
+ * FOOTER Y BOTONES DE MODALES
+ * ============================================================================ */
+
+.admin-modal-footer {
+    align-items: center;
+    border-top: 1px solid rgba(139, 151, 165, 0.18);
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    padding-top: 18px;
+}
+
+/*
+ * Evita cambios de posición y tamaño durante hover/focus.
+ */
+.admin-modal-footer button {
+    margin: 0 !important;
+    transform: none !important;
+    width: auto !important;
+}
+
+/*
+ * Cursor para todas las acciones habilitadas.
+ */
+.admin-modal button:not(:disabled) {
+    cursor: pointer;
+}
+
+.admin-modal button:disabled {
+    cursor: not-allowed;
+}
+
+/*
+ * Acción secundaria.
+ */
+.admin-secondary-button {
+    align-items: center;
+    background: transparent;
+    border: 1px solid #3a4652;
+    border-radius: 7px;
+    color: #cbd2d9;
+    cursor: pointer;
+    display: inline-flex;
+    font-weight: 800;
+    justify-content: center;
+    min-height: 40px;
+    padding: 10px 15px;
+    transform: none;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        color 160ms ease;
+}
+
+/*
+ * Hover perceptible de Cancelar.
+ */
+.admin-secondary-button:hover:not(:disabled),
+.admin-secondary-button:focus-visible:not(:disabled) {
+    background: rgba(224, 169, 58, 0.08);
+    border-color: rgba(224, 169, 58, 0.6);
+    color: var(--gold);
+    outline: none;
+    transform: none;
+}
+
+.admin-secondary-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+/*
+ * Acción principal.
+ */
+.admin-gold-button {
+    background: #e0a93a !important;
+    border: 1px solid #e0a93a !important;
+    border-radius: 7px;
+    color: #0b0d10 !important;
+    cursor: pointer;
+    font-weight: 800 !important;
+    min-height: 40px;
+    padding: 10px 16px !important;
+    transform: none !important;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        filter 160ms ease;
+}
+
+/*
+ * Hover sin salto vertical.
+ */
+.admin-gold-button:hover:not(:disabled),
+.admin-gold-button:focus-visible:not(:disabled) {
+    filter: brightness(1.1);
+    outline: none;
+    transform: none;
+}
+
+.admin-gold-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+/* ============================================================================
+ * PREVISUALIZACIONES ADMINISTRATIVAS
+ * ============================================================================ */
+
+.admin-image-preview {
+    background: #090d11;
+    border: 1px solid #2d3742;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.admin-image-preview img {
+    display: block;
+    max-height: 180px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.category-admin-thumb {
+    border: 1px solid #34404b;
+    border-radius: 4px;
+    flex: 0 0 auto;
+    height: 32px;
+    object-fit: cover;
+    width: 42px;
+}
+
+
+/* ============================================================================
+ * TOOLBAR ADMINISTRATIVA
+ * ============================================================================ */
+
+.admin-toolbar-summary {
+    color: #8d99a5;
+    font-size: 0.8rem;
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+
+/* ============================================================================
+ * SELECTOR DE ETIQUETAS DEL FORMULARIO EDITORIAL
+ * ============================================================================ */
+
+.tag-selector-field {
+    position: relative;
+}
+
+.tag-selector-label {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.tag-selector-label small {
+    color: #8f9aa6;
+    font-size: 0.76rem;
+}
+
+.tag-chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    min-height: 30px;
+}
+
+.tag-chip {
+    align-items: center;
+    background: rgba(224, 169, 58, 0.12);
+    border: 1px solid rgba(224, 169, 58, 0.38);
+    border-radius: 999px;
+    color: #e8d7ac;
+    display: inline-flex;
+    font-size: 0.78rem;
+    gap: 7px;
+    padding: 5px 8px 5px 10px;
+}
+
+.tag-chip--inactive {
+    background: rgba(127, 139, 151, 0.08);
+    border-color: #4b5662;
+    color: #9ca6b0;
+}
+
+.tag-chip button {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0 2px;
+}
+
+.tag-chip button:disabled {
+    cursor: default;
+    opacity: 0.45;
+}
+
+.tag-search-control {
+    position: relative;
+}
+
+.tag-search-control > input {
+    width: 100%;
+}
+
+/*
+ * Dropdown de sugerencias.
+ */
+.tag-suggestions {
+    background: #0c1117;
+    border: 1px solid #34404c;
+    border-radius: 8px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.34);
+    left: 0;
+    max-height: 280px;
+    overflow: auto;
+    padding: 5px;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 6px);
+    z-index: 50;
+}
+
+.tag-suggestions button {
+    align-items: flex-start;
+    background: transparent;
+    border: 0;
+    border-radius: 5px;
+    color: #edf0f2;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 9px 10px;
+    text-align: left;
+    width: 100%;
+}
+
+.tag-suggestions button:hover {
+    background: rgba(224, 169, 58, 0.09);
+}
+
+.tag-suggestions button small,
+.tag-suggestions p {
+    color: #7f8b97;
+    font-size: 0.72rem;
+    margin: 0;
+}
+
+.tag-suggestions p {
+    padding: 10px;
+}
+
+
+/* ============================================================================
+ * FILTROS ADMINISTRATIVOS COMPARTIDOS
+ * ============================================================================ */
+
+/*
+ * Variante que permite más de una línea cuando una pantalla lo necesita.
+ */
+.admin-toolbar--stackable {
+    flex-wrap: wrap;
+}
+
+.admin-filter-form--rich {
+    align-items: center;
+    display: flex;
+    flex: 1 1 720px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.admin-search-control {
+    align-items: center;
+    display: flex !important;
+    flex: 1 1 250px;
+    gap: 7px;
+    min-width: 220px;
+}
+
+.admin-filter-form--rich select {
+    min-height: 39px;
+}
+
+.admin-filter-reset {
+    background: transparent !important;
+    border: 1px solid #36414c !important;
+    color: #a7b0b9 !important;
+}
+
+.admin-pagination-summary {
+    align-items: center;
+    color: #87939f;
+    display: flex;
+    font-size: 0.8rem;
+    gap: 18px;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+
+/* ============================================================================
+ * CAJAS INFORMATIVAS
+ * ============================================================================ */
+
+.admin-info-box {
+    background: rgba(224, 169, 58, 0.055);
+    border: 1px solid rgba(224, 169, 58, 0.27);
+    border-radius: 8px;
+    color: #cbd2d9;
+    padding: 14px;
+}
+
+.admin-info-box p {
+    color: #9ba6b1;
+    line-height: 1.55;
+    margin: 6px 0 8px;
+}
+
+/* Los avisos auxiliares dentro de cajas informativas deben conservar presencia. */
+.admin-info-box small {
+    color: #e0a93a;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.admin-info-box--danger {
+    background: rgba(195, 74, 84, 0.06);
+    border-color: rgba(195, 74, 84, 0.35);
+}
+
+.admin-review-context-box {
+    display: grid;
+    gap: 8px;
+}
+
+.admin-review-context-box p {
+    margin: 0;
+}
+
+.admin-review-context-box b {
+    color: #dbe3ec;
+    font-weight: 900;
+}
+
+.admin-review-evidence {
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    display: grid;
+    gap: 6px;
+    margin-top: 2px;
+    padding: 10px 11px;
+}
+
+.admin-review-evidence p {
+    color: #d7dee6;
+    line-height: 1.5;
+    margin: 0;
+    max-height: 116px;
+    overflow: auto;
+}
+
+
+/* ============================================================================
+ * GRILLAS ADMINISTRATIVAS DE CUENTAS
+ * ============================================================================ */
+
+.admin-record-table-wrap {
+    background: #0e1319;
+    border: 1px solid #28323c;
+    border-radius: 9px;
+    overflow-x: auto;
+}
+
+.admin-record-table {
+    border-collapse: collapse;
+    min-width: 920px;
+    width: 100%;
+}
+
+.admin-record-table th {
+    background: #111820;
+    border-bottom: 1px solid #2b3540;
+    color: #87939f;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    padding: 12px 14px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.admin-record-table td {
+    border-bottom: 1px solid rgba(82, 95, 108, 0.24);
+    color: #cbd2d9;
+    font-size: 0.82rem;
+    padding: 12px 14px;
+    vertical-align: middle;
+}
+
+.admin-record-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.admin-record-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.018);
+}
+
+
+/* ============================================================================
+ * FILAS DE ETIQUETAS
+ * ============================================================================ */
+
+/*
+ * Indica visualmente que la fila completa abre el modal de edición.
+ */
+.admin-tags-table-row {
+    cursor: pointer;
+}
+
+.admin-tags-table-row--locked {
+    cursor: default;
+}
+
+/*
+ * Evita el contorno nativo cuando la fila recibe foco mediante teclado.
+ */
+.admin-tags-table-row:focus-visible {
+    outline: none;
+}
+
+
+/* ============================================================================
+ * CELDA DE PERSONA
+ * ============================================================================ */
+
+.admin-person-cell {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    min-width: 210px;
+}
+
+.admin-person-cell img {
+    border: 1px solid #394551;
+    border-radius: 50%;
+    flex: 0 0 auto;
+    height: 38px;
+    object-fit: cover;
+    width: 38px;
+}
+
+.admin-person-cell span {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+}
+
+.admin-person-cell strong {
+    color: #eef0f2;
+}
+
+.admin-person-cell small {
+    color: #7f8b97;
+    max-width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-person-cell--no-avatar {
+    padding-left: 0;
+}
+
+.admin-muted-value {
+    color: #687481;
+}
+
+
+/* ============================================================================
+ * AVATAR ADMINISTRATIVO
+ * ============================================================================ */
+
+.admin-avatar-upload {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid #2d3742;
+    border-radius: 9px;
+    cursor: pointer;
+    display: flex !important;
+    gap: 15px;
+    padding: 12px;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease;
+}
+
+.admin-avatar-upload:hover {
+    background: rgba(224, 169, 58, 0.035);
+    border-color: rgba(224, 169, 58, 0.46);
+}
+
+.admin-avatar-upload > span:last-child {
+    display: grid;
+    flex: 1;
+    gap: 6px;
+}
+
+.admin-avatar-placeholder {
+    border: 1px solid #3b4753;
+    border-radius: 50%;
+    flex: 0 0 66px;
+    height: 66px;
+    overflow: hidden;
+    width: 66px;
+}
+
+.admin-avatar-placeholder img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+
+/* ============================================================================
+ * BOTÓN DESTRUCTIVO
+ * ============================================================================ */
+
+.admin-danger-button {
+    background: #b63c45 !important;
+    border: 1px solid #c34a54 !important;
+    border-radius: 7px;
+    color: #ffffff !important;
+    cursor: pointer;
+    font-weight: 800;
+    padding: 10px 16px !important;
+    transform: none !important;
+    width: auto !important;
+}
+
+.admin-danger-button:hover:not(:disabled),
+.admin-danger-button:focus-visible:not(:disabled) {
+    background: #c3454f !important;
+    border-color: #db626b !important;
+    outline: none;
+    transform: none !important;
+}
+
+
+/* ============================================================================
+ * ACTIVIDAD DE CUENTA
+ * ============================================================================ */
+
+.admin-account-activity {
+    border: 1px solid #2d3742;
+    border-radius: 9px;
+    padding: 15px;
+}
+
+.admin-account-activity h3 {
+    font-family: Georgia, serif;
+    margin: 0 0 12px;
+}
+
+.admin-account-activity > div {
+    display: grid;
+    gap: 10px;
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+}
+
+.admin-account-activity span {
+    display: grid;
+    gap: 4px;
+}
+
+.admin-account-activity small {
+    color: #7f8b97;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* ============================================================================
+ * RESPONSIVE
+ * ============================================================================ */
+
+@media (max-width: 760px) {
+    /*
+     * Las páginas pasan a una única columna.
+     */
+    .contact-layout,
+    .contact-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /*
+     * Copyright y ubicación se apilan.
+     */
+    .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    /*
+     * Alineación de la fecha de edición.
+     */
+    .edition-date-row {
+        text-align: left;
+    }
+
+    /*
+     * Las métricas de actividad pasan de cuatro a dos columnas.
+     */
+    .admin-account-activity > div {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ============================================================================
+ * ADMIN · CONTEXTO DE MODALES Y RESPUESTAS
+ * ============================================================================
+ *
+ * Ajustes compartidos por modales administrativos y por la lectura de hilos de
+ * comentarios dentro de Moderación.
+ * ============================================================================ */
+/* Contexto interno de cuentas bloqueadas dentro de Moderación. */
+.comment-moderation-account-blocked {
+    align-items: flex-start;
+    background: rgba(202, 76, 76, 0.08);
+    border: 1px solid rgba(202, 76, 76, 0.3);
+    border-radius: 8px;
+    color: #e7b4b4;
+    display: flex;
+    gap: 9px;
+    margin-top: 12px;
+    padding: 10px 11px;
+}
+
+.comment-moderation-account-blocked > div {
+    display: grid;
+    gap: 2px;
+}
+
+/* La información del bloqueo debe leerse con la misma claridad que el estado. */
+.comment-moderation-account-blocked span {
+    color: #bfa7a7;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/*
+ * Las respuestas del mismo hilo se separan visualmente sin convertir la
+ * conversación en un chat. Los dos fondos se alternan y el desplazamiento
+ * horizontal es deliberadamente leve para conservar el ancho útil de lectura.
+ */
+.comment-replies {
+    gap: 9px;
+    padding-right: 10px;
+}
+
+.comment-replies > .comment-reply {
+    background: rgba(17, 24, 32, 0.88);
+    border: 1px solid rgba(108, 124, 141, 0.18);
+    border-radius: 8px;
+    padding: 14px;
+}
+
+.comment-replies > .comment-reply:nth-of-type(odd) {
+    margin-right: 10px;
+}
+
+.comment-replies > .comment-reply:nth-of-type(even) {
+    background: rgba(27, 36, 46, 0.92);
+    margin-left: 10px;
+}
+
+/* Publicidades reutiliza el mismo lenguaje visual refinado de los demás modales. */
+.refined-admin-modal {
+    gap: 18px;
+    padding: 26px;
+}
+
+.refined-admin-modal header {
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(139, 151, 165, 0.18);
+    padding-bottom: 18px;
+}
+
+.refined-admin-modal label {
+    gap: 7px;
+}
+
+.refined-admin-modal input:not([type="checkbox"]):not([type="radio"]),
+.refined-admin-modal select,
+.refined-admin-modal textarea {
+    min-height: 43px;
+    padding: 10px 12px;
+}
+
+.refined-admin-modal input:focus,
+.refined-admin-modal select:focus,
+.refined-admin-modal textarea:focus {
+    border-color: rgba(224, 169, 58, 0.65);
+    box-shadow: none;
+    outline: none;
+}
+
+.admin-modal-cancel,
+.admin-modal-submit {
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: 800;
+    min-height: 40px;
+    padding: 10px 15px;
+    width: auto !important;
+}
+
+.admin-modal-cancel {
+    background: transparent;
+    border: 1px solid #3a4652;
+    color: #cbd2d9;
+}
+
+.admin-modal-submit {
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    color: #0b0d10;
+}
+
+.admin-modal-submit:hover:not(:disabled) {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+}
+
+.admin-modal-cancel:disabled,
+.admin-modal-submit:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.admin-upload-card {
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid #2d3742;
+    border-radius: 9px;
+    cursor: pointer;
+    display: grid !important;
+    gap: 12px !important;
+    padding: 14px;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease;
+}
+
+.admin-upload-card:hover {
+    background: rgba(224, 169, 58, 0.035);
+    border-color: rgba(224, 169, 58, 0.46);
+}
+
+.admin-avatar-upload:has(input[type="file"]:disabled),
+.admin-upload-card:has(input[type="file"]:disabled) {
+    cursor: not-allowed;
+}
+
+.admin-upload-copy {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+}
+
+.admin-upload-copy > div {
+    display: grid;
+    gap: 3px;
+}
+
+.admin-upload-copy strong {
+    color: var(--text);
+}
+
+/* La ayuda del archivo requerido se mantiene claramente legible. */
+.admin-upload-copy span {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+.admin-upload-card input[type="file"],
+.admin-avatar-upload input[type="file"] {
+    color: #9aa6b2;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.admin-upload-card input[type="file"]::file-selector-button,
+.admin-avatar-upload input[type="file"]::file-selector-button,
+.cover-actions button {
+    background: #17212b;
+    border: 1px solid #465567;
+    border-radius: 7px;
+    color: #f1f5f9;
+    cursor: pointer;
+    font-weight: 850;
+    margin-right: 8px;
+    padding: 8px 12px;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        color 160ms ease;
+}
+
+.admin-upload-card input[type="file"]::-webkit-file-upload-button,
+.admin-avatar-upload input[type="file"]::-webkit-file-upload-button {
+    background: #17212b;
+    border: 1px solid #465567;
+    border-radius: 7px;
+    color: #f1f5f9;
+    cursor: pointer;
+    font-weight: 850;
+    margin-right: 8px;
+    padding: 8px 12px;
+}
+
+.admin-upload-card input[type="file"]:hover::file-selector-button,
+.admin-avatar-upload input[type="file"]:hover::file-selector-button,
+.cover-actions button:hover {
+    background: #233142;
+    border-color: var(--gold);
+    color: #ffffff;
+}
+
+.admin-upload-card input[type="file"]:disabled,
+.admin-avatar-upload input[type="file"]:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.admin-upload-preview {
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    display: block;
+    max-width: 100%;
+    width: 100%;
+}
+
+/* Grillas administrativas nuevas basadas en la misma tabla TanStack de Noticias. */
+.admin-tanstack-table {
+    min-width: 920px;
+}
+
+.admin-tanstack-table .admin-table-primary-cell {
+    display: grid;
+    gap: 3px;
+    min-width: 170px;
+}
+
+.admin-tanstack-table .admin-table-primary-cell strong {
+    color: #eef0f2;
+}
+
+.admin-tanstack-table .admin-table-primary-cell small {
+    color: #7f8b97;
+}
+
+.admin-tanstack-table td.actions,
+.admin-tanstack-table th.actions {
+    text-align: right;
+}
+
+.admin-tanstack-table td.actions .row-actions {
+    justify-content: flex-end;
+}
+
+/* ==========================================================================
+ * GRILLAS ADMINISTRATIVAS
+ * Etiquetas / Empleados / Usuarios registrados
+ * ========================================================================== */
+
+/*
+ * Utiliza el mismo comportamiento sticky de Noticias y Moderación.
+ * Los filtros permanecen visibles mientras se desplaza la página.
+ */
+.admin-list-toolbar {
+    align-items: center;
+    background: #0c1218;
+    border: 1px solid #34414e;
+    border-radius: 8px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.48);
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    padding: 12px 14px;
+    position: sticky;
+    top: 0;
+    z-index: 60;
+}
+
+/*
+ * Los filtros permanecen en una única línea en escritorio.
+ */
+.admin-list-filter-form {
+    align-items: center;
+    display: flex;
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
+    gap: 9px;
+    min-width: 0;
+    width: auto;
+}
+
+/*
+ * Buscador principal.
+ */
+.admin-list-search-control {
+    align-items: center;
+    display: flex;
+    flex: 1 1 330px;
+    max-width: 430px;
+    min-width: 260px;
+    position: relative;
+}
+
+.admin-list-search-control svg {
+    color: var(--muted);
+    left: 12px;
+    pointer-events: none;
+    position: absolute;
+    z-index: 1;
+}
+
+.admin-list-search-control input {
+    background: #070b10;
+    border: 1px solid #34414e;
+    border-radius: 8px;
+    color: var(--text);
+    min-height: 44px;
+    padding: 10px 12px 10px 39px;
+    width: 100%;
+}
+
+.admin-list-search-control input:focus,
+.admin-list-search-control input:focus-visible {
+    border-color: rgba(224, 169, 58, 0.65);
+    box-shadow: none;
+    outline: none;
+}
+
+/*
+ * Selects compactos.
+ */
+.admin-list-select {
+    background: #070b10;
+    background-image:
+        linear-gradient(45deg, transparent 50%, #9aa6b2 50%),
+        linear-gradient(135deg, #9aa6b2 50%, transparent 50%);
+    background-position:
+        calc(100% - 18px) calc(50% - 3px),
+        calc(100% - 12px) calc(50% - 3px);
+    background-repeat: no-repeat;
+    background-size: 6px 6px;
+    border: 1px solid #34414e;
+    border-radius: 8px;
+    color: var(--text);
+    cursor: pointer;
+    flex: 0 0 180px;
+    min-height: 44px;
+    padding: 9px 34px 9px 11px;
+    width: 180px;
+}
+
+.admin-list-select--review {
+    flex-basis: 190px;
+    width: 190px;
+}
+
+.admin-list-select:focus,
+.admin-list-select:focus-visible {
+    border-color: rgba(224, 169, 58, 0.65);
+    box-shadow: none;
+    outline: none;
+}
+
+/*
+ * Botón Filtrar.
+ */
+.admin-list-filter-button {
+    background: #18212a;
+    border: 1px solid #34414e;
+    border-radius: 8px;
+    color: #e2e7eb;
+    cursor: pointer;
+    flex: 0 0 auto;
+    font-weight: 850;
+    min-height: 44px;
+    padding: 0 15px;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        color 160ms ease;
+}
+
+.admin-list-filter-button:hover,
+.admin-list-filter-button:focus-visible {
+    background: color-mix(
+        in srgb,
+        var(--gold) 10%,
+        #0c1218
+    );
+    border-color: rgba(224, 169, 58, 0.62);
+    color: var(--gold);
+    outline: none;
+}
+
+/*
+ * El contador de etiquetas activas no empuja los filtros.
+ */
+.admin-list-toolbar .admin-toolbar-summary {
+    color: #8d99a5;
+    flex: 0 0 auto;
+    font-size: 0.8rem;
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+/* ============================================================================
+ * AJUSTES VISUALES COMPARTIDOS
+ * ============================================================================
+ *
+ * Reglas comunes para grillas, modales, botones, fechas, filtros y otros
+ * elementos reutilizados en distintas pantallas de TRAMA.
+ * ============================================================================ */
+
+/* ============================================================================
+ * PÁGINAS PÚBLICAS · CONTENEDOR COMPARTIDO
+ * ============================================================================
+ *
+ * Las páginas Términos, Privacidad, Contacto y Quiénes somos utilizan la misma
+ * guía horizontal de 1480 px que el header y el footer de TRAMA.
+ *
+ * El contenido se mantiene alineado a la izquierda dentro de ese contenedor,
+ * evitando que quede pegado a los bordes del viewport.
+ * ============================================================================ */
+.news-container {
+    margin-inline: auto;
+    max-width: 1480px;
+    width: calc(100% - 40px);
+}
+
+/*
+ * Reduce el vacío vertical inicial y deja que el wrapper público determine el
+ * ancho general. Los bloques de lectura conservan una medida cómoda de 980 px.
+ */
+.public-info-page,
+.contact-page {
+    max-width: 1480px;
+    padding-block: clamp(30px, 4vw, 58px);
+}
+
+.public-info-page > .eyebrow,
+.public-info-page > h1,
+.public-info-page > .public-info-intro,
+.public-info-page > .public-info-content {
+    max-width: 980px;
+}
+
+.contact-page:not(.contact-layout) > .eyebrow,
+.contact-page:not(.contact-layout) > h1,
+.contact-page:not(.contact-layout) > .contact-intro,
+.contact-page:not(.contact-layout) > .contact-layout {
+    max-width: 980px;
+}
+
+/* ============================================================================
+ * FOOTER PÚBLICO
+ * ============================================================================ */
+
+/*
+ * La ubicación queda únicamente en el bloque izquierdo. La línea
+ * inferior contiene solo el crédito, completamente alineado a la derecha.
+ */
+.footer-bottom {
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+/* ============================================================================
+ * SELECTOR DE ETIQUETAS · FORMULARIO DE NOTICIAS
+ * ============================================================================ */
+
+/*
+ * El bloque deja de reservar 30 px cuando todavía no hay chips seleccionados.
+ * Esa reserva era la principal causa del hueco excesivo entre "Etiquetas" y el
+ * buscador. Cuando sí hay etiquetas, la lista vuelve a ocupar su altura normal.
+ */
+.tag-chip-list:empty {
+    display: none;
+    min-height: 0;
+}
+
+.tag-selector-field {
+    display: grid;
+    gap: 10px;
+}
+
+/*
+ * El botón X vive dentro del control y cierra únicamente el desplegable. Se
+ * reserva espacio a la derecha del input para que nunca tape el texto escrito.
+ */
+.tag-search-control {
+    position: relative;
+}
+
+.tag-search-control > input {
+    cursor: pointer;
+    padding-right: 76px;
+}
+
+.tag-search-control > input:focus {
+    cursor: text;
+}
+
+.tag-search-control > input:disabled {
+    cursor: not-allowed;
+}
+
+.tag-search-close {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    border-radius: 6px;
+    color: #8f9aa6;
+    cursor: pointer;
+    display: inline-flex;
+    height: 30px;
+    justify-content: center;
+    padding: 0;
+    position: absolute;
+    right: 38px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    z-index: 2;
+}
+
+.tag-search-chevron {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    border-radius: 6px;
+    color: #aab4c0;
+    cursor: pointer;
+    display: inline-flex;
+    height: 30px;
+    justify-content: center;
+    padding: 0;
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    z-index: 2;
+}
+
+.tag-search-chevron svg {
+    transition: transform 0.16s ease;
+}
+
+.tag-search-chevron[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+}
+
+.tag-search-chevron:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.tag-search-close:hover,
+.tag-search-close:focus-visible,
+.tag-search-chevron:hover:not(:disabled),
+.tag-search-chevron:focus-visible:not(:disabled) {
+    background: rgba(224, 169, 58, 0.1);
+    color: var(--gold);
+    outline: none;
+}
+
+/* ============================================================================
+ * TABLAS ADMINISTRATIVAS · VALORES NUMÉRICOS SOLICITADOS
+ * ============================================================================ */
+
+/*
+ * La clase se aplica solamente a las celdas numéricas indicadas en cada grilla
+ * (Noticias en Etiquetas/Empleados y Vistas en Noticias). No cambia los th.
+ */
+.editorial-table td.admin-numeric-value-centered {
+    text-align: center !important;
+}
+
+/* ============================================================================
+ * BOTONES DE MODALES · ANCHO NATURAL Y ESTABLE DURANTE PROCESSING
+ * ============================================================================ */
+
+/*
+ * Los botones principales de las modales toman el ancho necesario para su
+ * contenido en lugar de compartir un ancho fijo. Así, acciones cortas como
+ * "Publicar noticia" no quedan sobredimensionadas y textos más largos como
+ * "Confirmar reprogramación" conservan el espacio que realmente necesitan.
+ */
+.admin-modal .admin-primary-action {
+    flex: 0 0 auto;
+    justify-content: center;
+    white-space: nowrap;
+    width: auto;
+}
+
+/*
+ * Los textos normal y de procesamiento ocupan la misma celda. Ambos participan
+ * en el cálculo del ancho, aunque solamente uno sea visible, por lo que el botón
+ * no se agranda ni se achica al pasar a "Publicando...", "Programando...",
+ * "Enviando..." u otros estados equivalentes.
+ */
+.modal-action-label {
+    display: inline-grid;
+    white-space: nowrap;
+}
+
+.modal-action-label > span {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: center;
+}
+
+.modal-action-label > .is-hidden {
+    visibility: hidden;
+}
+
+/*
+ * En el aviso de cambios sin guardar, las tres acciones permanecen en una sola
+ * fila en escritorio. "Seguir editando" y "Salir sin guardar" conservan el
+ * ancho determinado únicamente por su contenido.
+ */
+.unsaved-changes-actions {
+    flex-wrap: nowrap;
+}
+
+.unsaved-changes-actions .secondary-admin-link,
+.unsaved-changes-actions .danger-outline-button {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+.unsaved-changes-actions .user-toggle-confirm-button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    width: 150px;
+}
+/*
+ * El desvanecido final del ticker se resuelve con máscara alpha sobre una
+ * ventana dedicada. Así el fondo real de la cinta queda intacto: no se pinta
+ * ningún degradado rojizo encima y desaparece por completo el efecto de halo.
+ */
+.ticker-window {
+    min-width: 0;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0,
+        #000 24px,
+        #000 calc(100% - 24px),
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0,
+        #000 24px,
+        #000 calc(100% - 24px),
+        transparent 100%
+    );
+}
+
+/*
+ * Estado visual fijo de campos dentro de modales.
+ * Repite el mismo borde en reposo, hover y foco para que hacer click no cambie
+ * nada visualmente.
+ */
+.admin-modal input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.admin-modal select,
+.admin-modal textarea,
+.admin-modal input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):hover,
+.admin-modal select:hover,
+.admin-modal textarea:hover,
+.admin-modal input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus,
+.admin-modal input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus-visible,
+.admin-modal select:focus,
+.admin-modal select:focus-visible,
+.admin-modal textarea:focus,
+.admin-modal textarea:focus-visible,
+.admin-modal .editorial-date-picker .dp--input,
+.admin-modal .editorial-date-picker .dp__input,
+.admin-modal .editorial-date-picker .dp--input:hover,
+.admin-modal .editorial-date-picker .dp__input:hover,
+.admin-modal .editorial-date-picker .dp--input:focus,
+.admin-modal .editorial-date-picker .dp__input:focus,
+.admin-modal .editorial-date-picker .dp--input:focus-visible,
+.admin-modal .editorial-date-picker .dp__input:focus-visible {
+    border: 1px solid #8b97a5 !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+
+/*
+ * Selectores grises dentro de modales.
+ *
+ * La flecha se dibuja de forma uniforme y queda centrada verticalmente.
+ * Los controles habilitados muestran cursor de mano; los bloqueados conservan
+ * la señal de que no admiten interacción.
+ */
+.admin-modal select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239aa6b2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    cursor: pointer;
+    padding-right: 40px !important;
+}
+
+.admin-modal select:disabled {
+    cursor: not-allowed;
+}
+
+/* ============================================================================
+ * CONTACTO · CONTADOR Y ACCIÓN PRINCIPAL
+ * ============================================================================ */
+
+/*
+ * Mantiene visible el progreso del mensaje con el mismo criterio utilizado en
+ * las observaciones editoriales: primero muestra lo que falta y, al alcanzar el
+ * mínimo, conserva únicamente el total escrito.
+ */
+.contact-character-counter {
+    color: #87939f !important;
+    font-size: 0.76rem;
+    font-weight: 600 !important;
+    justify-self: end;
+    line-height: 1.25;
+}
+
+.contact-character-counter.warning {
+    color: #d7a84b !important;
+}
+
+/*
+ * En escritorio la acción no necesita ocupar todo el ancho del formulario.
+ */
+.contact-layout-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.contact-layout-submit {
+    margin-top: 0;
+    min-width: 190px;
+    width: auto;
+}
+
+.contact-layout-submit:disabled {
+    cursor: not-allowed;
+}
+
+.contact-layout-submit.is-processing:disabled {
+    cursor: default;
+}
+
+@media (max-width: 760px) {
+    .contact-layout-actions,
+    .contact-layout-submit {
+        width: 100%;
+    }
+}

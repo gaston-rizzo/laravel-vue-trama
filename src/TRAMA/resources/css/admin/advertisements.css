@@ -1,0 +1,825 @@
+/* ============================================================================
+ * CSS ADMIN · PUBLICIDADES
+ *
+ * Estilos específicos del panel de publicidades: métricas, filtros, grilla,
+ * estados de campaña, acciones y modales de creación/edición.
+ * ============================================================================ */
+
+/* ============================================================================
+ * BASE DE FILTROS Y CELDAS DE PUBLICIDADES
+ * ============================================================================
+ *
+ * Mantiene reglas generales del panel de campañas: barra de filtros, tabla,
+ * celdas de destino, estados operativos y acciones compactas.
+ * ============================================================================ */
+.advertisement-filter-toolbar {
+    align-items: center;
+    display: grid;
+    gap: 8px;
+    grid-template-columns:
+        minmax(260px, 1fr)
+        210px
+        200px
+        190px
+        180px
+        80px
+        145px;
+    overflow: visible;
+}
+
+.advertisement-filter-form {
+    display: grid;
+    flex: 1;
+    gap: 9px;
+    grid-template-columns: minmax(220px, 1.3fr) repeat(4, minmax(145px, 0.75fr));
+    max-width: none;
+    width: 100%;
+}
+
+.advertisement-filter-form .admin-search-field {
+    align-items: center;
+    display: flex;
+    position: relative;
+}
+
+.advertisement-filter-form .admin-search-field svg {
+    color: var(--muted);
+    left: 11px;
+    pointer-events: none;
+    position: absolute;
+}
+
+.advertisement-filter-form .admin-search-field input {
+    padding-left: 36px;
+    width: 100%;
+}
+
+.advertisement-filter-form button,
+.toolbar-secondary {
+    min-height: 40px;
+}
+
+.admin-primary-action {
+    align-items: center;
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 7px;
+    color: #0b0d10;
+    cursor: pointer;
+    display: inline-flex;
+    flex-shrink: 0;
+    font-weight: 800;
+    gap: 7px;
+    min-height: 40px;
+    padding: 0 14px;
+}
+
+.admin-primary-action:hover {
+    filter: brightness(1.06);
+}
+
+.advertisement-chart-panel header small {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+.advertisement-table-shell {
+    overflow-x: auto;
+}
+
+.advertisement-record-table {
+    min-width: 980px;
+}
+
+.advertisement-record-table th:nth-child(1) { width: 32%; }
+.advertisement-record-table th:nth-child(2) { width: 15%; }
+.advertisement-record-table th:nth-child(3) { width: 17%; }
+.advertisement-record-table th:nth-child(4) { width: 18%; }
+.advertisement-record-table th:nth-child(5) { width: 11%; }
+.advertisement-record-table th:nth-child(6) { width: 7%; }
+
+.advertisement-banner-cell {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+    min-width: 280px;
+}
+
+.advertisement-banner-cell > img {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    flex: 0 0 132px;
+    height: 58px;
+    object-fit: contain;
+    padding: 4px;
+    width: 132px;
+}
+
+.advertisement-banner-cell > div,
+.advertisement-record-table td {
+    min-width: 0;
+}
+
+.advertisement-banner-cell strong,
+.advertisement-record-table td > strong,
+.advertisement-record-table td > span,
+.advertisement-record-table td > small {
+    display: block;
+}
+
+.advertisement-banner-cell span,
+.advertisement-record-table td small {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.advertisement-banner-cell a {
+    align-items: center;
+    color: var(--gold);
+    display: inline-flex;
+    font-size: 12px;
+    gap: 5px;
+    margin-top: 6px;
+    text-decoration: none;
+}
+
+.banner-upload-preview {
+    background: #fff;
+    max-height: 190px;
+    object-fit: contain;
+}
+
+.advertisement-target-fieldset {
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 14px;
+}
+
+.advertisement-target-fieldset legend {
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 800;
+    padding: 0 6px;
+    text-transform: uppercase;
+}
+
+.advertisement-target-option {
+    align-items: center !important;
+    color: var(--text);
+    display: flex !important;
+    flex-direction: row !important;
+    font-size: 13px;
+    gap: 8px;
+}
+
+.advertisement-target-option input[type="radio"] {
+    accent-color: var(--gold);
+    flex: 0 0 auto;
+    height: 16px;
+    width: 16px;
+}
+
+.compact-upload-card {
+    min-height: 88px;
+}
+
+.form-operation-error {
+    border: 1px solid rgba(226, 88, 88, 0.35);
+    border-radius: 7px;
+    padding: 9px 11px;
+}
+
+@media (max-width: 1300px) {
+    .advertisement-filter-toolbar {
+        flex-direction: column;
+    }
+
+    .advertisement-filter-form {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .advertisement-filter-form {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================================
+ * FILTROS, TABLA Y PAGINACIÓN DEL PANEL DE PUBLICIDADES
+ * ============================================================================ */
+
+/*
+ * La barra distribuye el espacio de escritorio priorizando los textos completos
+ * de los cuatro filtros. El buscador absorbe el espacio sobrante y los botones
+ * conservan un ancho estable para que toda la fila quede perfectamente alineada.
+ */
+.advertisement-filter-toolbar {
+    align-items: center;
+    display: grid;
+    column-gap: 10px;
+    row-gap: 8px;
+    grid-template-columns:
+        minmax(330px, 1fr)
+        236px
+        200px
+        194px
+        175px
+        90px
+        160px;
+    overflow: visible;
+}
+
+/*
+ * El buscador mantiene lupa, campo y botón en una sola fila, pero puede ceder
+ * espacio a los filtros sin provocar desbordes.
+ */
+.advertisement-search-form {
+    align-items: center;
+    box-sizing: border-box;
+    display: grid;
+    gap: 8px;
+    grid-template-columns: auto minmax(0, 1fr) 74px;
+    max-width: none;
+    min-width: 0;
+    overflow: hidden;
+    width: 100% !important;
+}
+
+.admin-filter-form.compact.advertisement-search-form {
+    grid-template-columns: auto minmax(0, 1fr) 74px;
+    width: 100% !important;
+}
+
+.advertisement-search-form .editorial-search-input {
+    height: 44px;
+    min-width: 0;
+    width: 100%;
+}
+
+.advertisement-search-form button {
+    cursor: pointer;
+    height: 44px;
+    min-width: 74px;
+    transform: none;
+    width: 74px;
+}
+
+.advertisement-search-form button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+/*
+ * Los filtros de Publicidades utilizan una flecha propia perfectamente centrada.
+ * Se reemplaza la flecha global del select para evitar que quede desplazada
+ * hacia arriba y se reserva solamente el espacio realmente necesario a la derecha.
+ */
+.advertisement-filter-toolbar select.editorial-filter-control {
+    appearance: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 44px;
+    min-width: 0;
+    overflow: visible;
+    padding: 0 34px 0 12px;
+    text-overflow: clip;
+    white-space: nowrap;
+    width: 100%;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239aa6b2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-position: right 11px center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+}
+
+.advertisement-placement-filter {
+    min-width: 236px;
+    width: 236px;
+}
+
+.advertisement-status-filter {
+    min-width: 200px;
+    width: 200px;
+}
+
+.advertisement-brand-filter {
+    min-width: 194px;
+    width: 194px;
+}
+
+.advertisement-period-filter {
+    min-width: 180px;
+    width: 180px;
+}
+
+/*
+ * Los dos botones finales mantienen dimensiones fijas para que el borde derecho
+ * de la barra quede alineado y no dependa de la longitud de los filtros.
+ */
+.advertisement-filter-clear {
+    height: 44px;
+    min-width: 80px;
+    width: 80px;
+}
+
+.advertisement-filter-clear:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+.advertisement-create-button {
+    height: 44px;
+    /* justify-content: center; */
+    /* justify-self: end; */
+    transform: translateX(22px);
+    min-width: 60px;
+    padding-inline: 14px;
+    white-space: nowrap;
+    width: 60px;    
+}
+
+.advertisement-create-button svg {
+    display: none;
+}
+/*
+ * La tabla usa el mismo sistema editorial que Comentarios. El encabezado de
+ * Publicidades no tiene una toolbar sticky encima, por eso se adhiere al borde
+ * superior de la ventana sin reservar el offset de otras grillas.
+ */
+.admin-advertisements-table {
+    min-width: 1120px;
+}
+
+.admin-advertisements-table th {
+    background: #0c1218;
+    top: 0;
+    z-index: 70;
+}
+
+.admin-advertisements-table th:nth-child(1) { width: 29%; }
+.admin-advertisements-table th:nth-child(2) { width: 14%; }
+.admin-advertisements-table th:nth-child(3) { width: 20%; }
+.admin-advertisements-table th:nth-child(4) { width: 18%; }
+.admin-advertisements-table th:nth-child(5) { width: 10%; }
+.admin-advertisements-table th:nth-child(6) { width: 9%; }
+
+/*
+ * Acciones conserva el acento amarillo utilizado por las columnas operativas
+ * del resto de Administración y queda centrado sobre sus botones.
+ */
+.admin-advertisements-table .table-actions-heading {
+    color: var(--gold);
+    text-align: center;
+}
+
+.advertisement-table-row {
+    cursor: pointer;
+    transition: background-color 0.18s ease;
+}
+
+.advertisement-table-row:hover,
+.advertisement-table-row:focus-visible {
+    background: var(--surface-2);
+    outline: none;
+}
+
+.advertisement-banner-cell > div {
+    min-width: 0;
+}
+
+.advertisement-banner-cell strong,
+.advertisement-banner-cell span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*
+ * Reemplaza visualmente la miniatura cuando el archivo físico del banner
+ * ya no existe. Conserva exactamente el espacio de una imagen normal.
+ */
+.advertisement-banner-cell .advertisement-missing-file {
+    align-items: center;
+    background: rgba(220, 53, 69, 0.12);
+    border: 1px solid rgba(255, 92, 108, 0.42);
+    border-radius: 6px;
+    box-sizing: border-box;
+    color: #ff6b7a;
+    display: inline-flex;
+    flex: 0 0 132px;
+    font-size: 11px;
+    font-weight: 700;
+    height: 58px;
+    justify-content: center;
+    line-height: 1.3;
+    overflow: visible;
+    padding: 4px 12px;
+    text-align: center;
+    text-overflow: clip;
+    white-space: normal;
+    width: 132px;
+}
+
+/*
+ * Aviso compacto utilizado dentro de la previsualización del modal cuando
+ * el archivo físico asociado a la campaña ya no está disponible.
+ */
+.advertisement-missing-preview {
+    align-items: center;
+    color: #ff6b7a;
+    display: flex;
+    font-size: 13px;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1.25;
+    min-width: 180px;
+    padding: 8px 12px;
+    text-align: center;
+}
+
+/* La ubicación se presenta en dos líneas para separar nombre y tamaño real. */
+.advertisement-placement-cell {
+    display: grid;
+    gap: 3px;
+}
+
+.advertisement-placement-cell small {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/*
+ * Vigencia muestra Inicio y Fin como dos filas compactas y evita concatenar
+ * ambas fechas dentro de una única línea difícil de escanear.
+ */
+.advertisement-vigency-cell {
+    display: grid;
+    gap: 4px;
+}
+
+.advertisement-vigency-cell > span {
+    align-items: baseline;
+    display: grid;
+    gap: 7px;
+    grid-template-columns: 40px minmax(0, 1fr);
+    white-space: nowrap;
+}
+
+.advertisement-vigency-cell small {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.advertisement-vigency-cell strong {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Rendimiento separa impresiones de clicks y CTR en dos líneas compactas. */
+.advertisement-performance-cell {
+    display: grid;
+    gap: 3px;
+}
+
+.advertisement-performance-cell > span,
+.advertisement-performance-cell > small {
+    display: block;
+    white-space: nowrap;
+}
+
+.advertisement-performance-cell > small {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* Estado compacto: mismo ancho para ACTIVA, PROGRAMADA, FINALIZADA y PAUSADA. */
+.advertisement-status-badge {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    width: 96px;
+}
+
+/* ============================================================================
+ * MODALES DE CREACIÓN Y EDICIÓN DE PUBLICIDADES
+ * ============================================================================ */
+
+/*
+ * En escritorio se aprovecha el ancho disponible para evitar un scroll interno
+ * innecesario. El fallback con scroll se activa más abajo solo cuando la pantalla
+ * realmente no dispone de altura o ancho suficiente.
+ */
+.advertisement-admin-modal {
+    gap: 16px;
+    max-height: none;
+    max-width: 980px;
+    overflow: visible;
+    padding: 24px;
+    width: min(980px, calc(100vw - 48px));
+}
+
+.advertisement-admin-modal > header {
+    border-bottom: 1px solid rgba(139, 151, 165, 0.18);
+    padding-bottom: 15px;
+}
+
+.advertisement-modal-grid {
+    display: grid;
+    gap: 13px 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.advertisement-modal-grid > label:not(.admin-upload-card):not(.admin-toggle-card),
+.advertisement-date-field {
+    display: grid;
+    gap: 7px;
+    min-width: 0;
+}
+
+/*
+ * Marca, campaña, ubicación y destino conservan la misma altura visual que los
+ * controles de fecha para evitar las barras bajas que tenía el modal anterior.
+ */
+.advertisement-modal-control,
+.advertisement-select-control select {
+    box-sizing: border-box;
+    height: 40px;
+    min-height: 40px;
+    width: 100%;
+}
+
+.advertisement-modal-control {
+    padding: 0 12px;
+}
+
+/*
+ * El select usa un ChevronDown de Lucide colocado fuera del control nativo.
+ * De esta forma no depende de la flecha distinta que dibuja cada navegador.
+ */
+.advertisement-select-control {
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+.advertisement-select-control select {
+    appearance: none;
+    background-image: none !important;
+    cursor: pointer;
+    padding: 0 42px 0 12px;
+}
+
+.advertisement-select-control > svg {
+    color: #9aa6b2;
+    pointer-events: none;
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Los campos bloqueados de edición permanecen legibles pero no interactivos. */
+.advertisement-admin-modal input:disabled,
+.advertisement-select-control--locked select:disabled {
+    cursor: not-allowed;
+    opacity: 0.72;
+}
+
+/*
+ * Los campos dentro de modales no muestran anillos ni bordes de foco.
+ * Mantienen el borde normal para evitar el recuadro blanco al hacer click.
+ */
+.admin-modal input:not([type="checkbox"]):not([type="radio"]):focus,
+.admin-modal input:not([type="checkbox"]):not([type="radio"]):focus-visible,
+.admin-modal select:focus,
+.admin-modal select:focus-visible,
+.admin-modal textarea:focus,
+.admin-modal textarea:focus-visible {
+    box-shadow: none;
+    outline: none;
+}
+
+.admin-modal-refined input:not([type="checkbox"]):not([type="radio"]):focus,
+.admin-modal-refined input:not([type="checkbox"]):not([type="radio"]):focus-visible,
+.admin-modal-refined select:focus,
+.admin-modal-refined select:focus-visible,
+.admin-modal-refined textarea:focus,
+.admin-modal-refined textarea:focus-visible,
+.refined-admin-modal input:not([type="checkbox"]):not([type="radio"]):focus,
+.refined-admin-modal input:not([type="checkbox"]):not([type="radio"]):focus-visible,
+.refined-admin-modal select:focus,
+.refined-admin-modal select:focus-visible,
+.refined-admin-modal textarea:focus,
+.refined-admin-modal textarea:focus-visible,
+.advertisement-admin-modal input:not([type="checkbox"]):not([type="radio"]):focus,
+.advertisement-admin-modal input:not([type="checkbox"]):not([type="radio"]):focus-visible,
+.advertisement-admin-modal select:focus,
+.advertisement-admin-modal select:focus-visible,
+.advertisement-admin-modal textarea:focus,
+.advertisement-admin-modal textarea:focus-visible {
+    border-color: #4b5662;
+    box-shadow: none;
+    outline: none;
+}
+
+.admin-modal .editorial-date-picker .dp--input:focus,
+.admin-modal .editorial-date-picker .dp__input:focus,
+.admin-modal .editorial-date-picker .dp--input:focus-visible,
+.admin-modal .editorial-date-picker .dp__input:focus-visible {
+    border-color: #4b5662;
+    box-shadow: none;
+    outline: none;
+}
+
+.advertisement-upload-card,
+.advertisement-edit-image-block,
+.advertisement-toggle-card {
+    grid-column: 1 / -1;
+}
+
+.advertisement-edit-image-block {
+    display: grid;
+    gap: 10px;
+}
+
+.advertisement-modal-preview {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid #2d3742;
+    border-radius: 9px;
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 220px minmax(0, 1fr);
+    padding: 12px;
+}
+
+.advertisement-modal-preview img,
+.banner-upload-preview {
+    background: #ffffff;
+    border-radius: 6px;
+    height: 92px;
+    object-fit: contain;
+    width: 100%;
+}
+
+.advertisement-modal-preview > div {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+}
+
+.advertisement-modal-preview small {
+    color: var(--muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.advertisement-toggle-card {
+    margin-top: 0;
+}
+
+/* Hover consistente con el resto de los modales de administración. */
+.advertisement-admin-modal .admin-modal-cancel:hover:not(:disabled),
+.advertisement-admin-modal .admin-modal-cancel:focus-visible:not(:disabled) {
+    background: rgba(224, 169, 58, 0.08);
+    border-color: rgba(224, 169, 58, 0.6);
+    color: var(--gold);
+    outline: none;
+    transform: none;
+}
+
+.advertisement-admin-modal .admin-modal-submit:hover:not(:disabled),
+.advertisement-admin-modal .admin-modal-submit:focus-visible:not(:disabled) {
+    background: #f0c354;
+    border-color: #f0c354;
+    filter: none;
+    outline: none;
+    transform: none;
+}
+
+/* ============================================================================
+ * AJUSTES RESPONSIVE DE PUBLICIDADES
+ * ============================================================================ */
+
+@media (max-width: 1500px) {
+    /*
+     * Cuando el contenido disponible ya no alcanza para siete controles en una
+     * sola línea, la barra pasa ordenadamente a dos filas en lugar de comprimir
+     * los combos y cortar sus etiquetas.
+     */
+    .advertisement-filter-toolbar {
+        grid-template-columns: minmax(310px, 1fr) 190px 170px 165px;
+    }
+
+    .advertisement-period-filter {
+        grid-column: 2;
+    }
+
+    .advertisement-filter-clear {
+        grid-column: 3;
+    }
+
+    .advertisement-create-button {
+        grid-column: 4;
+    }
+}
+
+@media (max-width: 900px), (max-height: 820px) {
+    /* Scroll solamente como salvaguarda cuando el viewport no alcanza. */
+    .advertisement-admin-modal {
+        max-height: calc(100vh - 32px);
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 900px) {
+    .advertisement-modal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .advertisement-upload-card,
+    .advertisement-edit-image-block,
+    .advertisement-toggle-card {
+        grid-column: auto;
+    }
+
+    .advertisement-modal-preview {
+        grid-template-columns: 1fr;
+    }
+
+    .advertisement-filter-toolbar {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .advertisement-search-form {
+        grid-column: 1 / -1;
+        min-width: 0;
+        width: 100% !important;
+    }
+
+    .advertisement-placement-filter,
+    .advertisement-status-filter,
+    .advertisement-brand-filter,
+    .advertisement-period-filter,
+    .advertisement-filter-clear,
+    .advertisement-create-button {
+        grid-column: auto;
+        justify-self: stretch;
+        width: 100%;
+    }
+}
+
+@media (max-width: 760px) {
+    .news-container {
+        width: calc(100% - 24px);
+    }
+
+    .footer-bottom {
+        align-items: flex-end;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .advertisement-filter-toolbar {
+        align-items: stretch;
+        grid-template-columns: 1fr;
+    }
+
+    .advertisement-search-form,
+    .advertisement-placement-filter,
+    .advertisement-status-filter,
+    .advertisement-brand-filter,
+    .advertisement-period-filter,
+    .advertisement-filter-clear,
+    .advertisement-create-button {
+        grid-column: 1;
+        justify-self: stretch;
+        width: 100%;
+    }
+
+    .advertisement-create-button {
+        justify-content: center;
+    }
+
+    .admin-modal .admin-primary-action,
+    .unsaved-changes-actions .admin-primary-action,
+    .unsaved-changes-actions .danger-outline-button,
+    .admin-modal-footer .admin-gold-button,
+    .admin-modal-footer .admin-danger-button,
+    .admin-modal-footer .admin-modal-submit {
+        width: 100% !important;
+    }
+}
